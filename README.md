@@ -19,9 +19,9 @@ from fastCloningPrimer import *
 fastCloningPrimersSeq(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq)
 ```
 
-vectorPlasmidSeq: sequence of the plasmid containing the vector sequence
-insertPlasmidSeq: sequence of the plasmid containing the insert sequence
-vectorSeq: sequence of the vector
+vectorPlasmidSeq: sequence of the plasmid containing the vector sequence\
+insertPlasmidSeq: sequence of the plasmid containing the insert sequence\
+vectorSeq: sequence of the vector\
 insertSeq: sequence of the insert
 
 ```
@@ -29,9 +29,9 @@ from fastCloningPrimer import *
 fastCloningPrimersIndex(vectorPlasmidSeq, insertPlasmidSeq, vectorIndexPair, insertIndexPair)
 ```
 
-vectorPlasmidSeq: sequence of the plasmid containing the vector sequence
-insertPlasmidSeq: sequence of the plasmid containing the insert sequence
-vectorIndexPair: a tuple containing the starting and ending indexes of the vector in the vectorPlasmidSeq, with indexes starting from 1 (instead of 0)
+vectorPlasmidSeq: sequence of the plasmid containing the vector sequence\
+insertPlasmidSeq: sequence of the plasmid containing the insert sequence\
+vectorIndexPair: a tuple containing the starting and ending indexes of the vector in the vectorPlasmidSeq, with indexes starting from 1 (instead of 0)\
 insertIndexPair: a tuple containing the starting and ending indexes of the insert in the insertPlasmidSeq, with indexes starting from 1 (instead of 0)
 
 ### Acknowledgement
