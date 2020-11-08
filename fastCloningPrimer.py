@@ -145,8 +145,12 @@ def primer3Only(plasmidSeq, goalSeq):
 
 
 def tempDiffRestrict(primerInfo):
-    """TODO: For Richard Chang to write"""
-    return
+    """Checks the differnce in annealing temperatures between two primers.
+       Difference should not be greater than 5 degrees."""
+    for key in primerInfo.copy():
+        if abs(primerInfo[key][0][1] - primerInfo[key][1][1]) > 5:
+            del primerInfo[key] 
+    return primerInfo
 
 
 def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq):
