@@ -2,8 +2,6 @@
 
 BioFoundry Project at the HMC BioMakerspace. An automated workflow to design primers for fast cloning experiments.
 
-### Next Steps
-
 ### Required libraries
 
 1. Primer3-py (Download via terminal with `pip install primer3-py`)
@@ -12,28 +10,30 @@ BioFoundry Project at the HMC BioMakerspace. An automated workflow to design pri
 
 #### Installation
 
+Clone this repository, enter the local directory where this repo is located, then do whatever you want.
+
+More accessible installation methods to come once we have our first release.
+
 #### Primer design
 
 So far, we can design primers given a plasmid sequence and a goal sequence (the sequence encapsulated by the plasmid sequence, which is also the sequence that we want to isolate from the plasmid sequence).
 
 For example:
 
+Enter ipython, then do the following
+
 ```
-from fastCloningPrimer import *
-plasmidPrimerDesign(insertPlasmidSeq1, insertSeq1)
+run fastCloningPrimer.py
+primer3Only(insertPlasmidSeq1, insertSeq1)
 ```
+
+This gives you several primer pairs for isolating insertSeq1 from its plasmid insertPlasmidSeq1.
 
 #### Next steps
 
 Functions to write are
 
 ```
-def cleanPrimerInfo(primerInfo):
-    """read primerInfo, the output of the previous function, and turn it into a more
-    readable and analyzable data structure"""
-    return
-
-
 def tempDiffRestrict(primerInfo):
     """TODO: For Richard Chang to write"""
     return
@@ -67,8 +67,9 @@ def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq)
 
 The ones that are easy to write are (For Richard):
 
-1. cleanPrimerInfo(primerInfo)
-2. tempDiffRestrict(primerInfo)
+1. tempDiffRestrict(primerInfo)
+2. You can also potentially think about `vectorPrimerDesign(vectorPlasmidSeq, vectorSeq)` and `insertPrimerDesign(overhangSeq1, overhangSeq2, insertPlasmidSeq, insertSeq)`. How do we write this according to the fastCloning paper?
+3. In addition, you can add a parsing function at the top of the file that takes in a DNA file (e.g. in gbk or fasta formats) and spits out sequences so the workflow does not require scientists to manually copy and paste sequences.
 
 THE CONTENT BELOW WILL BE ENABLED ONCE THE WHOLE THING IS DONE:
 

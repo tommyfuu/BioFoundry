@@ -24,6 +24,8 @@ SEQUENCE_ID = 'MH1000'
 PRIMER_OPT_TM = 60.0
 PRIMER_MIN_TM = 57.0
 PRIMER_MAX_TM = 63.0
+PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
+    401, 500], [501, 600], [601, 700], [701, 850], [851, 1000]]
 MAX_TEMP_DIFF = 5.0
 
 
@@ -76,7 +78,9 @@ def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     return output, outputStart, outputEnd
 
 
-def primer3ShortCut(seq, goalStart, goalEnd):
+def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM):
+    """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
+    with parameters if needed"""
     goalLen = goalEnd - goalStart
     sequenceMap = {
         'SEQUENCE_ID': SEQUENCE_ID,
@@ -84,17 +88,16 @@ def primer3ShortCut(seq, goalStart, goalEnd):
         'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
     }
     paramMap = {
-        'PRIMER_OPT_TM': PRIMER_OPT_TM,
-        'PRIMER_MIN_TM': PRIMER_MIN_TM,
-        'PRIMER_MAX_TM': PRIMER_MAX_TM,
-        # 'PRIMER_PRODUCT_SIZE_RANGE': [[100, 300], [150, 250], [301, 400], [401, 500], [501, 600], [601, 700], [701, 850], [851, 1000]]
+        'PRIMER_OPT_TM': primerOptTm,
+        'PRIMER_MIN_TM': primerMinTm,
+        'PRIMER_MAX_TM': primerMaxTm,
         'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
     }
     return primer3.bindings.designPrimers(sequenceMap, paramMap)
 
 
 def plasmidPrimerDesign(plasmidSeq, goalSeq):
-    """Uses the primer3-py api to find the primer info for isolating the current 
+    """Uses the primer3-py api to find the primer info for isolating the current
     goalSeq from the plasmidSeq"""
     preppedPlasmidSeq, goalSeqStart, goalSeqEnd = pseudoCircularizePlasmid(
         plasmidSeq, goalSeq)
@@ -106,7 +109,38 @@ def plasmidPrimerDesign(plasmidSeq, goalSeq):
 def cleanPrimerInfo(primerInfo):
     """read primerInfo, the output of the previous function, and turn it into a more
     readable and analyzable data structure"""
-    return
+    primerPairDict = {}
+    for key in primerInfo:
+        if key[-8:] == 'SEQUENCE':
+            if key[:11] == 'PRIMER_LEFT':
+                primerNum = key[12]
+                leftOrRight = 'left'
+                primerTM = primerInfo[key[:13]+'_TM']
+                primerPairKey = 'primerPair' + primerNum
+                if primerPairKey not in primerPairDict:
+                    primerPairDict.update(
+                        {primerPairKey: [(leftOrRight, primerTM)]})
+                else:
+                    primerPairDict[primerPairKey].append(
+                        (leftOrRight, primerTM))
+            else:
+                primerNum = key[13]
+                leftOrRight = 'right'
+                primerTM = primerInfo[key[:14]+'_TM']
+                primerPairKey = 'primerPair' + primerNum
+                if primerPairKey not in primerPairDict:
+                    primerPairDict.update(
+                        {primerPairKey: [(leftOrRight, primerTM)]})
+                else:
+                    primerPairDict[primerPairKey].append(
+                        (leftOrRight, primerTM))
+    return primerPairDict
+
+
+def primer3Only(plasmidSeq, goalSeq):
+    """A quick wrapper for non-fastCloning specific primer design"""
+    primerInfo = plasmidPrimerDesign(plasmidSeq, goalSeq)
+    return cleanPrimerInfo(primerInfo)
 
 
 def tempDiffRestrict(primerInfo):
