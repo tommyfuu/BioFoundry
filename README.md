@@ -7,14 +7,20 @@ BioFoundry Project at the HMC BioMakerspace. An automated workflow to design pri
 1. Primer3-py (Download via terminal with `pip install primer3-py`)
 2. Pandas (Download via terminal with `pip install pandas` or `conda install pandas`)
 
+Install these dependencies with
+
+```
+pip3 install -r requirements.txt
+```
+
 ### Usage
 
 #### Installation
 
-Clone this repository, enter the local directory where the repo is located. If you haven't already, download the dependency primer3-py with
+Clone this repository, enter the local directory where the repo is located. If you haven't already, install the dependencies with
 
 ```
-pip install primer3-py
+pip3 install -r requirements.txt
 ```
 
 More accessible installation methods to come once we have our first release.
