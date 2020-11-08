@@ -11,6 +11,12 @@ BioFoundry Project at the HMC BioMakerspace. An automated workflow to design pri
 ### Usage
 
 #### Installation
+Clone this repository, enter the local directory where the repo is located. If you haven't already, download the dependency primer3-py with
+```
+pip install primer3-py
+```
+
+More accessible installation to come once functions are finished.
 
 #### Primer design
 
@@ -95,7 +101,7 @@ insertIndexPair: a tuple containing the starting and ending indexes of the inser
 ### Acknowledgement
 
 Developers:\
-Tom Fu [(@tommyfuu)](https://github.com/tommyfuu)\
+Tom Fu [(@tommyfuu)](https://github.com/tommyfuu)
 
 Affiliation: Harvey Mudd College BioMakerspace (Polymerspace). \
 Faculty advisor: Dr. Dan Stoebel.
