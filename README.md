@@ -113,7 +113,7 @@ Possible next releases will be announced here.
 ### Acknowledgement
 
 Developers:\
-Tom Fu [(@tommyfuu)](https://github.com/tommyfuu)
+Tom Fu [(@tommyfuu)](https://github.com/tommyfuu)\
 Richard Chang [(@richanghmc)](https://github.com/richanghmc)
 
 Affiliation: Harvey Mudd College BioMakerspace (Polymerspace). \
