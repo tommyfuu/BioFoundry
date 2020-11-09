@@ -77,7 +77,7 @@ primer3OnlyFile(plasmidSeqFile, goalSeq)
 ## primer3OnlyFile(insertPlasmid1AddressGB, insertSeq1)
 ```
 
-2. You can design primer3 primer pairs for your fastCloning experiments. Sample outputs can be seen at 'sampleOutput-fastCloningPrimerInfo.csv`.
+2. You can design primer3 primer pairs for your fastCloning experiments. Sample outputs can be seen at '`ampleOutput-fastCloningPrimerInfo.csv`.
 
 Again, you have two options. You can either input the plasmid sequence as a string or as a fasta/genbank file. Note that only fasta/genbank formats are supported for now.\
 Note that the goal sequence (goalSeq), or the sequence you would like to isolate from the plasmid, always needs to be inputted as a string.
