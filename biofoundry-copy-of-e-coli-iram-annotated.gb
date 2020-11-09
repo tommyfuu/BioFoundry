@@ -1,0 +1,63 @@
+LOCUS       BioFoundry_Copy_of_E._c 1024 bp ds-DNA     linear       24-OCT-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     Gene                               400..444
+                                        /label="ymgK gene"
+     -35 Promoter Region                551..556
+                                        /label="-35 Region (iraMp2)"
+     Transcription Factor Binding Site  407..422
+                                        /label="phoP5 (iraMp TFBS)"
+     misc_feature                       701..1024
+                                        /label="iraM gene"
+      Transcription Factor Binding Site 437..451
+                                        /label="ArcA4 (iraMp TFBS)"
+     TSS                                614..615
+                                        /label="iraMP TSS"
+     Promoter                           521..580
+                                        /label="iraMp2 Promoter"
+     Transcription factor Binding Site  591..605
+                                        /label="ArcA1 (iraMp TFBS)"
+     Promoter                           554..613
+                                        /label="iraMp promoter"
+     Gene                               54..164
+                                        /label="ymgL"
+     Transcription Factor Binding SIte  538..554
+                                        /label="phoP 1 (iraMp and iraMp2 TFBS)"
+     TSS                                581..582
+                                        /label="iraMp2 TSS"
+     Transcription factor Binding Site  537..550
+                                        /label="Fnr3 (iraMp TFBS)"
+     -10 Promoter Region                574..579
+                                        /label="-10 Region (iraMp2)"
+     primer                             complement(679..700)
+                                        /label="E. coli iraM REV"
+                                        /note="sequence: TTGTTATGTCTTATCCCACGGT"
+     primer                             complement(679..700)
+                                        /label="E. coli iraM REV-FastCloning [DMS123]"
+                                        /note="sequence: CTTAAATCTAGaACGGGTTGTTATGTCTTATCCCACGGT"
+     primer                             complement(679..700)
+                                        /label="E.coli iraM REV-XbaI"
+                                        /note="sequence: tctagaTTGTTATGTCTTATCCCACGGT"
+     primer                             201..226
+                                        /label="E. coli iraM FWD FastCloning [DMS123]"
+                                        /note="sequence: AAATCCGCCCTCTAGCACATATTTATAAAAACAACGGCCGTG"
+ORIGIN
+        1 GCTAAAGTTG GATACTTAAG AAATGCTTCA TAATTCAGTA AGGCATTAGC ATAATGGAAA
+       61 TAAAAGTGCA GAGACTATCT CTATGGATGA TTAATACTGT CTTTTTATTG TCACCCATAA
+      121 ATAATCACCA GACTAATACT ATCAACTTGA TATTTGAAAT GTGATCACTT GACTTTTGAT
+      181 ACGTTATTTT ATAACGGTTA ACATATTTAT AAAAACAACG GCCGTGCCAC ACGTCCGTTT
+      241 CAATACTTAA CGCACATGTA TTTTGGTTTA GTCATCATCC GGTTATATGT ATTTTAGCCA
+      301 GGAACAGGTT AAATCATTCC TATATAACTC AAAAATTGAA ACCTTATTCT CATGTCATGC
+      361 TTATATTCAT TATTATCGTT ATATAAAAAG GCAACCATAA TGTTTAGCAA ATTGGCACAA
+      421 AGTAGCATAA AGGCTATGTT TTAATTACAG GATGTTCAGT CATTTGAATG TATAACATTA
+      481 TAGCTAAACA AATCTAAAAC GAAGTCAATA ATTTATTGCT TTCACAAAAT CTCATTTTGT
+      541 TTAACATCCA TTGAGATTCC TTGCTTTAAA TTTTATTTTA TATAAGCCAT CATTTTAATT
+      601 AATTTATTTT TTTGAGGGGG GGGTAATATA CTCATATGCA AAATCAAGAA ATAAACATCC
+      661 TAATGAACCA TATTAAATAC CGTGGGATAA GACATAACAA atgAAGTGGA TAGTAATTGA
+      721 CACGGTAATT CAACCTACAT GTGGTATATC TTTTTCAGCC ATATGGGGTA ATATGAAAAT
+      781 GATCATCTGG TATCAATCTA CTATATTTCT CCCTCCTGGC AGTATATTTA CACCGGTTAA
+      841 GTCTGGTATT ATCCTTAAGG ATAAAGAATA TCCTATTACT ATTTATCACA TCGCACCATT
+      901 CAACAAGGAT TTATGGAGTT TACTCAAAAG CAGTCAAGAG TGTCCTCCAG GAGAAAGCAA
+      961 AATAACAAAT AAATGTTTAC ATAATAGTTG CATTATAAAA ATATGCCCAT ATGGGCTCAA
+     1021 Gtaa
+//

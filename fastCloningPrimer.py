@@ -7,7 +7,9 @@ FileName    : fastCloningPrimer.py (for the BioFoundry Project at the HMC BioMak
 Description : Find primer pairs for fast cloning
 """
 import primer3
+from Bio import SeqIO
 import pandas as pd
+import sys
 
 # test cases
 primer3pySeq = 'GCTTGCATGCCTGCAGGTCGACTCTAGAGGATCCCCCTACATTTTAGCATCAGTGAGTACAGCATGCTTACTGGAAGAGAGGGTCATGCAACAGATTAGGAGGTAAGTTTGCAAAGGCAGGCTAAGGAGGAGACGCACTGAATGCCATGGTAAGAACTCTGGACATAAAAATATTGGAAGTTGTTGAGCAAGTNAAAAAAATGTTTGGAAGTGTTACTTTAGCAATGGCAAGAATGATAGTATGGAATAGATTGGCAGAATGAAGGCAAAATGATTAGACATATTGCATTAAGGTAAAAAATGATAACTGAAGAATTATGTGCCACACTTATTAATAAGAAAGAATATGTGAACCTTGCAGATGTTTCCCTCTAGTAG'
@@ -28,6 +30,23 @@ PRIMER_MAX_TM = 63.0
 PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
     401, 500], [501, 600], [601, 700], [701, 850], [851, 1000]]
 MAX_TEMP_DIFF = 5.0
+PRIMER_MIN_SIZE = 18
+
+
+def fileParsing(vectorPlasmidAddress, insertPlasmidAddress):
+    """Take in two addresses, one for vector plasmid and one for insert plasmid,
+    turn into biopython seq objects"""
+    if vectorPlasmidAddress[-5:] == 'fasta':
+        vectorPlasmidSeq = SeqIO.read(vectorPlasmidAddress, "fasta").seq
+        insertPlasmidSeq = SeqIO.read(insertPlasmidAddress, "fasta").seq
+        return vectorPlasmidSeq, insertPlasmidSeq
+    elif (vectorPlasmidAddress[-3:] == '.gb') or (vectorPlasmidAddress[-3:] == 'gbk'):
+        vectorPlasmidSeq = SeqIO.read(vectorPlasmidAddress, "genbank").seq
+        insertPlasmidSeq = SeqIO.read(insertPlasmidAddress, "genbank").seq
+        return vectorPlasmidSeq, insertPlasmidSeq
+    else:
+        sys.exit('Unsupported file format.')
+        return
 
 
 def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
@@ -79,7 +98,7 @@ def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     return output, outputStart, outputEnd
 
 
-def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM):
+def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
     with parameters if needed"""
     goalLen = goalEnd - goalStart
@@ -92,6 +111,7 @@ def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMi
         'PRIMER_OPT_TM': primerOptTm,
         'PRIMER_MIN_TM': primerMinTm,
         'PRIMER_MAX_TM': primerMaxTm,
+        'PRIMER_MIN_SIZE': primerMinSize,
         'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
     }
     return primer3.bindings.designPrimers(sequenceMap, paramMap)
@@ -113,28 +133,23 @@ def cleanPrimerInfo(primerInfo):
     primerPairDict = {}
     for key in primerInfo:
         if key[-8:] == 'SEQUENCE':
+            currentSequence = primerInfo[key]
             if key[:11] == 'PRIMER_LEFT':
                 primerNum = key[12]
                 leftOrRight = 'left'
                 primerTM = primerInfo[key[:13]+'_TM']
                 primerPairKey = 'primerPair' + primerNum
-                if primerPairKey not in primerPairDict:
-                    primerPairDict.update(
-                        {primerPairKey: [(leftOrRight, primerTM)]})
-                else:
-                    primerPairDict[primerPairKey].append(
-                        (leftOrRight, primerTM))
             else:
                 primerNum = key[13]
                 leftOrRight = 'right'
                 primerTM = primerInfo[key[:14]+'_TM']
                 primerPairKey = 'primerPair' + primerNum
-                if primerPairKey not in primerPairDict:
-                    primerPairDict.update(
-                        {primerPairKey: [(leftOrRight, primerTM)]})
-                else:
-                    primerPairDict[primerPairKey].append(
-                        (leftOrRight, primerTM))
+            if primerPairKey not in primerPairDict:
+                primerPairDict.update(
+                    {primerPairKey: [[leftOrRight, primerTM, currentSequence]]})
+            else:
+                primerPairDict[primerPairKey].append(
+                    [leftOrRight, primerTM, currentSequence])
     return primerPairDict
 
 
@@ -144,36 +159,115 @@ def primer3Only(plasmidSeq, goalSeq):
     return cleanPrimerInfo(primerInfo)
 
 
-def tempDiffRestrict(primerInfo):
+def tempDiffRestrict(primerInfo, maxTempDiff=MAX_TEMP_DIFF):
     """Checks the differnce in annealing temperatures between two primers.
        Difference should not be greater than 5 degrees."""
     for key in primerInfo.copy():
-        if abs(primerInfo[key][0][1] - primerInfo[key][1][1]) > 5:
-            del primerInfo[key] 
+        if abs(primerInfo[key][0][1] - primerInfo[key][1][1]) > maxTempDiff:
+            del primerInfo[key]
     return primerInfo
 
 
-def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq):
+def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF):
     """Find the primers isolating vectorSeq from vectorPlasmidSeq; meanwhile
     getting two overhang sequences that need to be attached to the insert primer
     pairs"""
-    return
+    cleanedPrimerInfo = primer3Only(vectorPlasmidSeq, vectorSeq)
+    rightTempPrimerInfo = tempDiffRestrict(cleanedPrimerInfo, maxTempDiff)
+    for key, val in rightTempPrimerInfo.copy().items():
+        currentLeftPrimer = val[0][2]
+        currentRightPrimer = val[0][2]
+        if (len(currentLeftPrimer) >= 18) and (len(currentRightPrimer) >= 18):
+            leftOverHang = currentLeftPrimer[:16]
+            rightOverHang = currentLeftPrimer[:16]
+            val[0].append(leftOverHang)
+            val[1].append(rightOverHang)
+        else:
+            print(
+                "The following primer pair is not long enough for FastCloning, thus removed")
+            print(str(val))
+    return rightTempPrimerInfo
 
 
-def insertPrimerDesign(overhangSeq1, overhangSeq2, insertPlasmidSeq, insertSeq):
+def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF):
     """Find the primers isolating insertSeq from insertPlasmidSeq; meanwhile attaching
     the two overhang sequences to the insert primer pairs"""
-    return
+    cleanedInsertPrimerInfo = primer3Only(insertPlasmidSeq, insertSeq)
+    rightTempInsertPrimerInfo = tempDiffRestrict(
+        cleanedInsertPrimerInfo, maxTempDiff)
+    outputDict = {}
+    outputL = []
+    primer4Num = 1
+    for vkey, currentVPrimerPair in rightTempVectorPrimerInfoWOverhang.items():
+        for ikey, currentIPrimerPair in rightTempInsertPrimerInfo.items():
+            # vector primers
+            vcurrentLSeq = currentVPrimerPair[0][2]
+            vcurrentLTemp = currentVPrimerPair[0][1]
+            vcurrentLOverhang = currentVPrimerPair[0][3]
+            vcurrentRSeq = currentVPrimerPair[1][2]
+            vcurrentRTemp = currentVPrimerPair[1][1]
+            vcurrentROverhang = currentVPrimerPair[1][3]
+            # insert primers
+            icurrentLSeq = currentIPrimerPair[0][2]
+            icurrentLTemp = currentIPrimerPair[0][1]
+            icurrentRSeq = currentIPrimerPair[1][2]
+            icurrentRTemp = currentIPrimerPair[1][1]
+            # attach the left overhang to right iprimers and vice versa
+            newiCurrentLSeq = vcurrentROverhang + icurrentLSeq
+            newiCurrentRSeq = vcurrentLOverhang + icurrentRSeq
+            # save current info
+            outputDict.update(
+                {('vectorLeftPrimer' + str(primer4Num)): [vcurrentLTemp, vcurrentLSeq]})
+            outputDict.update(
+                {('vectorRightPrimer' + str(primer4Num)): [vcurrentRTemp, vcurrentRSeq]})
+            outputDict.update(
+                {('insertLeftPrimer' + str(primer4Num)): [icurrentLTemp, newiCurrentLSeq]})
+            outputDict.update(
+                {('insertRightPrimer' + str(primer4Num)): [icurrentRTemp, newiCurrentRSeq]})
+            outputL.append(
+                [('vectorLeftPrimer' + str(primer4Num)), vcurrentLTemp, vcurrentLSeq])
+            outputL.append(
+                [('vectorRightPrimer' + str(primer4Num)), vcurrentRTemp, vcurrentRSeq])
+            outputL.append(
+                [('insertLeftPrimer' + str(primer4Num)), icurrentLTemp, newiCurrentLSeq])
+            outputL.append(
+                [('insertRightPrimer' + str(primer4Num)), icurrentRTemp, newiCurrentRSeq])
+            primer4Num += 1
+    return outputDict, outputL
 
 
-def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq):
+def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv'):
     """Wrapper function that generates 2 primer pairs for the given circular
     raw vector and insert sequences
 
     Args:
-        vectorPlasmidSeq ([str]): [description]
-        insertPlasmidSeq ([str]): [description]
-        vectorSeq ([str]): [description]
-        insertSeq ([str]): [description]
+        vectorPlasmidSeq ([str]): vector plasmid
+        insertPlasmidSeq ([str]): insert plasmid
+        vectorSeq ([str]): vector sequence
+        insertSeq ([str]): insert sequence
     """
-    return
+    rightTempVectorPrimerInfoWOverhang = vectorPrimerDesign(
+        vectorPlasmidSeq, vectorSeq, maxTempDiff)
+    outputDict, outputL = insertPrimerDesign(
+        rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff)
+    currentDF = pd.DataFrame(
+        outputL, columns=['primerInfo', 'annealingTemp (in degree C)', 'sequence'])
+    currentDF.to_csv(destinationAddress)
+    return outputDict
+
+
+def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv'):
+    """Wrapper function that generates 2 primer pairs for the given circular
+    raw vector and insert sequences given fasta/gb files
+
+    Args:
+        vectorPlasmidAddress ([str]): address for vector plasmid
+        insertPlasmidAddress ([str]): address for insert plasmid
+        vectorSeq ([str]): vector sequence
+        insertSeq ([str]): insert sequence
+    """
+    vectorPlasmidSeq, insertPlasmidSeq = fileParsing(
+        vectorPlasmidAddress, insertPlasmidAddress)
+    vectorPlasmidSeq = str(vectorPlasmidSeq)
+    insertPlasmidSeq = str(insertPlasmidSeq)
+    return fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff, destinationAddress)
