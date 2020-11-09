@@ -29,7 +29,7 @@ More accessible installation methods to come later.
 
 #### Primer design
 
-Enter ipython in your terminal before you design your primer. Then do the following:\
+Enter ipython in your terminal before you design your primer. Then do the following:
 
 ```
 run fastCloningPrimer.py
@@ -110,7 +110,11 @@ Check out your destinationAddress for your primers.
 
 #### Next steps
 
-Possible next releases will be announced here.
+Next release will include the following:
+
+1. Potentially including more primer3 parameters to be adjusted by users.
+2. Double checking primer feasibility to demonstrate our workflow's robustness.
+3. More explanations on the algorithm that recircularizes linearized plasmid DNA for primer3.
 
 ### Acknowledgement
 

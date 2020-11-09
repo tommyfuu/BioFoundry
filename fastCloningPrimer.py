@@ -194,16 +194,15 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF):
     rightTempPrimerInfo = tempDiffRestrict(cleanedPrimerInfo, maxTempDiff)
     for key, val in rightTempPrimerInfo.copy().items():
         currentLeftPrimer = val[0][2]
-        currentRightPrimer = val[0][2]
+        currentRightPrimer = val[1][2]
         if (len(currentLeftPrimer) >= 18) and (len(currentRightPrimer) >= 18):
             leftOverHang = currentLeftPrimer[:16]
-            rightOverHang = currentLeftPrimer[:16]
+            rightOverHang = currentRightPrimer[:16]
             val[0].append(leftOverHang)
             val[1].append(rightOverHang)
         else:
-            print(
-                "The following primer pair is not long enough for FastCloning, thus removed")
-            print(str(val))
+            sys.exit(
+                "The following primer pair is not long enough for FastCloning, thus removed", str(val))
     return rightTempPrimerInfo
 
 
