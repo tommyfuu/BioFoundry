@@ -14,7 +14,7 @@ import sys
 # test cases
 primer3pySeq = 'GCTTGCATGCCTGCAGGTCGACTCTAGAGGATCCCCCTACATTTTAGCATCAGTGAGTACAGCATGCTTACTGGAAGAGAGGGTCATGCAACAGATTAGGAGGTAAGTTTGCAAAGGCAGGCTAAGGAGGAGACGCACTGAATGCCATGGTAAGAACTCTGGACATAAAAATATTGGAAGTTGTTGAGCAAGTNAAAAAAATGTTTGGAAGTGTTACTTTAGCAATGGCAAGAATGATAGTATGGAATAGATTGGCAGAATGAAGGCAAAATGATTAGACATATTGCATTAAGGTAAAAAATGATAACTGAAGAATTATGTGCCACACTTATTAATAAGAAAGAATATGTGAACCTTGCAGATGTTTCCCTCTAGTAG'
 
-vectorPlasmid1Addressgb = 'biofoundry-copy-of-pdms123.gb'
+vectorPlasmid1AddressGB = 'biofoundry-copy-of-pdms123.gb'
 vectorPlasmid1AddressFA = 'biofoundry-copy-of-pdms123.fasta'
 insertPlasmid1AddressGB = 'biofoundry-copy-of-e-coli-iram-annotated.gb'
 insertPlasmid1AddressFA = 'biofoundry-copy-of-e-coli-iram-annotated.fasta'
@@ -130,18 +130,6 @@ def plasmidPrimerDesign(plasmidSeq, goalSeq):
     return primerInfo
 
 
-def plasmidPrimerDesignFile(plasmidSeqFile, goalSeq):
-    """Uses the primer3-py api to find the primer info for isolating the current
-    goalSeq from the plasmidSeq, given a plasmid sequnece file"""
-    if plasmidSeqFile[-5:] == 'fasta':
-        plasmidSeq = str(SeqIO.read(plasmidSeqFile, "fasta").seq)
-    elif (plasmidSeqFile[-3:] == '.gb') or (plasmidSeqFile[-3:] == 'gbk'):
-        plasmidSeq = str(SeqIO.read(plasmidSeqFile, "genbank").seq)
-    else:
-        sys.exit('Unsupported file format.')
-    return plasmidPrimerDesign(plasmidSeq, goalSeq)
-
-
 def cleanPrimerInfo(primerInfo):
     """read primerInfo, the output of the previous function, and turn it into a more
     readable and analyzable data structure"""
@@ -171,7 +159,22 @@ def cleanPrimerInfo(primerInfo):
 def primer3Only(plasmidSeq, goalSeq):
     """A quick wrapper for non-fastCloning specific primer design"""
     primerInfo = plasmidPrimerDesign(plasmidSeq, goalSeq)
+    print('  _________\n /         \\\n |  /\\ /\\  |\n |    -    |\n |  \\___/  |\n \\_________/')
+    print('PROCESSING')
+    print('author: Tom Fu, Richard Chang; HMC BioMakerspace')
     return cleanPrimerInfo(primerInfo)
+
+
+def primer3OnlyFile(plasmidSeqFile, goalSeq):
+    """Uses the primer3-py api to find the primer info for isolating the current
+    goalSeq from the plasmidSeq, given a plasmid sequnece file"""
+    if plasmidSeqFile[-5:] == 'fasta':
+        plasmidSeq = str(SeqIO.read(plasmidSeqFile, "fasta").seq)
+    elif (plasmidSeqFile[-3:] == '.gb') or (plasmidSeqFile[-3:] == 'gbk'):
+        plasmidSeq = str(SeqIO.read(plasmidSeqFile, "genbank").seq)
+    else:
+        sys.exit('Unsupported file format.')
+    return primer3Only(plasmidSeq, goalSeq)
 
 
 def tempDiffRestrict(primerInfo, maxTempDiff=MAX_TEMP_DIFF):
@@ -268,7 +271,9 @@ def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq,
     currentDF = pd.DataFrame(
         outputL, columns=['primerInfo', 'annealingTemp (in degree C)', 'sequence'])
     currentDF.to_csv(destinationAddress)
-    return outputDict
+    print("Check out the following file for your primers")
+    print(destinationAddress)
+    return
 
 
 def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv'):

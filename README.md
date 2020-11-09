@@ -1,6 +1,6 @@
 # BioFoundry
 
-BioFoundry Project at the HMC BioMakerspace. An automated workflow to design primers for circularised DNA and for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92)] experiments.
+BioFoundry Project at the HMC BioMakerspace. An automated workflow to design primers for circularised DNA and for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments. This workflow supports fasta and genbank DNA file format as well as string format for plasmid sequence inputting to allow better user experience.
 
 ### Dependencies
 
@@ -13,19 +13,19 @@ pip install -r requirements.txt
 If you would like to install them manually:
 
 1. [Primer3-py](https://libnano.github.io/primer3-py/index.html) (Download via terminal with `pip install primer3-py`)
-2. Pandas (Download via terminal with `pip install pandas` or `conda install pandas`)
+2. [Pandas](https://pandas.pydata.org/pandas-docs/stable/index.html) (Download via terminal with `pip install pandas` or `conda install pandas`)
 
 ### Usage
 
 #### Installation
 
-Clone this repository, enter the local directory where the repo is located. If you haven't already, install the dependencies with
+Clone or download this repository, enter the local directory where the repo is located. If you haven't already, install the dependencies with
 
 ```
 pip install -r requirements.txt
 ```
 
-More accessible installation methods to come once we have our first release.
+More accessible installation methods to come later.
 
 #### Primer design
 
@@ -35,20 +35,34 @@ Enter ipython in your terminal before you design your primer. Then do the follow
 run fastCloningPrimer.py
 ```
 
-This repository enables two types of primer designs. You can either design primer pairs for simply isolating an area from a plasmid; or you can design primer pairs for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92)] experiments.
+This repository enables two types of primer designs. You can either design primer pairs for simply isolating an area from a plasmid; or you can design primer pairs for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments.
 
-1. You can simply design primer3 primer pairs for simply isolating an area from a plasmid.
+1. You can simply design primer3 primer pairs for simply isolating an area from a plasmid. The output will be a python dictionary with really readable data structure, for example, for the sample output below, for each primer pair, we have two primers, with their annealing temperatures and sequences clearly outputted.
 
-You have two options. You can either input the plasmid sequence as a string or as a fasta/genbank file. Note that only fasta/genbank formats are supportedfor now. Note that the goal sequence (goalSeq), or the sequence you would like to isolate from the plasmid, always needs to be inputted as a string.\
+```
+{'primerPair0': [['left', 60.10745937656958, 'GGAGAGGGTGAAGGTGATGC'],
+  ['right', 59.96383622575223, 'ATCACTTGCGGTTGCCAGTA']],
+ 'primerPair1': [['left', 60.10745937656958, 'GGAGAGGGTGAAGGTGATGC'],
+  ['right', 59.899496813039036, 'CGGGATGCGGTTTGATTTCC']],
+ 'primerPair2': [['left', 60.10745937656958, 'GGAGAGGGTGAAGGTGATGC'],
+  ['right', 60.108991841923455, 'TATTGTCAGGCACGACGACC']],
+ 'primerPair3': [['left', 59.808935902916005, 'AGTGGAGAGGGTGAAGGTGA'],
+  ['right', 59.96383622575223, 'ATCACTTGCGGTTGCCAGTA']],
+ 'primerPair4': [['left', 59.808935902916005, 'TCAGTGGAGAGGGTGAAGGT'],
+  ['right', 59.96383622575223, 'ATCACTTGCGGTTGCCAGTA']]}
+```
+
+You have two options. You can either input the plasmid sequence as a string or as a fasta/genbank file. Note that only fasta/genbank formats are supported for now.\
+Note that the goal sequence (goalSeq), or the sequence you would like to isolate from the plasmid, always needs to be inputted as a string.
 
 (1) If you input the plasmid sequence as a string,
 
 ```
-plasmidPrimerDesign(plasmidSeq, goalSeq)
+primer3Only(plasmidSeq, goalSeq)
 
 ## TEST INPUTS:
-## plasmidPrimerDesign(vectorPlasmidSeq1, vectorSeq1)
-## plasmidPrimerDesign(insertPlasmidSeq1, insertSeq1)
+## primer3Only(vectorPlasmidSeq1, vectorSeq1)
+## primer3Only(insertPlasmidSeq1, insertSeq1)
 ```
 
 This gives you several primer pairs for isolating insertSeq1 from its plasmid insertPlasmidSeq1.
@@ -56,15 +70,17 @@ This gives you several primer pairs for isolating insertSeq1 from its plasmid in
 (2) If you input the plasmid sequence as a fasta/genbank file,
 
 ```
-plasmidPrimerDesignFile(plasmidSeqFile, goalSeq)
+primer3OnlyFile(plasmidSeqFile, goalSeq)
 
 ## TEST INPUTS:
-## plasmidPrimerDesign(vectorPlasmid1AddressFA, vectorSeq1)
-## plasmidPrimerDesign(insertPlasmid1AddressGB, insertSeq1)
+## primer3OnlyFile(vectorPlasmid1AddressFA, vectorSeq1)
+## primer3OnlyFile(insertPlasmid1AddressGB, insertSeq1)
 ```
 
-2. You can design primer3 primer pairs for your fastCloning experiments.
+2. You can design primer3 primer pairs for your fastCloning experiments. Sample outputs can be seen at 'sampleOutput-fastCloningPrimerInfo.csv`.
 
+Again, you have two options. You can either input the plasmid sequence as a string or as a fasta/genbank file. Note that only fasta/genbank formats are supported for now.\
+Note that the goal sequence (goalSeq), or the sequence you would like to isolate from the plasmid, always needs to be inputted as a string.
 (1) If you input the plasmid sequences as strings,
 
 ```
@@ -83,11 +99,11 @@ This gives you several primer pairs for isolating insertSeq1 from its plasmid in
 ```
 fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff, destinationAddress)
 # Note that maxTempDiff, destinationAddress are unnecessary.  You can choose to change the input. If you choose not to, you can simply do the following:
-fastCloningPrimers(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq)
+fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq)
 
 ## TEST INPUTS:
-## fastCloningPrimers(vectorPlasmid1AddressFA, insertPlasmid1AddressFA, vectorSeq1, insertSeq1)
-## fastCloningPrimers(vectorPlasmid1AddressGB, insertPlasmid1AddressGB, vectorSeq1, insertSeq1)
+## fastCloningPrimersFile(vectorPlasmid1AddressFA, insertPlasmid1AddressFA, vectorSeq1, insertSeq1)
+## fastCloningPrimersFile(vectorPlasmid1AddressGB, insertPlasmid1AddressGB, vectorSeq1, insertSeq1)
 ```
 
 #### Next steps
