@@ -113,8 +113,9 @@ Check out your destinationAddress for your primers.
 Next release will include the following:
 
 1. Potentially including more primer3 parameters to be adjusted by users.
-2. Double checking primer feasibility to demonstrate our workflow's robustness.
-3. More explanations on the algorithm that recircularizes linearized plasmid DNA for primer3.
+2. The current algorithm uses primer3 default melting temperature calculator for Taq polymerase, but in our case we will need it for Phusion. We will try to figure that out.
+3. Double checking primer feasibility to demonstrate our workflow's robustness.
+4. More explanations on the algorithm that recircularizes linearized plasmid DNA for primer3.
 
 ### Acknowledgement
 
