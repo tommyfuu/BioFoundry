@@ -35,6 +35,8 @@ PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
 MAX_TEMP_DIFF = 5.0
 PRIMER_MIN_SIZE = 18
 
+# Sub Functions
+
 
 def fileParsing(vectorPlasmidAddress, insertPlasmidAddress):
     """Take in two addresses, one for vector plasmid and one for insert plasmid,
@@ -120,13 +122,13 @@ def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMi
     return primer3.bindings.designPrimers(sequenceMap, paramMap)
 
 
-def plasmidPrimerDesign(plasmidSeq, goalSeq):
+def plasmidPrimerDesign(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Uses the primer3-py api to find the primer info for isolating the current
     goalSeq from the plasmidSeq"""
     preppedPlasmidSeq, goalSeqStart, goalSeqEnd = pseudoCircularizePlasmid(
         plasmidSeq, goalSeq)
     primerInfo = primer3ShortCut(
-        preppedPlasmidSeq, goalSeqStart, goalSeqEnd)
+        preppedPlasmidSeq, goalSeqStart, goalSeqEnd, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
     return primerInfo
 
 
@@ -156,9 +158,10 @@ def cleanPrimerInfo(primerInfo):
     return primerPairDict
 
 
-def primer3Only(plasmidSeq, goalSeq):
+def primer3Only(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """A quick wrapper for non-fastCloning specific primer design"""
-    primerInfo = plasmidPrimerDesign(plasmidSeq, goalSeq)
+    primerInfo = plasmidPrimerDesign(
+        plasmidSeq, goalSeq, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
     print('  _________\n /         \\\n |  /\\ /\\  |\n |    -    |\n |  \\___/  |\n \\_________/')
     print('PROCESSING')
     print('author: Tom Fu, Richard Chang; HMC BioMakerspace')
@@ -186,11 +189,12 @@ def tempDiffRestrict(primerInfo, maxTempDiff=MAX_TEMP_DIFF):
     return primerInfo
 
 
-def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF):
+def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Find the primers isolating vectorSeq from vectorPlasmidSeq; meanwhile
     getting two overhang sequences that need to be attached to the insert primer
     pairs"""
-    cleanedPrimerInfo = primer3Only(vectorPlasmidSeq, vectorSeq)
+    cleanedPrimerInfo = primer3Only(
+        vectorPlasmidSeq, vectorSeq, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
     rightTempPrimerInfo = tempDiffRestrict(cleanedPrimerInfo, maxTempDiff)
     for key, val in rightTempPrimerInfo.copy().items():
         currentLeftPrimer = val[0][2]
@@ -206,10 +210,11 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF):
     return rightTempPrimerInfo
 
 
-def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF):
+def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Find the primers isolating insertSeq from insertPlasmidSeq; meanwhile attaching
     the two overhang sequences to the insert primer pairs"""
-    cleanedInsertPrimerInfo = primer3Only(insertPlasmidSeq, insertSeq)
+    cleanedInsertPrimerInfo = primer3Only(
+        insertPlasmidSeq, insertSeq, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
     rightTempInsertPrimerInfo = tempDiffRestrict(
         cleanedInsertPrimerInfo, maxTempDiff)
     outputDict = {}
@@ -255,8 +260,9 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
 # WRAPPER FUNCTIONS
 
 
-def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv'):
-    primersDict = primer3Only(plasmidSeq, goalSeq)
+def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
+    primersDict = primer3Only(
+        plasmidSeq, goalSeq, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
     outputL = []
     primerPairNum = 1
     for key, currentPrimerPair in primersDict.items():
@@ -285,17 +291,17 @@ def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plas
     return
 
 
-def plasmidPrimersFile(plasmidSeqFile, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv'):
+def plasmidPrimersFile(plasmidSeqFile, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     if plasmidSeqFile[-5:] == 'fasta':
         plasmidSeq = str(SeqIO.read(plasmidSeqFile, "fasta").seq)
     elif (plasmidSeqFile[-3:] == '.gb') or (plasmidSeqFile[-3:] == 'gbk'):
         plasmidSeq = str(SeqIO.read(plasmidSeqFile, "genbank").seq)
     else:
         sys.exit('Unsupported file format.')
-    return plasmidPrimers(plasmidSeq, goalSeq, benchling, destinationAddress, benchlingAddress)
+    return plasmidPrimers(plasmidSeq, goalSeq, benchling, destinationAddress, benchlingAddress, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
 
 
-def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', benchling=True):
+def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Wrapper function that generates 2 primer pairs for the given circular
     raw vector and insert sequences
 
@@ -306,9 +312,9 @@ def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq,
         insertSeq ([str]): insert sequence
     """
     rightTempVectorPrimerInfoWOverhang = vectorPrimerDesign(
-        vectorPlasmidSeq, vectorSeq, maxTempDiff)
+        vectorPlasmidSeq, vectorSeq, maxTempDiff, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
     outputDict, outputL = insertPrimerDesign(
-        rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff)
+        rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)
     currentDF = pd.DataFrame(
         outputL, columns=['primerInfo', 'annealingTemp (in degree C)', 'sequence'])
     currentDF.to_csv(destinationAddress)
@@ -325,7 +331,7 @@ def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq,
     return
 
 
-def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True):
+def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Wrapper function that generates 2 primer pairs for the given circular
     raw vector and insert sequences given fasta/gb files
 
@@ -339,4 +345,4 @@ def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq
         vectorPlasmidAddress, insertPlasmidAddress)
     vectorPlasmidSeq = str(vectorPlasmidSeq)
     insertPlasmidSeq = str(insertPlasmidSeq)
-    return fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff, destinationAddress, benchlingAddress, benchling)
+    return fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff, destinationAddress, benchlingAddress, benchling, primerOptTm, primerMinTm, primerMaxTm, primerMinSize)

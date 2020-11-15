@@ -37,20 +37,7 @@ run fastCloningPrimer.py
 
 This repository enables two types of primer designs. You can either design primer pairs for simply isolating an area from a plasmid; or you can design primer pairs for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments.
 
-1. You can simply design primer3 primer pairs for simply isolating an area from a plasmid. The output will be a python dictionary with really readable data structure, for example, for the sample output below, for each primer pair, we have two primers, with their annealing temperatures and sequences clearly outputted.
-
-```
-{'primerPair0': [['left', 60.10745937656958, 'GGAGAGGGTGAAGGTGATGC'],
-  ['right', 59.96383622575223, 'ATCACTTGCGGTTGCCAGTA']],
- 'primerPair1': [['left', 60.10745937656958, 'GGAGAGGGTGAAGGTGATGC'],
-  ['right', 59.899496813039036, 'CGGGATGCGGTTTGATTTCC']],
- 'primerPair2': [['left', 60.10745937656958, 'GGAGAGGGTGAAGGTGATGC'],
-  ['right', 60.108991841923455, 'TATTGTCAGGCACGACGACC']],
- 'primerPair3': [['left', 59.808935902916005, 'AGTGGAGAGGGTGAAGGTGA'],
-  ['right', 59.96383622575223, 'ATCACTTGCGGTTGCCAGTA']],
- 'primerPair4': [['left', 59.808935902916005, 'TCAGTGGAGAGGGTGAAGGT'],
-  ['right', 59.96383622575223, 'ATCACTTGCGGTTGCCAGTA']]}
-```
+1. You can simply design primer3 primer pairs for simply isolating an area from a plasmid. The output will be a csv file. You can choose to have your primers to be outputted in a benchling acceptable format or not. Check out the sample outputs for this part in files `sampleOutputs/plasmidPrimerInfo.csv` and `sampleOutputs/benchlingPlasmidPrimerInfo.csv`.
 
 You have two options. You can either input the plasmid sequence as a string or as a fasta/genbank file. Note that only fasta/genbank formats are supported for now.\
 Note that the goal sequence (goalSeq), or the sequence you would like to isolate from the plasmid, always needs to be inputted as a string.
@@ -58,10 +45,11 @@ Note that the goal sequence (goalSeq), or the sequence you would like to isolate
 (1) If you input the plasmid sequence as a string,
 
 ```
-plasmidPrimers((plasmidSeq, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv')
+plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE)
 # Note that destinationAddress, benchlingAddress, and benchling are unnecessary.  You can choose to change the input. If you choose not to, you can simply do the following:
 fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq)
 # If you prefer to not output benchling format files, please set the benchling boolean to False.
+# primerOptTm (optimal primer temperature), primerMinTem(the lowest acceptable melting temperature for primers), primerMaxTm(the highest acceptable melting temperature for primers), and primerMinSize (shortest acceptable primer length) are a few primer 3 parameters that you can adjust
 
 ## TEST INPUTS:
 ## plasmidPrimers(vectorPlasmidSeq1, vectorSeq1)
@@ -73,27 +61,29 @@ This gives you several primer pairs for isolating insertSeq1 from its plasmid in
 (2) If you input the plasmid sequence as a fasta/genbank file,
 
 ```
-plasmidPrimersFile((plasmidSeqFile, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv')
+plasmidPrimersFile(plasmidSeqFile, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE)
 # Note that destinationAddress, benchlingAddress, and benchling are unnecessary.  You can choose to change the input. If you choose not to, you can simply do the following:
 fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq)
 # If you prefer to not output benchling format files, please set the benchling boolean to False.
+# primerOptTm (optimal primer temperature), primerMinTem(the lowest acceptable melting temperature for primers), primerMaxTm(the highest acceptable melting temperature for primers), and primerMinSize (shortest acceptable primer length) are a few primer 3 parameters that you can adjust
 
 ## TEST INPUTS:
 ## plasmidPrimersFile(vectorPlasmid1AddressFA, vectorSeq1)
 ## plasmidPrimersFile(insertPlasmid1AddressGB, insertSeq1)
 ```
 
-2. You can design primer3 primer pairs for your fastCloning experiments. Sample outputs can be seen at `sampleOutput-fastCloningPrimerInfo.csv`.
+2. You can design primer3 primer pairs for your fastCloning experiments. Check out the sample outputs for this part in files `sampleOutputs/fastCloningPrimerInfo.csv` and `sampleOutputs/benchlingfastCloningPrimerInfo.csv`.
 
 Again, you have two options. You can either input the plasmid sequence as a string or as a fasta/genbank file. Note that only fasta/genbank formats are supported for now.\
 Note that the goal sequence (goalSeq), or the sequence you would like to isolate from the plasmid, always needs to be inputted as a string.\
 (1) If you input the plasmid sequences as strings,
 
 ```
-fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', benchling=True)
+fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE)
 # Note that maxTempDiff, destinationAddress, benchlingAddress, and benchling are unnecessary.  You can choose to change the input. If you choose not to, you can simply do the following:
 fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq)
 # If you prefer to not output benchling format files, please set the benchling boolean to False.
+# primerOptTm (optimal primer temperature), primerMinTem(the lowest acceptable melting temperature for primers), primerMaxTm(the highest acceptable melting temperature for primers), and primerMinSize (shortest acceptable primer length) are a few primer 3 parameters that you can adjust
 
 ## TEST INPUTS:
 ## fastCloningPrimers(vectorPlasmidSeq1, insertPlasmidSeq1, vectorSeq1, insertSeq1)
@@ -104,10 +94,11 @@ Check out your destinationAddress for your primers.
 (2) If you input the plasmid sequences as fasta/genbank files (please make sure two plasmid files have the same format),
 
 ```
-fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', benchling=True)
+fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
 # Note that maxTempDiff, destinationAddress, benchlingAddress, and benchling are unnecessary.  You can choose to change the input. If you choose not to, you can simply do the following:
 fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq)
 # If you prefer to not output benchling format files, please set the benchling boolean to False.
+# primerOptTm (optimal primer temperature), primerMinTem(the lowest acceptable melting temperature for primers), primerMaxTm(the highest acceptable melting temperature for primers), and primerMinSize (shortest acceptable primer length) are a few primer 3 parameters that you can adjust
 
 ## TEST INPUTS:
 ## fastCloningPrimersFile(vectorPlasmid1AddressFA, insertPlasmid1AddressFA, vectorSeq1, insertSeq1)
@@ -115,6 +106,11 @@ fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, in
 ```
 
 Check out your destinationAddress for your primers.
+
+#### New features in the 11/15/2020 Update
+
+1. Allow the users to manually decide primer3 parameters 'primerOptTm (optimal primer temperature), primerMinTem(the lowest acceptable melting temperature for primers), primerMaxTm(the highest acceptable melting temperature for primers), and primerMinSize (shortest acceptable primer length)'.
+2. Allow outputs that are in Benchling readable format. If users would like to import the primer outputs from this workflow to benchling, simply click on `import Oligo` on benchling and upload the benchling compatible outputs this workflow provides.
 
 #### Next steps
 
