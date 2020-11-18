@@ -295,8 +295,8 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
     currentLen = 0
     rightTempPrimerInfo = {}
     bestFarthestTempDist = float("inf")
-    for value in range(-5, -3):
-        # for value in range(-8, 8):
+    # for value in range(-5, -3):
+    for value in range(-8, 8):
         cleanedPrimerInfo = primer3Only(
             vectorPlasmidSeq, vectorSeq, primerOptTm+value, primerMinSize)
         temprightTempPrimerInfo = tempDiffRestrict(
@@ -345,8 +345,8 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
     currentLen = 0
     rightTempInsertPrimerInfo = {}
     bestFarthestTempDist = float("inf")
-    for value in range(-5, -3):
-        # for value in range(-8, 8):
+    # for value in range(-5, -3):
+    for value in range(-8, 8):
         cleanedPrimerInfo = primer3Only(
             insertPlasmidSeq, insertSeq, primerOptTm+value, primerMinSize)
         temprightTempPrimerInfo = tempDiffRestrict(
@@ -359,6 +359,7 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
         print(currentfarthestTempDist)
         if bestFarthestTempDist > currentfarthestTempDist or len(rightTempInsertPrimerInfo) > currentLen:
             bestFarthestTempDist = currentfarthestTempDist
+            currentLen = len(rightTempInsertPrimerInfo)
             print(bestFarthestTempDist)
             rightTempInsertPrimerInfo = temprightTempPrimerInfo
             print(rightTempInsertPrimerInfo)
@@ -422,18 +423,41 @@ def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plas
 
         currentLen = 0
         primersDict = {}
-        for value in range(-5, 6):
+        bestFarthestTempDist = float("inf")
+        # for value in range(-5, -3):
+        for value in range(-8, 8):
             cleanedPrimerInfo = primer3Only(
                 plasmidSeq, goalSeq, primerOptTm+value, primerMinSize)
-            rightTempPrimerInfo = tempDiffRestrict(
+            temprightTempPrimerInfo = tempDiffRestrict(
                 cleanedPrimerInfo, maxTempDiff)
             # check phusion for temperature
-            primerSeqNEB = primerDictToNEBPrimerSeq(rightTempPrimerInfo)
-            temprightTempPrimerInfo = NEBWebscraper(primerSeqNEB, primerOptTm)
-            if len(rightTempPrimerInfo) > currentLen:
-                currentLen = len(rightTempPrimerInfo)
+            primerSeqNEB = primerDictToNEBPrimerSeq(
+                temprightTempPrimerInfo)
+            print(primerSeqNEB)
+            temprightTempPrimerInfo, currentfarthestTempDist = NEBWebscraper(
+                primerSeqNEB, primerOptTm)
+            print(currentfarthestTempDist)
+            if bestFarthestTempDist > currentfarthestTempDist or len(temprightTempPrimerInfo) > currentLen:
+                bestFarthestTempDist = currentfarthestTempDist
+                print(bestFarthestTempDist)
+                currentLen = len(temprightTempPrimerInfo)
                 primersDict = temprightTempPrimerInfo
                 print(temprightTempPrimerInfo)
+
+        # currentLen = 0
+        # primersDict = {}
+        # for value in range(-5, 6):
+        #     cleanedPrimerInfo = primer3Only(
+        #         plasmidSeq, goalSeq, primerOptTm+value, primerMinSize)
+        #     rightTempPrimerInfo = tempDiffRestrict(
+        #         cleanedPrimerInfo, maxTempDiff)
+        #     # check phusion for temperature
+        #     primerSeqNEB = primerDictToNEBPrimerSeq(rightTempPrimerInfo)
+        #     temprightTempPrimerInfo = NEBWebscraper(primerSeqNEB, primerOptTm)
+        #     if len(rightTempPrimerInfo) > currentLen:
+        #         currentLen = len(rightTempPrimerInfo)
+        #         primersDict = temprightTempPrimerInfo
+        #         print(temprightTempPrimerInfo)
 
     # go on
     outputL = []
