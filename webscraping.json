@@ -1,0 +1,351 @@
+{
+    "groups": {
+        "Q5": ["q5-0", "q5-1"],
+        "Q5 Hot Start": ["q5hs-0", "q5hs-1"],
+        "Q5U Hot Start": ["q5u-0"],
+        "OneTaq": ["onetaq-0", "onetaq-1", "onetaq-2", "onetaq-3", "onetaq-4", "onetaq-5"],
+        "OneTaq Hot Start": ["onetaqhs-0", "onetaqhs-1", "onetaqhs-2", "onetaqhs-3", "onetaqhs-4", "onetaqhs-5"],
+        "Hot Start Taq": ["hstaq-0", "hstaq-1"],
+        "Taq DNA Polymerase": ["taq-0", "taq-2", "taqmaster-0", "taqmaster-1", "taqquickload-0", "taqpcrkit-0", "ctaq-0", "multiplex-0"],
+        "LongAmp Taq": ["lataq-0", "lataq-1", "lataq-2", "lataq-3"],
+        "LongAmp Hot Start Taq": ["lahstaq-0",  "lahstaq-1"],
+        "Hemo KlenTaq": ["hktaq-0"],
+        "Vent": ["vent-0", "vent-1"],
+        "Deep Vent": ["deepvent-0", "deepvent-1"],
+        "Master Mix": ["onetaq-2", "onetaq-3", "onetaq-4", "onetaq-5",
+                      "onetaqhs-2", "onetaqhs-3", "onetaqhs-4", "onetaqhs-5",
+                      "taqmaster-0", "taqmaster-1", "taqquickload-0",
+                      "multiplex-0",  "lataq-1",  "lahstaq-1",
+                      "phusion-4", "phusion-5",  "phusionflex-2",
+                      "q5-1", "q5hs-1", "hstaq-1"],
+        "Phusion": ["phusion-0", "phusion-1", "phusion-2", "phusion-3", "phusion-4", "phusion-5"],
+        "Phusion Hot Start Flex": ["phusionflex-0",  "phusionflex-1",  "phusionflex-2"],
+        "EpiMark Hot Start": ["epimarkhs-0"]
+    },
+    "prods": {
+        "hstaq-0": {
+            "name": "Hot Start Taq DNA Polymerase",
+            "catnum": "M0495",
+            "buffer": "standard_taq",
+            "group": "Hot Start Taq"
+        },
+        "hstaq-1": {
+            "name": "Hot Start Taq DNA Polymerase 2X Master Mix",
+            "catnum": "M0496",
+            "buffer": "standard_taq",
+            "group": "Hot Start Taq"
+        },
+        "onetaq-0":  {
+            "name": "OneTaq DNA Polymerase (Standard Buffer)",
+            "catnum": "M0480",
+            "buffer": "onetaq_std",
+            "group":  "OneTaq"
+        },
+        "onetaq-1":  {
+            "name": "OneTaq DNA Polymerase (GC Buffer)",
+            "catnum": "M0480",
+            "buffer": "onetaq_gc",
+            "group":  "OneTaq"
+        },
+        "onetaq-2":  {
+            "name": "OneTaq 2X Master Mix with Standard Buffer",
+            "catnum": "M0482",
+            "buffer": "onetaq_std",
+            "group":  "OneTaq"
+        },
+        "onetaq-3":  {
+            "name": "OneTaq 2X Master Mix with GC Buffer",
+            "catnum": "M0483",
+            "buffer": "onetaq_gc",
+            "group":  "OneTaq"
+        },
+        "onetaq-4":  {
+            "name": "OneTaq Quick-Load 2X Master Mix with Standard Buffer",
+            "catnum": "M0486",
+            "buffer": "onetaq_std",
+            "group":  "OneTaq"
+        },
+        "onetaq-5":  {
+            "name": "OneTaq Quick-Load 2X Master Mix with GC Buffer",
+            "catnum": "M0487",
+            "buffer": "onetaq_gc",
+            "group":  "OneTaq"
+        },
+        "onetaqhs-0":  {
+            "name": "OneTaq Hot Start DNA Polymerase  (Standard Buffer)",
+            "catnum": "M0481",
+            "buffer": "onetaq_std",
+            "group":  "OneTaq Hot Start"
+        },
+        "onetaqhs-1":  {
+            "name": "OneTaq Hot Start DNA Polymerase  (GC Buffer)",
+            "catnum": "M0481",
+            "buffer": "onetaq_gc",
+            "group":  "OneTaq Hot Start"
+        },
+        "onetaqhs-2":  {
+            "name": "OneTaq Hot Start 2X Master Mix with Standard Buffer",
+            "catnum": "M0484",
+            "buffer": "onetaq_std",
+            "group":  "OneTaq Hot Start"
+        },
+        "onetaqhs-3":  {
+            "name": "OneTaq Hot Start 2X Master Mix with GC Buffer",
+            "catnum": "M0485",
+            "buffer": "onetaq_gc",
+            "group":  "OneTaq Hot Start"
+        },
+        "onetaqhs-4":  {
+            "name": "OneTaq Hot Start Quick-Load 2X Master Mix with Standard Buffer",
+            "catnum": "M0488",
+            "buffer": "onetaq_std",
+            "group":  "OneTaq Hot Start"
+        },
+        "onetaqhs-5":  {
+            "name": "OneTaq Hot Start Quick-Load 2X Master Mix with GC Buffer",
+            "catnum": "M0489",
+            "buffer": "onetaq_gc",
+            "group":  "OneTaq Hot Start"
+        },
+        "taq-0":  {
+            "name": "Taq DNA Polymerase with Standard Taq Buffer",
+            "catnum": "M0273",
+            "buffer": "standard_taq",
+            "group":  "Taq DNA Polymerase"
+        },
+        "taq-1":  {
+            "name": "Taq DNA Polymerase with Standard (Mg-free) Buffer",
+            "catnum": "M0320",
+            "buffer": "standard_taq",
+            "group":  "Taq DNA Polymerase"
+        },
+        "taq-2":  {
+            "name": "Taq DNA Polymerase with Thermopol Buffer",
+            "catnum": "M0267",
+            "buffer": "thermopol",
+            "group":  "Taq DNA Polymerase"
+        },
+        "taq-3":  {
+            "name": "Taq DNA Polymerase with Thermopol II (Mg-free) Buffer",
+            "catnum": "M0321",
+            "buffer": "thermopol",
+            "group":  "Taq DNA Polymerase"
+        },
+        "taqmaster-0":  {
+            "name": "Taq 2X Master Mix",
+            "catnum": "M0270",
+            "buffer": "standard_taq",
+            "group":  "Taq Master Mix"
+        },
+        "taqmaster-1":  {
+            "name": "Taq 5X Master Mix",
+            "catnum": "M0285",
+            "buffer": "standard_taq",
+            "group":  "Taq Master Mix"
+        },
+        "taqquickload-0":  {
+            "name": "QuickLoad Taq 2X Master Mix",
+            "catnum": "M0271",
+            "buffer": "standard_taq",
+            "group":  "Quick Load Taq Master Mix"
+        },
+        "taqpcrkit-0":  {
+            "name": "Taq PCR Kit (with Controls)",
+            "catnum": "E5000",
+            "buffer": "standard_taq",
+            "group":  "Taq PCR Kit"
+        },
+        "ctaq-0":  {
+            "name": "Crimson Taq DNA Polymerase",
+            "catnum": "M0324",
+            "buffer": "crimson_taq",
+            "group":  "Crimson Taq"
+        },
+        "ctaq-1":  {
+            "name": "Crimson Taq DNA Polymerase with Mg-free Buffer",
+            "catnum": "M0325",
+            "buffer": "crimson_taq",
+            "group":  "Crimson Taq"
+        },
+        "lataq-0":  {
+            "name": "LongAmp Taq DNA Polymerase",
+            "catnum": "M0323",
+            "buffer": "longamp",
+            "group":  "LongAmp Taq"
+        },
+        "lataq-1":  {
+            "name": "LongAmp Taq 2X Master Mix",
+            "catnum": "M0287",
+            "buffer": "longamp",
+            "group":  "LongAmp Taq"
+        },
+        "lataq-2":  {
+            "name": "LongAmp Taq PCR Kit",
+            "catnum": "E5200",
+            "buffer": "longamp",
+            "group":  "LongAmp Taq"
+        },
+        "lataq-3":  {
+            "name": "Crimson LongAmp Taq DNA Polymerase",
+            "catnum": "M0326",
+            "buffer": "longamp",
+            "group":  "LongAmp Taq"
+        },
+        "hktaq-0":  {
+            "name": "Hemo KlenTaq",
+            "catnum": "M0332",
+            "buffer": "hemo_klentaq",
+            "group":  "Hemo KlenTaq"
+        },
+        "multiplex-0":  {
+            "name": "Multiplex PCR Master Mix",
+            "catnum": "M0284",
+            "buffer": "multiplex",
+            "group":  "Multiplex PCR Master Mix"
+        },
+        "vent-0":  {
+            "name": "Vent DNA Polymerase",
+            "catnum": "M0254",
+            "buffer": "thermopol",
+            "group":  "Vent"
+        },
+        "vent-1":  {
+            "name": "Vent (exo-) DNA Polymerase",
+            "catnum": "M0257",
+            "buffer": "thermopol",
+            "group":  "Vent"
+        },
+        "deepvent-0":  {
+            "name": "Deep Vent DNA Polymerase",
+            "catnum": "M0258",
+            "buffer": "thermopol",
+            "group":  "Deep Vent"
+        },
+        "deepvent-1":  {
+            "name": "Deep Vent (exo-) Polymerase",
+            "catnum": "M0259",
+            "buffer": "thermopol",
+            "group":  "Deep Vent"
+        },
+        "phusion-1":  {
+            "name": "Phusion High-Fidelity DNA Polymerase (GC Buffer)",
+            "catnum": "M0530",
+            "buffer": "phusion_gc",
+            "group":  "Phusion"
+        },
+        "phusion-0":  {
+            "name": "Phusion High-Fidelity DNA Polymerase (HF Buffer)",
+            "catnum": "M0530",
+            "buffer": "phusion_hf",
+            "group":  "Phusion"
+        },
+        "phusion-3":  {
+            "name": "Phusion High-Fidelity PCR Kit (GC Buffer)",
+            "catnum": "E0553",
+            "buffer": "phusion_gc",
+            "group":  "Phusion"
+        },
+        "phusion-2":  {
+            "name": "Phusion High-Fidelity PCR Kit (HF Buffer)",
+            "catnum": "E0553",
+            "buffer": "phusion_hf",
+            "group":  "Phusion"
+        },
+        "phusion-5":  {
+            "name": "Phusion High-Fidelity PCR Master Mix (GC Buffer)",
+            "catnum": "M0532",
+            "buffer": "phusion_gc",
+            "group":  "Phusion"
+        },
+        "phusion-4":  {
+            "name": "Phusion High-Fidelity PCR Master Mix (HF Buffer)",
+            "catnum": "M0531",
+            "buffer": "phusion_hf",
+            "group":  "Phusion"
+        },
+        "epimarkhs-0":  {
+            "name": "EpiMark Hot Start Taq DNA Polymerase",
+            "catnum": "M0490",
+            "buffer": "standard_taq",
+            "group":  "EpiMark Hot Start"
+        },
+        "phusionflex-0":  {
+            "name": "Phusion Hot Start Flex DNA Polymerase (HF Buffer)",
+            "catnum": "M0535",
+            "buffer": "phusionflex_hf",
+            "group":  "Phusion Hot Start Flex"
+        },
+        "phusionflex-1":  {
+            "name": "Phusion Hot Start Flex DNA Polymerase (GC Buffer)",
+            "catnum": "M0535",
+            "buffer": "phusionflex_gc",
+            "group":  "Phusion Hot Start Flex"
+        },
+        "phusionflex-2":  {
+            "name": "Phusion Hot Start Flex 2X Master Mix",
+            "catnum": "M0536",
+            "buffer": "phusionflex_gc",
+            "group":  "Phusion Hot Start Flex"
+        },
+        "lahstaq-0":  {
+            "name": "LongAmp Hot Start Taq DNA Polymerase",
+            "catnum": "M0534",
+            "buffer": "longamphs",
+            "group":  "LongAmp Hot Start Taq"
+        },
+        "lahstaq-1":  {
+            "name": "LongAmp Hot Start Taq 2X Master Mix",
+            "catnum": "M0533",
+            "buffer": "longamphs",
+            "group":  "LongAmp Hot Start Taq"
+        },
+        "q5-0":  {
+            "name": "Q5 High-Fidelity DNA Polymerase",
+            "catnum": "M0491",
+            "buffer": "q5",
+            "group":  "Q5"
+        },
+        "q5-1":  {
+            "name": "Q5 High-Fidelity 2X Master Mix",
+            "catnum": "M0492",
+            "buffer": "q5mm",
+            "group":  "Q5"
+        },
+        "q5hs-0":  {
+            "name": "Q5 Hot Start High-Fidelity DNA Polymerase",
+            "catnum": "M0493",
+            "buffer": "q5",
+            "group":  "Q5 Hot Start"
+        },
+        "q5hs-1":  {
+            "name": "Q5 Hot Start High-Fidelity 2X Master Mix",
+            "catnum": "M0494",
+            "buffer": "q5mm",
+            "group":  "Q5 Hot Start"
+        },
+        "q5u-0":  {
+            "name": "Q5U Hot Start High-Fidelity DNA Polymerase",
+            "catnum": "M0515",
+            "buffer": "q5u",
+            "group":  "Q5U"
+        }
+    },
+    "buffs": {
+        "standard_taq":  60,
+        "thermopol":  50,
+        "hemo_klentaq":  70,
+        "crimson_taq":  55,
+        "longamp":  100,
+        "multiplex":  100,
+        "phusion_hf":  222,
+        "phusion_gc":  222,
+        "onetaq_gc":  120,
+        "onetaq_std":  64,
+        "phusionflex_hf":  222,
+        "phusionflex_gc":  222,
+        "longamphs":  100,
+        "q5":  150,
+        "q5mm":  150,
+        "q5u": 170
+    }
+}

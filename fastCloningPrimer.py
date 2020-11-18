@@ -267,9 +267,9 @@ def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plas
     primerPairNum = 1
     for key, currentPrimerPair in primersDict.items():
         currentLeftPrimerSeq = currentPrimerPair[0][2]
-        currentLeftPrimerTemp = currentPrimerPair[0][2]
+        currentLeftPrimerTemp = currentPrimerPair[0][1]
         currentRightPrimerSeq = currentPrimerPair[1][2]
-        currentRightPrimerTemp = currentPrimerPair[1][2]
+        currentRightPrimerTemp = currentPrimerPair[1][1]
         outputL.append([('leftPrimer' + str(primerPairNum)),
                         currentLeftPrimerTemp, currentLeftPrimerSeq])
         outputL.append([('rightPrimer' + str(primerPairNum)),

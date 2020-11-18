@@ -2,6 +2,16 @@
 
 BioFoundry Project at the HMC BioMakerspace. An automated workflow to design primers for circularised DNA and for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments. This workflow supports fasta and genbank DNA file format as well as string format for plasmid sequence inputting to allow better user experience.
 
+### Developmental Notes
+
+Note that to design fastCloning primers with Phusion, you have to install selenium and have a (Macbook) with Chrome installed. Then, you have to install the chromedriver from [here](https://chromedriver.chromium.org/) for YOUR VERSION of chrome.
+
+To run the webscrapper:
+
+```
+PATH=$(pwd):$PATH python3 NEBWebscraper.py
+```
+
 ### Dependencies
 
 Install dependencies with
@@ -116,11 +126,9 @@ Check out your destinationAddress for your primers.
 
 Next release will include the following:
 
-1. Potentially including more primer3 parameters to be adjusted by users.
-2. The current algorithm uses primer3 default melting temperature calculator for Taq polymerase, but in our case we will need it for Phusion. We will try to figure that out.
-3. Double checking primer feasibility to demonstrate our workflow's robustness.
-4. More explanations on the algorithm that recircularizes linearized plasmid DNA for primer3.
-5. Put all these primer pairs into Benchling easily.
+1. The current algorithm uses primer3 default melting temperature calculator for Taq polymerase, but in our case we will need it for Phusion. We will try to figure that out.
+2. Double checking primer feasibility to demonstrate our workflow's robustness.
+3. More explanations on the algorithm that recircularizes linearized plasmid DNA for primer3.
 
 ### Acknowledgement
 

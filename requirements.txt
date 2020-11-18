@@ -1,2 +1,4 @@
 pandas==1.1.4
 primer3-py==0.6.1
+mechanize==0.4.5
+selenium==3.141.0
