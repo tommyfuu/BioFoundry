@@ -1,0 +1,3 @@
+,primerInfo,annealingTemp (in degree C),sequence
+0,leftPrimer1,60.0,TGAAGGTGATGCTACATACG
+1,rightPrimer1,60.0,CTTGCAGAATATTGTCAGGC
