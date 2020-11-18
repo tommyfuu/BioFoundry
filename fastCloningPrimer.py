@@ -295,7 +295,8 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
     currentLen = 0
     rightTempPrimerInfo = {}
     bestFarthestTempDist = float("inf")
-    for value in range(-8, 8):
+    for value in range(-5, -3):
+        # for value in range(-8, 8):
         cleanedPrimerInfo = primer3Only(
             vectorPlasmidSeq, vectorSeq, primerOptTm+value, primerMinSize)
         temprightTempPrimerInfo = tempDiffRestrict(
@@ -327,6 +328,7 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
         else:
             sys.exit(
                 "The following primer pair is not long enough for FastCloning, thus removed", str(val))
+    print(rightTempPrimerInfoOverhang)
     return rightTempPrimerInfoOverhang
     # elif enzyme == "phusion":
 
@@ -341,9 +343,10 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
     # rightTempInsertPrimerInfo = tempDiffRestrict(
     #     cleanedInsertPrimerInfo, maxTempDiff)
     currentLen = 0
-    rightTempPrimerInfo = {}
+    rightTempInsertPrimerInfo = {}
     bestFarthestTempDist = float("inf")
-    for value in range(-8, 8):
+    for value in range(-5, -3):
+        # for value in range(-8, 8):
         cleanedPrimerInfo = primer3Only(
             insertPlasmidSeq, insertSeq, primerOptTm+value, primerMinSize)
         temprightTempPrimerInfo = tempDiffRestrict(
@@ -354,10 +357,9 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
         temprightTempPrimerInfo, currentfarthestTempDist = NEBWebscraper(
             primerSeqNEB, primerOptTm)
         print(currentfarthestTempDist)
-        if bestFarthestTempDist > currentfarthestTempDist or len(rightTempPrimerInfo) > currentLen:
+        if bestFarthestTempDist > currentfarthestTempDist or len(rightTempInsertPrimerInfo) > currentLen:
             bestFarthestTempDist = currentfarthestTempDist
             print(bestFarthestTempDist)
-            currentLen = len(rightTempPrimerInfo)
             rightTempInsertPrimerInfo = temprightTempPrimerInfo
             print(rightTempInsertPrimerInfo)
     # go on
