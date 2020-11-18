@@ -22,7 +22,7 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
     """Use NEB to check the melting temperature and annealing temperature of all primers"""
     # open the tm calculator headlessly
     options = webdriver.chrome.options.Options()
-    options.headless = True
+    # options.headless = True
     cwd = os.getcwd() + '/chromedriver'
     driver = webdriver.Chrome(options=options, executable_path=cwd)
     driver.get("https://tmcalculator.neb.com/#!/batch")
@@ -54,8 +54,8 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
     ) for col in row.find_elements_by_css_selector("td")] for row in rows]
 
     # close the chrome driver
-    driver.close()
-
+    # driver.close()
+    print(table)
     # turn into a dictionary for easier manipulation
     NEBprimerDict = {}
     # NEBprimerL = []
@@ -79,15 +79,16 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
             primerPairName = currentLPrimerName[-4:]
             phusionPrimerLowerBound = float(phusionprimerOptTm)-5
             phusionPrimerUpperBound = float(phusionprimerOptTm)+5
-            print(phusionPrimerLowerBound)
-            print(phusionPrimerUpperBound)
-            if (currentLPrimerTa > phusionPrimerLowerBound) and (currentLPrimerTa < phusionPrimerUpperBound):
-                if (currentRPrimerTa > phusionPrimerLowerBound) and (currentRPrimerTa < phusionPrimerUpperBound):
+            # print(currentLPrimerTa)
+            # print(currentRPrimerTa)
+            if (currentLPrimerTa >= phusionPrimerLowerBound) and (currentLPrimerTa <= phusionPrimerUpperBound):
+                if (currentRPrimerTa >= phusionPrimerLowerBound) and (currentRPrimerTa <= phusionPrimerUpperBound):
                     NEBprimerDict.update(
                         {primerPairName: [['left', currentLPrimerTa, currentLPrimerSeq], ['right', currentRPrimerTa, currentRPrimerSeq]]})
                 # NEBprimerL.append(
                 #     [currentPrimerName, currentPrimerTm, currentPrimerTa, currentPrimerSeq])
                 # NEBprimerCleanL.append([currentPrimerName, currentPrimerSeq])
+    # time.sleep(10)
     # print(NEBprimerDict)
     return NEBprimerDict
     # time.sleep(100000)

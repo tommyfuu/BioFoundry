@@ -11,7 +11,104 @@ from Bio import SeqIO
 import pandas as pd
 import sys
 import copy
-from NEBWebscraper import*
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import os
+import time
+
+
+def primerDictToNEBPrimerSeq(primerDict):
+    """turn a primer dict from primer3 in fastCloningPrimer to the NEB readdable format"""
+    NEBPrimerString = ""
+    for primerPairName, primerPairInfo in primerDict.items():
+        currentLPrimerName = str(primerPairName) + "Left"
+        currentLPrimerSeq = primerPairInfo[0][2]
+        currentRPrimerName = str(primerPairName) + "Right"
+        currentRPrimerSeq = primerPairInfo[1][2]
+        NEBPrimerString += currentLPrimerName + "; " + currentLPrimerSeq + \
+            "; " + currentRPrimerName + "; " + currentRPrimerSeq + "\n"
+    return NEBPrimerString
+
+
+def NEBWebscraper(primersSeq, phusionprimerOptTm):
+    """Use NEB to check the melting temperature and annealing temperature of all primers"""
+    # open the tm calculator headlessly
+    options = webdriver.chrome.options.Options()
+    # options.headless = True
+    cwd = os.getcwd() + '/chromedriver'
+    driver = webdriver.Chrome(options=options, executable_path=cwd)
+    driver.get("https://tmcalculator.neb.com/#!/batch")
+
+    time.sleep(1)
+
+    # set the enzyme to phusion
+    driver.find_element_by_xpath(
+        "/html/body/div[3]/div[2]/div/div/div/div[2]/div[1]/form/div/div[1]/div/select[1]").send_keys("P\n")
+    time.sleep(1)
+    # set the primer input
+    driver.find_element_by_id("batchinput").send_keys(
+        primersSeq)
+    # .sendKeys("wuba")
+
+    # blur the focus to produce outputs
+    driver.execute_script("document.getElementById('batchinput').blur()")
+
+    # tableHeader = driver.find_element_by_class_name("batchresultstablex")
+    # all_children_by_css = tableHeader.find_elements_by_css_selector("*")
+    # #all_children_by_xpath = tableHeader.find_elements_by_xpath(".//*")
+    # print("Table", str(all_children_by_xpath))
+
+    # fetch the result table
+    rows = driver.find_elements_by_css_selector(
+        "table.batchresultstablex>tbody>tr")
+
+    table = [[col.get_attribute("innerHTML").splitlines(
+    ) for col in row.find_elements_by_css_selector("td")] for row in rows]
+
+    # close the chrome driver
+    # turn into a dictionary for easier manipulation
+    NEBprimerDict = {}
+    # NEBprimerL = []
+    # NEBprimerCleanL = []
+    farthestTempDist = -float("inf")
+    for primerIndex in range(len(table)):
+        if primerIndex % 2 == 0:
+            # left primer
+            Lprimer = table[primerIndex]
+            currentLPrimerName = Lprimer[0][0]
+            currentLPrimerSeq = Lprimer[1][0][1:]
+            currentLPrimerTm = Lprimer[2][0]
+            currentLPrimerTa = float(Lprimer[3][0])
+
+            # right primers
+            Rprimer = table[primerIndex+1]
+            currentRPrimerName = Rprimer[0][0]
+            currentRPrimerSeq = Rprimer[1][0][1:]
+            currentRPrimerTm = Rprimer[2][0]
+            currentRPrimerTa = float(Rprimer[3][0])
+            # primer pair name
+            primerPairName = currentLPrimerName[:-4]
+            phusionPrimerLowerBound = float(phusionprimerOptTm)-5
+            phusionPrimerUpperBound = float(phusionprimerOptTm)+5
+            # print(currentLPrimerTa)
+            # print(currentRPrimerTa)
+            if (currentLPrimerTa >= phusionPrimerLowerBound) and (currentLPrimerTa <= phusionPrimerUpperBound):
+                if (currentRPrimerTa >= phusionPrimerLowerBound) and (currentRPrimerTa <= phusionPrimerUpperBound):
+                    currentfarthestTempDist = max(abs(
+                        currentLPrimerTa-phusionprimerOptTm), abs(currentRPrimerTa-phusionprimerOptTm))
+                    NEBprimerDict.update(
+                        {primerPairName: [['left', currentLPrimerTa, currentLPrimerSeq], ['right', currentRPrimerTa, currentRPrimerSeq]]})
+                    if farthestTempDist < currentfarthestTempDist:
+                        farthestTempDist = currentfarthestTempDist
+                # NEBprimerL.append(
+                #     [currentPrimerName, currentPrimerTm, currentPrimerTa, currentPrimerSeq])
+                # NEBprimerCleanL.append([currentPrimerName, currentPrimerSeq])
+    time.sleep(5)
+    driver.close()
+    # print(NEBprimerDict)
+    return NEBprimerDict, farthestTempDist
+
 
 # test cases
 primer3pySeq = 'GCTTGCATGCCTGCAGGTCGACTCTAGAGGATCCCCCTACATTTTAGCATCAGTGAGTACAGCATGCTTACTGGAAGAGAGGGTCATGCAACAGATTAGGAGGTAAGTTTGCAAAGGCAGGCTAAGGAGGAGACGCACTGAATGCCATGGTAAGAACTCTGGACATAAAAATATTGGAAGTTGTTGAGCAAGTNAAAAAAATGTTTGGAAGTGTTACTTTAGCAATGGCAAGAATGATAGTATGGAATAGATTGGCAGAATGAAGGCAAAATGATTAGACATATTGCATTAAGGTAAAAAATGATAACTGAAGAATTATGTGCCACACTTATTAATAAGAAAGAATATGTGAACCTTGCAGATGTTTCCCTCTAGTAG'
@@ -30,8 +127,8 @@ testOutput1 = 'ggccgcTATTTCTCCTTTCGCGCAGTACGTGGTTCGCGGCTTAATCCTGCTGGCAGCGGTGATCT
 # default params (copied from primer3 with subtle changes according to our first primer designed)
 SEQUENCE_ID = 'MH1000'
 PRIMER_OPT_TM = 60.0
-PRIMER_MIN_TM = 52.0
-PRIMER_MAX_TM = 68.0
+PRIMER_MIN_TM = 49.0
+PRIMER_MAX_TM = 71.0
 PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
     401, 500], [501, 600], [601, 700], [701, 850], [851, 1000]]
 MAX_TEMP_DIFF = 5.0
@@ -197,14 +294,22 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
     pairs"""
     currentLen = 0
     rightTempPrimerInfo = {}
-    for value in range(-5, 6):
+    bestFarthestTempDist = float("inf")
+    for value in range(-8, 8):
         cleanedPrimerInfo = primer3Only(
             vectorPlasmidSeq, vectorSeq, primerOptTm+value, primerMinSize)
-        rightTempPrimerInfo = tempDiffRestrict(cleanedPrimerInfo, maxTempDiff)
+        temprightTempPrimerInfo = tempDiffRestrict(
+            cleanedPrimerInfo, maxTempDiff)
         # check phusion for temperature
-        primerSeqNEB = primerDictToNEBPrimerSeq(rightTempPrimerInfo)
-        temprightTempPrimerInfo = NEBWebscraper(primerSeqNEB, primerOptTm)
-        if len(rightTempPrimerInfo) > currentLen:
+        primerSeqNEB = primerDictToNEBPrimerSeq(
+            temprightTempPrimerInfo)
+        print(primerSeqNEB)
+        temprightTempPrimerInfo, currentfarthestTempDist = NEBWebscraper(
+            primerSeqNEB, primerOptTm)
+        print(currentfarthestTempDist)
+        if bestFarthestTempDist > currentfarthestTempDist or len(rightTempPrimerInfo) > currentLen:
+            bestFarthestTempDist = currentfarthestTempDist
+            print(bestFarthestTempDist)
             currentLen = len(rightTempPrimerInfo)
             rightTempPrimerInfo = temprightTempPrimerInfo
             print(rightTempPrimerInfo)
@@ -237,20 +342,24 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
     #     cleanedInsertPrimerInfo, maxTempDiff)
     currentLen = 0
     rightTempPrimerInfo = {}
-    for value in range(-5, 6):
+    bestFarthestTempDist = float("inf")
+    for value in range(-8, 8):
         cleanedPrimerInfo = primer3Only(
             insertPlasmidSeq, insertSeq, primerOptTm+value, primerMinSize)
-        rightTempPrimerInfo = tempDiffRestrict(cleanedPrimerInfo, maxTempDiff)
+        temprightTempPrimerInfo = tempDiffRestrict(
+            cleanedPrimerInfo, maxTempDiff)
         # check phusion for temperature
-        primerSeqNEB = primerDictToNEBPrimerSeq(rightTempPrimerInfo)
-        temprightTempPrimerInfo = NEBWebscraper(primerSeqNEB, primerOptTm)
-        if len(rightTempPrimerInfo) > currentLen:
+        primerSeqNEB = primerDictToNEBPrimerSeq(
+            temprightTempPrimerInfo)
+        temprightTempPrimerInfo, currentfarthestTempDist = NEBWebscraper(
+            primerSeqNEB, primerOptTm)
+        print(currentfarthestTempDist)
+        if bestFarthestTempDist > currentfarthestTempDist or len(rightTempPrimerInfo) > currentLen:
+            bestFarthestTempDist = currentfarthestTempDist
+            print(bestFarthestTempDist)
             currentLen = len(rightTempPrimerInfo)
             rightTempInsertPrimerInfo = temprightTempPrimerInfo
             print(rightTempInsertPrimerInfo)
-    # check phusion for temperature
-    primerSeqNEB = primerDictToNEBPrimerSeq(rightTempInsertPrimerInfo)
-    rightTempInsertPrimerInfo = NEBWebscraper(primerSeqNEB, primerOptTm)
     # go on
     outputDict = {}
     outputL = []
