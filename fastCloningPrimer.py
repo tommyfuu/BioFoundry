@@ -18,7 +18,9 @@ import os
 import time
 
 
-# test cases
+#################
+### TESTCASES ###
+#################
 primer3pySeq = 'GCTTGCATGCCTGCAGGTCGACTCTAGAGGATCCCCCTACATTTTAGCATCAGTGAGTACAGCATGCTTACTGGAAGAGAGGGTCATGCAACAGATTAGGAGGTAAGTTTGCAAAGGCAGGCTAAGGAGGAGACGCACTGAATGCCATGGTAAGAACTCTGGACATAAAAATATTGGAAGTTGTTGAGCAAGTNAAAAAAATGTTTGGAAGTGTTACTTTAGCAATGGCAAGAATGATAGTATGGAATAGATTGGCAGAATGAAGGCAAAATGATTAGACATATTGCATTAAGGTAAAAAATGATAACTGAAGAATTATGTGCCACACTTATTAATAAGAAAGAATATGTGAACCTTGCAGATGTTTCCCTCTAGTAG'
 
 vectorPlasmid1AddressGB = 'biofoundry-copy-of-pdms123.gb'
@@ -32,7 +34,10 @@ insertSeq1 = 'TCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCAC
 
 testOutput1 = 'ggccgcTATTTCTCCTTTCGCGCAGTACGTGGTTCGCGGCTTAATCCTGCTGGCAGCGGTGATCTTCGACCGTTACAAGCAAAAAGCGAAACGCACTGTCTGATGCTTTTTTCTGCAACAATTTAGCGTTTTTTCCCACCATAGCCAACCGCCATAACGGTTGGCTGTTCTTCGTTGCAAATGGCGACCCCCGTCACACTGTCTATACTTACATGTCTGTAAAGCGCGTTCTGCGCAACACAATAAGAAAACTAGATTTAAGAAGGAGATATACATATGAGTAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCAGTGGAGAGGGTGAAGGTGATGCTACATACGGAAAGCTTACCCTTAAATTTATTTGCACTACTGGAAAACTACCTGTTCCATGGCCAACACTTGTCACTACTTTGACCTATGGTGTTCAATGCTTTTCCCGTTATCCGGATCATATGAAACGGCATGACTTTTTCAAGAGTGCCATGCCCGAAGGTTATGTACAGGAACGCACTATATCTTTCAAAGATGACGGGAACTACAAGACGCGTGCTGAAGTCAAGTTTGAAGGTGATACCCTTGTTAATCGTATCGAGTTAAAAGGTATTGATTTTAAAGAAGATGGAAACATTCTCGGACACAAACTCGAGTACAACTATAACTCACACAATGTATACATCACGGCAGACAAACAAAAGAATGGAATCAAAGCTAACTTCAAAATTCGCCACAACATTGAAGATGGATCCGTTCAACTAGCAGACCATTATCAACAAAATACTCCAATTGGCGATGGCCCTGTCCTTTTACCAGACAACCATTACCTGTCGACACAATCTGCCCTTTCGAAAGATCCCAACGAAAAGCGTGACCACATGGTCCTTCTTGAGTTTGTAACTGCTGCTGGGATTACACATGGCATGGATGAGCTCTACAAATAATGAATTCCAGCTGAGCGCCGGTCGCTACCATTACCAGTTGGTCTGGTGTCAAAAATAATAATAACCGGGCAGGCCATGTCTGCCCGTATTTCGCGTAAGGAAATCCATTATGTACTATTTAATTCTTGAAGACGAAAGGGCCTCGTGATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCGATATCGGGCTAGCCGGCCCGACGCACTTTGCGCCGAATAAATACCTGTGACGGAAGATCACTTCGCAGAATAAATAAATCCTGGTGTCCCTGTTGATACCGGGAAGCCCTGGGCCAACTTTTGGCGAAAATGAGACGTTGATCGGCACGTAAGAGGTTCCAACTTTCACCATAATGAAATAAGATCACTACCGGGCGTATTTTTTGAGTTATCGAGATTTTCAGGAGCTAAGGAAGCTAAAATGGAGAAAAAAATCACTGGATATACCACCGTTGATATATCCCAATGGCATCGTAAAGAACATTTTGAGGCATTTCAGTCAGTTGCTCAATGTACCTATAACCAGACCGTTCAGCTGGATATTACGGCCTTTTTAAAGACCGTAAAGAAAAATAAGCACAAGTTTTATCCGGCCTTTATTCACATTCTTGCCCGCCTGATGAATGCTCATCCGGAATTCCGTATGGCAATGAAAGACGGTGAGCTGGTGATATGGGATAGTGTTCACCCTTGTTACACCGTTTTCCATGAGCAAACTGAAACGTTTTCATCGCTCTGGAGTGAATACCACGACGATTTCCGGCAGTTTCTACACATATATTCGCAAGATGTGGCGTGTTACGGTGAAAACCTGGCCTATTTCCCTAAAGGGTTTATTGAGAATATGTTTTTCGTCTCAGCCAATCCCTGGGTGAGTTTCACCAGTTTTGATTTAAACGTGGCCAATATGGACAACTTCTTCGCCCCCGTTTTCACCATGGGCAAATATTATACGCAAGGCGACAAGGTGCTGATGCCGCTGGCGATTCAGGTTCATCATGCCGTCTGTGATGGCTTCCATGTCGGCAGAATGCTTAATGAATTACAACAGTACTGCGATGAGTGGCAGGGCGGGGCGTAATTTTTTTAAGGCAGTTATTGGTGCCCTTAAACGCCTGGTGCTACGCCTGAATAAGTGATAATAAGCGGATGAATGGCAGAAATGACGGATATCGTCCATTCCGACAGCATCGCCAGTCACTATGGCGTGCTGCTAGCGCTTTTAGCCGCTTTAGCGGCCTTTCCCCCTACCCGAAGGGTGGGGGCGCGTGTGCAGCCCCGCAGGGCCTGTCTCGGTCGATCATTCAGCCCGGCTCATCCTTCTGGCGTGGCGGCAGACCGAACAAGGCGCGGTCGTGGTCGCGTTCAAGGTACGCATCCATTGCCGCCATGAGCCGATCCTCCGGCCACTCGCTGCTGTTCACCTTGGCCAAAATCATGGCCCCCACCAGCACCTTGCGCCTTGTTTCGTTCTTGCGCTCTTGCTGCTGTTCCCTTGCCCGCACCCGCTGAATTTCGGCATTGATTCGCGCTCGTTGTTCTTCGAGCTTGGCCAGCCGATCCGCCGCCTTGTTGCTCCCCTTAACCATCTTGACACCCCATTGTTAATGTGCTGTCTCGTAGGCTATCATGGAGGCACAGCGGCGGCAATCCCGACCCTACTTTGTAGGGGAGGGCGCACTTACCGGTTTCTCTTCGAGAAACTGGCCTAACGGCCACCCTTCGGGCGGTGCGCTCTCCGAGGGCCATTGCATGGAGCCGAAAAGCAAAAGCAACAGCGAGGCAGCATGGCGATTTATCACCTTACGGCGAAAACCGGCAGCAGGTCGGGCGGCCAATCGGCCAGGGCCAAGGCCGACTACATCCAGCGCGAAGGCAAGTATGCCCGCGACATGGATGAAGTCTTGCACGCCGAATCCGGGCACATGCCGGAGTTCGTCGAGCGGCCCGCCGACTACTGGGATGCTGCCGACCTGTATGAACGCGCCAATGGGCGGCTGTTCAAGGAGGTCGAATTTGCCCTGCCGGTCGAGCTGACCCTCGACCAGCAGAAGGCGCTGGCGTCCGAGTTCGCCCAGCACCTGACCGGTGCCGAGCGCCTGCCGTATACGCTGGCCATCCATGCCGGTGGCGGCGAGAACCCGCACTGCCACCTGATGATCTCCGAGCGGATCAATGACGGCATCGAGCGGCCCGCCGCTCAGTGGTTCAAGCGGTACAACGGCAAGACCCCGGAGAAGGGCGGGGCACAGAAGACCGAAGCGCTCAAGCCCAAGGCATGGCTTGAGCAGACCCGCGAGGCATGGGCCGACCATGCCAACCGGGCATTAGAGCGGGCTGGCCACGACGCCCGCATTGACCACAGAACACTTGAGGCGCAGGGCATCGAGCGCCTGCCCGGTGTTCACCTGGGGCCGAACGTGGTGGAGATGGAAGGCCGGGGCATCCGCACCGACCGGGCAGACGTGGCCCTGAACATCGACACCGCCAACGCCCAGATCATCGACTTACAGGAATACCGGGAGGCAATAGACCATGAACGCAATCGACAGAGTGAAGAAATCCAGAGGCATCAACGAGTTAGCGGAGCAGATCGAACCGCTGGCCCAGAGCATGGCGACACTGGCCGACGAAGCCCGGCAGGTCATGAGCCAGACCCAGCAGGCCAGCGAGGCGCAGGCGGCGGAGTGGCTGAAAGCCCAGCGCCAGACAGGGGCGGCATGGGTGGAGCTGGCCAAAGAGTTGCGGGAGGTAGCCGCCGAGGTGAGCAGCGCCGCGCAGAGCGCCCGGAGCGCGTCGCGGGGGTGGCACTGGAAGCTATGGCTAACCGTGATGCTGGCTTCCATGATGCCTACGGTGGTGCTGCTGATCGCATCGTTGCTCTTGCTCGACCTGACGCCACTGACAACCGAGGACGGCTCGATCTGGCTGCGCTTGGTGGCCCGATGAAGAACGACAGGACTTTGCAGGCCATAGGCCGACAGCTCAAGGCCATGGGCTGTGAGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGGACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTGCAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAACACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGACGTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTCTTCAAGAATTCGAGCTCGGTACCGGATCCGTCGACCTGCAGCCAAGCTTAATTAGCTGAGCTTGGACTCCTGTTGATAGATCCAGTAATGACCTCAGAACTCCATCTGGATTTGTTCAGAACGCTCGGTTGCCGCCGGGCGTTTTTTATTGGTGAGAATCCAAGCTAGCTTGGCGAGATTTTCAGGAGCTAAGGAAGCTAAAATGGAGAAAAAAATCACTGGATATACCACCGTTGATATATCCCAATGGCATCGTAAAGAACATTTTGAGGCATTTCAGTCAGTTGCTCAATGTACCTATAACCAGACCGTTCAGCTGGATATTACGGCCTTTTTAAAGACCGTAAAGAAAAATAAGCACAAGTTTTATCCGGCCTTTATTCACATTCTTGCCCGCCTGATGAATGCTCATCCGGAATTTCGTATGGCAATGAAAGACGGTGAGCTGGTGATATGGGATAGTGTTCACCCTTGTTACACCGTTTTCCATGAGCAAACTGAAACGTTTTCATCGCTCTGGAGTGAATACCACGACGATTTCCGGCAGTTTCTACACATATATTCGCAAGATGTGGCGTGTTACGGTGAAAACCTGGCCTATTTCCCTAAAGGGTTTATTGAGAATATGTTTTTCGTCTCAGCCAATCCCTGGGTGAGTTTCACCAGTTTTGATTTAAACGTGGCCAATATGGACAACTTCTTCGCCCCCGTTTTCACCATGGGCAAATATTATACGCAAGGCGACAAGGTGCTGATGCCGCTGGCGATTCAGGTTCATCATGCCGTTTGTGATGGCTTCCATGTCGGCAGAATGCTTAATGAATTACAACAGTACTGCGATGAGTGGCAGGGCGGGGCGTAATTTTTTTAAGGCAGTTATTGGTGCCCTTAAACGCCTGGGGTAATGACTCTCTAGCTTGAGGCATCAAATAAAACGAAAGGCTCAGTCGAAAGACTGGGCCTTTCGTTTTATCTGTTGTTTGTCGGTGAACGCTCTCCTGAGTAGGACAAATCCGCCCTCTAGCAGCCCGGGCTGCGAGAAGGAGGAGAACCGGgtgACAGAACCGTTAACCGAAACCCCTGAACTATCCGCGAAATATGCCTGGTTTTTTGATCTTGATGGAACGCTGGCGGAAATCAAACCGCATCCCGATCAGGTCGTCGTGCCTGACAATATTCTGCAAGGACTACAGCTACTGGCAACCGCAAGTGATGGTGCATTGGCATTGATATCAGGGCGCTCAATGGTGGAGCTTGACGCACTGGCAAAACCTTATCGCTTCCCGTt'
 
-# default params (copied from primer3 with subtle changes according to our first primer designed)
+###################
+### PARAMETERS ###
+###################
+# (copied from primer3 with subtle changes according to our first primer designed)
 SEQUENCE_ID = 'MH1000'
 PRIMER_OPT_TM = 60.0
 PRIMER_MIN_TM = 49.0
@@ -41,6 +46,10 @@ PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
     401, 500], [501, 600], [601, 700], [701, 850], [851, 1000]]
 MAX_TEMP_DIFF = 5.0
 PRIMER_MIN_SIZE = 18
+
+###################
+### WEBSCRAPING ###
+###################
 
 
 def primerDictToNEBPrimerSeq(primerDict):
@@ -74,15 +83,9 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
     # set the primer input
     driver.find_element_by_id("batchinput").send_keys(
         primersSeq)
-    # .sendKeys("wuba")
 
     # blur the focus to produce outputs
     driver.execute_script("document.getElementById('batchinput').blur()")
-
-    # tableHeader = driver.find_element_by_class_name("batchresultstablex")
-    # all_children_by_css = tableHeader.find_elements_by_css_selector("*")
-    # #all_children_by_xpath = tableHeader.find_elements_by_xpath(".//*")
-    # print("Table", str(all_children_by_xpath))
 
     # fetch the result table
     rows = driver.find_elements_by_css_selector(
@@ -94,9 +97,8 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
     # close the chrome driver
     # turn into a dictionary for easier manipulation
     NEBprimerDict = {}
-    # NEBprimerL = []
-    # NEBprimerCleanL = []
-    farthestTempDist = -float("inf")
+
+    farthestTempDist = 0
     for primerIndex in range(len(table)):
         if primerIndex % 2 == 0:
             # left primer
@@ -116,8 +118,6 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
             primerPairName = currentLPrimerName[:-4]
             phusionPrimerLowerBound = float(phusionprimerOptTm)-5
             phusionPrimerUpperBound = float(phusionprimerOptTm)+5
-            # print(currentLPrimerTa)
-            # print(currentRPrimerTa)
             if (currentLPrimerTa >= phusionPrimerLowerBound) and (currentLPrimerTa <= phusionPrimerUpperBound):
                 if (currentRPrimerTa >= phusionPrimerLowerBound) and (currentRPrimerTa <= phusionPrimerUpperBound):
                     currentfarthestTempDist = max(abs(
@@ -126,16 +126,14 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
                         {primerPairName: [['left', currentLPrimerTa, currentLPrimerSeq], ['right', currentRPrimerTa, currentRPrimerSeq]]})
                     if farthestTempDist < currentfarthestTempDist:
                         farthestTempDist = currentfarthestTempDist
-                # NEBprimerL.append(
-                #     [currentPrimerName, currentPrimerTm, currentPrimerTa, currentPrimerSeq])
-                # NEBprimerCleanL.append([currentPrimerName, currentPrimerSeq])
     time.sleep(5)
     driver.close()
-    # print(NEBprimerDict)
     return NEBprimerDict, farthestTempDist
 
 
-# Sub Functions
+###########################
+### SEQUENCE PROCESSING ###
+###########################
 
 
 def fileParsing(vectorPlasmidAddress, insertPlasmidAddress):
@@ -202,6 +200,10 @@ def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     outputEnd = outputStart + len(goalSeq)
     return output, outputStart, outputEnd
 
+#####################
+### PRIMER DESIGN ###
+#####################
+
 
 def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
@@ -211,8 +213,8 @@ def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMi
         primerMinTm = primerOptTm-11
         primerMaxTm = primerOptTm+11
     else:
-        primerMinTm = PRIMER_MAX_TM
-        primerMaxTm = PRIMER_MIN_TM
+        primerMinTm = PRIMER_MIN_TM
+        primerMaxTm = PRIMER_MAX_TM
     sequenceMap = {
         'SEQUENCE_ID': SEQUENCE_ID,
         'SEQUENCE_TEMPLATE': seq,
@@ -267,23 +269,11 @@ def cleanPrimerInfo(primerInfo):
 def primer3Only(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """A quick wrapper for non-fastCloning specific primer design"""
     primerInfo = plasmidPrimerDesign(
-        plasmidSeq, goalSeq, primerOptTm,   primerMinSize)
+        plasmidSeq, goalSeq, primerOptTm, primerMinSize)
     print('  _________\n /         \\\n |  /\\ /\\  |\n |    -    |\n |  \\___/  |\n \\_________/')
     print('PROCESSING')
     print('author: Tom Fu, Richard Chang; HMC BioMakerspace')
     return cleanPrimerInfo(primerInfo)
-
-
-# def primer3OnlyFile(plasmidSeqFile, goalSeq):
-#     """Uses the primer3-py api to find the primer info for isolating the current
-#     goalSeq from the plasmidSeq, given a plasmid sequnece file"""
-#     if plasmidSeqFile[-5:] == 'fasta':
-#         plasmidSeq = str(SeqIO.read(plasmidSeqFile, "fasta").seq)
-#     elif (plasmidSeqFile[-3:] == '.gb') or (plasmidSeqFile[-3:] == 'gbk'):
-#         plasmidSeq = str(SeqIO.read(plasmidSeqFile, "genbank").seq)
-#     else:
-#         sys.exit('Unsupported file format.')
-#     return primer3Only(plasmidSeq, goalSeq)
 
 
 def tempDiffRestrict(primerInfo, maxTempDiff=MAX_TEMP_DIFF):
@@ -303,7 +293,9 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
     rightTempPrimerInfo = {}
     bestFarthestTempDist = float("inf")
     # for value in range(-5, -3):
-    for value in range(-8, 8):
+    for value in range(-5, 3):
+        print("VECTOR")
+        print(value)
         cleanedPrimerInfo = primer3Only(
             vectorPlasmidSeq, vectorSeq, primerOptTm+value, primerMinSize)
         temprightTempPrimerInfo = tempDiffRestrict(
@@ -311,16 +303,16 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
         # check phusion for temperature
         primerSeqNEB = primerDictToNEBPrimerSeq(
             temprightTempPrimerInfo)
-        print(primerSeqNEB)
         temprightTempPrimerInfo, currentfarthestTempDist = NEBWebscraper(
             primerSeqNEB, primerOptTm)
-        print(currentfarthestTempDist)
-        if bestFarthestTempDist > currentfarthestTempDist or len(rightTempPrimerInfo) > currentLen:
-            bestFarthestTempDist = currentfarthestTempDist
-            print(bestFarthestTempDist)
-            currentLen = len(rightTempPrimerInfo)
-            rightTempPrimerInfo = temprightTempPrimerInfo
-            print(rightTempPrimerInfo)
+        if temprightTempPrimerInfo != {}:
+            if bestFarthestTempDist > currentfarthestTempDist or len(temprightTempPrimerInfo) > currentLen:
+                bestFarthestTempDist = currentfarthestTempDist
+                print(bestFarthestTempDist)
+                rightTempPrimerInfo = temprightTempPrimerInfo
+                currentLen = len(rightTempPrimerInfo)
+                print("UPDATE")
+                print(rightTempPrimerInfo)
     # go on and find overhang
     # rightTempPrimerInfoNoOverhang = copy.deepcopy(rightTempPrimerInfo)
     rightTempPrimerInfoOverhang = rightTempPrimerInfo.copy()
@@ -345,15 +337,13 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
 def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Find the primers isolating insertSeq from insertPlasmidSeq; meanwhile attaching
     the two overhang sequences to the insert primer pairs"""
-    # cleanedInsertPrimerInfo = primer3Only(
-    #     insertPlasmidSeq, insertSeq, primerOptTm-5, primerMinSize)
-    # rightTempInsertPrimerInfo = tempDiffRestrict(
-    #     cleanedInsertPrimerInfo, maxTempDiff)
     currentLen = 0
     rightTempInsertPrimerInfo = {}
     bestFarthestTempDist = float("inf")
-    # for value in range(-5, -3):
-    for value in range(-8, 8):
+    for value in range(-5, 3):
+        # for value in range(-5, 6):
+        print("INSERT")
+        print(value)
         cleanedPrimerInfo = primer3Only(
             insertPlasmidSeq, insertSeq, primerOptTm+value, primerMinSize)
         temprightTempPrimerInfo = tempDiffRestrict(
@@ -363,13 +353,14 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
             temprightTempPrimerInfo)
         temprightTempPrimerInfo, currentfarthestTempDist = NEBWebscraper(
             primerSeqNEB, primerOptTm)
-        print(currentfarthestTempDist)
-        if bestFarthestTempDist > currentfarthestTempDist or len(rightTempInsertPrimerInfo) > currentLen:
-            bestFarthestTempDist = currentfarthestTempDist
-            currentLen = len(rightTempInsertPrimerInfo)
-            print(bestFarthestTempDist)
-            rightTempInsertPrimerInfo = temprightTempPrimerInfo
-            print(rightTempInsertPrimerInfo)
+        if temprightTempPrimerInfo != {}:
+            if bestFarthestTempDist > currentfarthestTempDist or len(temprightTempPrimerInfo) > currentLen:
+                bestFarthestTempDist = currentfarthestTempDist
+                print(bestFarthestTempDist)
+                rightTempInsertPrimerInfo = temprightTempPrimerInfo
+                currentLen = len(rightTempInsertPrimerInfo)
+                print("UPDATE")
+                print(rightTempInsertPrimerInfo)
     # go on
     outputDict = {}
     outputL = []
@@ -422,17 +413,11 @@ def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plas
             plasmidSeq, goalSeq, primerOptTm, primerMinSize)
         tempString = "meltingTemp (in degree C)"
     elif enzyme == "phusion":
-        # primersDict = primer3Only(
-        #     plasmidSeq, goalSeq, primerOptTm-5, primerMinSize)
-        # primerSeqNEB = primerDictToNEBPrimerSeq(primersDict)
-        # primersDict = NEBWebscraper(primerSeqNEB, primerOptTm)
         tempString = 'annealingTemp (in degree C)'
-
         currentLen = 0
         primersDict = {}
         bestFarthestTempDist = float("inf")
-        # for value in range(-5, -3):
-        for value in range(-8, 8):
+        for value in range(-5, 3):
             cleanedPrimerInfo = primer3Only(
                 plasmidSeq, goalSeq, primerOptTm+value, primerMinSize)
             temprightTempPrimerInfo = tempDiffRestrict(
@@ -444,28 +429,15 @@ def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plas
             temprightTempPrimerInfo, currentfarthestTempDist = NEBWebscraper(
                 primerSeqNEB, primerOptTm)
             print(currentfarthestTempDist)
-            if bestFarthestTempDist > currentfarthestTempDist or len(temprightTempPrimerInfo) > currentLen:
-                bestFarthestTempDist = currentfarthestTempDist
-                print(bestFarthestTempDist)
-                currentLen = len(temprightTempPrimerInfo)
-                primersDict = temprightTempPrimerInfo
-                print(temprightTempPrimerInfo)
-
-        # currentLen = 0
-        # primersDict = {}
-        # for value in range(-5, 6):
-        #     cleanedPrimerInfo = primer3Only(
-        #         plasmidSeq, goalSeq, primerOptTm+value, primerMinSize)
-        #     rightTempPrimerInfo = tempDiffRestrict(
-        #         cleanedPrimerInfo, maxTempDiff)
-        #     # check phusion for temperature
-        #     primerSeqNEB = primerDictToNEBPrimerSeq(rightTempPrimerInfo)
-        #     temprightTempPrimerInfo = NEBWebscraper(primerSeqNEB, primerOptTm)
-        #     if len(rightTempPrimerInfo) > currentLen:
-        #         currentLen = len(rightTempPrimerInfo)
-        #         primersDict = temprightTempPrimerInfo
-        #         print(temprightTempPrimerInfo)
-
+            if temprightTempPrimerInfo != {}:
+                if bestFarthestTempDist > currentfarthestTempDist or len(temprightTempPrimerInfo) > currentLen:
+                    bestFarthestTempDist = currentfarthestTempDist
+                    print(bestFarthestTempDist)
+                    currentLen = len(temprightTempPrimerInfo)
+                    primersDict = temprightTempPrimerInfo
+                    print(temprightTempPrimerInfo)
+    print("FinalPrimersDict")
+    print(primersDict)
     # go on
     outputL = []
     primerPairNum = 1
@@ -488,7 +460,7 @@ def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plas
         benchlingL = [[currentPrimer[0], currentPrimer[2]]
                       for currentPrimer in outputL]
         benchlingDF = pd.DataFrame(
-            benchlingL, columns=['primerInfo', 'sequence'])
+            benchlingL)
         benchlingDF.to_csv(benchlingAddress, index=False)
         print("Your benchling-ready csv file is:")
         print('benchling'+destinationAddress)
@@ -528,7 +500,7 @@ def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq,
         benchlingL = [[currentPrimer[0], currentPrimer[2]]
                       for currentPrimer in outputL]
         benchlingDF = pd.DataFrame(
-            benchlingL, columns=['primerInfo', 'sequence'])
+            benchlingL)
         benchlingDF.to_csv(benchlingAddress, index=False)
         print("Your benchling-ready csv file is:")
         print(benchlingAddress)

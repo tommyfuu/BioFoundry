@@ -10,7 +10,7 @@ Install dependencies with
 pip install -r requirements.txt
 ```
 
-In addition, you need to have a [Google Chrome browser](https://www.google.com/chrome/) installed on your device (preferrably a Macbook, but other devices theoretically should work). Check the version of your Chrome browser by clicking on `Help>About Google Chrome`, then download the Chrome webdriver [here](https://chromedriver.chromium.org/) that corresponds to your own Chrome version.
+In addition, you need to have a [Google Chrome browser](https://www.google.com/chrome/) installed on your device (preferrably a Macbook). Check the version of your Chrome browser by clicking on `Help>About Google Chrome`, then download the Chrome webdriver [here](https://chromedriver.chromium.org/) that corresponds to your own Chrome version. Move the Chrome webdriver you installed to the Biofoundry repository, and you should be ready to go.
 
 If you would like to install them manually:
 
@@ -37,6 +37,10 @@ Enter ipython in your terminal before you design your primer. Then do the follow
 ```
 run fastCloningPrimer.py
 ```
+
+If you do not prefer to use ipython, you can instead directly do the following in the terminal:
+(1) enter the Biofoundry directory, type `python` to enter python mode
+(2) type `from fastCloningPrimer import *` to import all functions.
 
 This repository enables two types of primer designs. You can either design primer pairs for simply isolating an area from a plasmid; or you can design primer pairs for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments.
 
@@ -114,16 +118,20 @@ fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, in
 
 Check out your destinationAddress for your primers.
 
+#### Uploading your primers to Benchling
+
 #### New features in the 11/15/2020 Update
 
 1. Allow the primer design with phusion for plasmid primer designs and fastCloning primers design, using [Serenium](https://selenium-python.readthedocs.io/installation.html) webscraping of the [NEB Tm Calculator](https://tmcalculator.neb.com/#!/batch).
 2. Allow the users to manually decide primer3 parameters 'primerOptTm (optimal primer temperature) and primerMinSize (shortest acceptable primer length)'.
-3. Allow outputs that are in Benchling readable format. If users would like to import the primer outputs from this workflow to benchling, simply click on `import Oligo` on benchling and upload the benchling compatible outputs this workflow provides.
+3. Allow outputs that are in Benchling readable format. If users would like to import the primer outputs from this workflow to benchling, simply click on `import Oligo` on benchling. Copy paste the primer information in your benchling-compatible output files and paste them into the textbox in benchling.
 
 #### Next steps
 
 Next release and updates will be announced here.
-This afternoon, need to comment to enable headless primer design.
+
+1. Enable the support for more operating systems.
+2. Enable the support for more browsers.
 
 ### Acknowledgement
 
