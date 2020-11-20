@@ -22,7 +22,7 @@ If you would like to install them manually:
 
 #### Tutorial Video
 
-[Here](https://drive.google.com/file/d/1XiwsN5Bmk_Z4w-_1xH6apJqvr7TNc6kV/view?usp=sharing) is a super short tutorial video for this repo, especially on how to corroborate the primers designed by the workflow. Note that Benchling crashed this middle :-)......
+[Here](https://drive.google.com/file/d/1XiwsN5Bmk_Z4w-_1xH6apJqvr7TNc6kV/view?usp=sharing) is a super short tutorial video for this repo, especially on how to corroborate the primers designed by the workflow. Note that Benchling crashed in the middle of the video ahaha :-)......
 
 #### Installation
 
