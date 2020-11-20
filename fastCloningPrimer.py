@@ -153,116 +153,6 @@ def fileParsing(vectorPlasmidAddress, insertPlasmidAddress):
         return
 
 
-# def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
-#     """Reorder (pseudo-circularize) a plasmid sequence so that it is essentially
-#     still the same plasmid but contains the complete goalSeq. Note that there are two
-#     scenarios:
-#     (1) plasmidSeq = vectorPlasmidSeq; goalSeq = insertPlasmidSeq
-#     (2) plasmidSeq = vectorSeq; goalSeq = insertSeq
-#     We assume that the non-vector section will be longer than 2*17=34 bases.
-
-#     The first output will be a pseudo-circularized DNA sequence which is essentially the same as
-#     the input plasmidSeq, but will be prepared to be put into primer3. We also output the
-#     starting and ending indexes of the goalSeq in the pseudo-circularized DNA sequence.
-#     """
-#     # 1. get two segments of goalSeq separated by lineared plasmid seq
-#     finalPart1 = ''
-#     finalPart2 = ''
-#     for index in range(len(goalSeq)):
-#         currentPart1 = goalSeq[0:index]
-#         currentPart2 = goalSeq[index:]
-#         if (currentPart1 in plasmidSeq) and (currentPart2 in plasmidSeq):
-#             finalPart1 = currentPart1
-#             finalPart2 = currentPart2
-#             break
-#     # 2. get the indexes of the two parts in the plasmid seq
-#     part1StartInPlasmid = plasmidSeq.find(finalPart1)
-#     part1EndInPlasmid = part1StartInPlasmid + len(finalPart1)
-#     part2StartInPlasmid = plasmidSeq.find(finalPart2)
-#     part2EndInPlasmid = part2StartInPlasmid + len(finalPart2)
-#     # 3. generate pseudo-circularized plasmid
-#     # 3.1 part 1 is at the end of the plasmid sequence
-#     if part1EndInPlasmid == len(plasmidSeq):
-#         nonVectorSegment = plasmidSeq[part2EndInPlasmid:part1StartInPlasmid]
-#         arbitraryMiddleIndex = len(nonVectorSegment)//2
-#         outputStart = arbitraryMiddleIndex
-#         output = nonVectorSegment[:arbitraryMiddleIndex] + finalPart1 + \
-#             finalPart2 + nonVectorSegment[arbitraryMiddleIndex:]
-#     # 3.2 part 2 is at the end of the plasmid sequence
-#     elif part2EndInPlasmid == len(plasmidSeq):
-#         nonVectorSegment = plasmidSeq[part1EndInPlasmid:part2StartInPlasmid]
-#         arbitraryMiddleIndex = len(nonVectorSegment)//2
-#         outputStart = arbitraryMiddleIndex
-#         # output = nonVectorSegment[:arbitraryMiddleIndex] + finalPart2 + \
-#         #     finalPart1 + nonVectorSegment[arbitraryMiddleIndex:]
-#     # 3.3 the plasmid sequence already contains the complete goalSeq
-#     else:
-#         output = plasmidSeq
-#         outputStart = output.find(goalSeq)
-#         outputEnd = outputStart + len(goalSeq)
-#         nonVectorSegment = output[:outputStart] + output[outputEnd:]
-#     # figure out the starting and ending indexes of goalSeq in the output sequence
-#     # outputStart = output.find(goalSeq)
-#     # outputEnd = outputStart + len(goalSeq)
-#     # if part1EndInPlasmid != len(plasmidSeq) and part2EndInPlasmid != len(plasmidSeq):
-#     #     nonVectorSegment = output[:outputStart] + output[outputEnd:]
-#     return nonVectorSegment, outputStart
-
-# #####################
-# ### PRIMER DESIGN ###
-# #####################
-
-
-# def primer3ShortCut(seq, goalStart, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
-#     """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
-#     with parameters if needed"""
-#     goalLen = len(seq)
-#     # LEFT PRIMERS DESIGN: keep the right primers here
-#     if primerOptTm != PRIMER_OPT_TM:
-#         primerMinTm = primerOptTm-5
-#         primerMaxTm = primerOptTm+5
-#     else:
-#         primerMinTm = PRIMER_MIN_TM
-#         primerMaxTm = PRIMER_MAX_TM
-#     sequenceMapL = {
-#         'SEQUENCE_ID': SEQUENCE_ID,
-#         'SEQUENCE_TEMPLATE': seq,
-#         'SEQUENCE_INCLUDED_REGION': [goalStart-15, goalStart+25],
-#     }
-#     paramMapL = {
-#         'PRIMER_OPT_TM': primerOptTm,
-#         'PRIMER_MIN_TM': primerMinTm,
-#         'PRIMER_MAX_TM': primerMaxTm,
-#         'PRIMER_MIN_SIZE': primerMinSize,
-#         # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100],
-#     }
-#     leftPrimerInfo = primer3.bindings.designPrimers(sequenceMapL, paramMapL)
-#     # RIGHT PRIMERS DESIGN: keep the left primers here
-#     sequenceMapR = {
-#         'SEQUENCE_ID': SEQUENCE_ID,
-#         'SEQUENCE_TEMPLATE': seq,
-#         'SEQUENCE_INCLUDED_REGION': [goalStart-25, goalStart+15],
-#     }
-#     paramMapR = {
-#         'PRIMER_OPT_TM': primerOptTm,
-#         'PRIMER_MIN_TM': primerMinTm,
-#         'PRIMER_MAX_TM': primerMaxTm,
-#         'PRIMER_MIN_SIZE': primerMinSize,
-#         # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100],
-#     }
-#     rightPrimerInfo = primer3.bindings.designPrimers(sequenceMapR, paramMapR)
-#     return leftPrimerInfo, rightPrimerInfo
-
-
-# def plasmidPrimerDesign(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
-#     """Uses the primer3-py api to find the primer info for isolating the current
-#     goalSeq from the plasmidSeq"""
-#     nonVectorSegment, goalSeqStart = pseudoCircularizePlasmid(
-#         plasmidSeq, goalSeq)
-#     leftPrimerInfo, rightPrimerInfo = primer3ShortCut(
-#         nonVectorSegment, goalSeqStart, primerOptTm, primerMinSize)
-#     return leftPrimerInfo, rightPrimerInfo
-
 def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     """Reorder (pseudo-circularize) a plasmid sequence so that it is essentially
     still the same plasmid but contains the complete goalSeq. Note that there are two
@@ -314,36 +204,28 @@ def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
 def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
     with parameters if needed"""
-    goalLen = goalEnd - goalStart
     LsequenceMap = {
         'SEQUENCE_ID': SEQUENCE_ID,
         'SEQUENCE_TEMPLATE': seq,
-        # 'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
         'SEQUENCE_TARGET': [goalStart, 100]
-        # 'SEQUENCE_PRIMER_PAIR_OK_REGION_LIST': [0, goalStart+15, goalEnd+16, 40]
     }
     LparamMap = {
         'PRIMER_OPT_TM': primerOptTm,
         'PRIMER_MIN_TM': primerMinTm,
         'PRIMER_MAX_TM': primerMaxTm,
         'PRIMER_MIN_SIZE': primerMinSize,
-        # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
     }
 
     RsequenceMap = {
         'SEQUENCE_ID': SEQUENCE_ID,
         'SEQUENCE_TEMPLATE': seq,
         'SEQUENCE_TARGET': [goalEnd-100, 100]
-        # 'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
-        # 'SEQUENCE_TARGET': [goalStart, goalEnd]
     }
     RparamMap = {
         'PRIMER_OPT_TM': primerOptTm,
         'PRIMER_MIN_TM': primerMinTm,
         'PRIMER_MAX_TM': primerMaxTm,
         'PRIMER_MIN_SIZE': primerMinSize,
-        # 'SEQUENCE_TARGET': [goalStart, goalEnd]
-        # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
     }
     return primer3.bindings.designPrimers(LsequenceMap, LparamMap), primer3.bindings.designPrimers(RsequenceMap, RparamMap)
 
