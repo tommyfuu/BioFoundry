@@ -294,8 +294,8 @@ def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     if part1EndInPlasmid == len(plasmidSeq):
         nonVectorSegment = plasmidSeq[part2EndInPlasmid:part1StartInPlasmid]
         arbitraryMiddleIndex = len(nonVectorSegment)//2
-        output = nonVectorSegment[:arbitraryMiddleIndex] + finalPart1 + \
-            finalPart2 + nonVectorSegment[arbitraryMiddleIndex:]
+        output = nonVectorSegment[arbitraryMiddleIndex:] + finalPart1 + \
+            finalPart2 + nonVectorSegment[:arbitraryMiddleIndex]
     # 3.2 part 2 is at the end of the plasmid sequence
     elif part2EndInPlasmid == len(plasmidSeq):
         nonVectorSegment = plasmidSeq[part1EndInPlasmid:part2StartInPlasmid]
@@ -315,14 +315,11 @@ def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMi
     """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
     with parameters if needed"""
     goalLen = goalEnd - goalStart
-    print(goalStart)
-    print(goalEnd)
-    print(seq)
     LsequenceMap = {
         'SEQUENCE_ID': SEQUENCE_ID,
         'SEQUENCE_TEMPLATE': seq,
         # 'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
-        'SEQUENCE_TARGET': [goalStart, goalStart+60]
+        'SEQUENCE_TARGET': [goalStart, 100]
         # 'SEQUENCE_PRIMER_PAIR_OK_REGION_LIST': [0, goalStart+15, goalEnd+16, 40]
     }
     LparamMap = {
@@ -330,16 +327,15 @@ def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMi
         'PRIMER_MIN_TM': primerMinTm,
         'PRIMER_MAX_TM': primerMaxTm,
         'PRIMER_MIN_SIZE': primerMinSize,
-        'SEQUENCE_TARGET': [goalEnd-60, goalEnd]
         # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
     }
 
     RsequenceMap = {
         'SEQUENCE_ID': SEQUENCE_ID,
         'SEQUENCE_TEMPLATE': seq,
+        'SEQUENCE_TARGET': [goalEnd-100, 100]
         # 'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
         # 'SEQUENCE_TARGET': [goalStart, goalEnd]
-        'SEQUENCE_PRIMER_PAIR_OK_REGION_LIST': [goalEnd-15, 100, goalEnd+101, 100]
     }
     RparamMap = {
         'PRIMER_OPT_TM': primerOptTm,
@@ -352,13 +348,13 @@ def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMi
     return primer3.bindings.designPrimers(LsequenceMap, LparamMap), primer3.bindings.designPrimers(RsequenceMap, RparamMap)
 
 
-def plasmidPrimerDesign(plasmidSeq, goalSeq):
+def plasmidPrimerDesign(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Uses the primer3-py api to find the primer info for isolating the current
     goalSeq from the plasmidSeq"""
     preppedPlasmidSeq, goalSeqStart, goalSeqEnd = pseudoCircularizePlasmid(
         plasmidSeq, goalSeq)
     leftPrimerInfo, rightPrimerInfo = primer3ShortCut(
-        preppedPlasmidSeq, goalSeqStart, goalSeqEnd)
+        preppedPlasmidSeq, goalSeqStart, goalSeqEnd, primerOptTm, primerMinSize)
     return leftPrimerInfo, rightPrimerInfo
 
 
@@ -373,18 +369,18 @@ def cleanPrimerInfo(leftPrimerInfo, rightPrimerInfo):
             currentSequence = leftPrimerInfo[key]
             primerNum = key[12]
             if int(primerNum) <= 2:
-                primerTM = rightPrimerInfo[key[:13]+'_TM']
-                rightPrimerL.append(
-                    ['rightPrimer'+str(primerNum), primerTM, currentSequence])
+                primerTM = leftPrimerInfo[key[:13]+'_TM']
+                leftPrimerL.append(
+                    ['leftPrimer'+str(primerNum), primerTM, currentSequence])
 
     for key in rightPrimerInfo:
         if key[-8:] == 'SEQUENCE' and key[:12] == 'PRIMER_RIGHT':
-            currentSequence = leftPrimerInfo[key]
+            currentSequence = rightPrimerInfo[key]
             primerNum = key[13]
             if int(primerNum) <= 2:
-                primerTM = leftPrimerInfo[key[:14]+'_TM']
-                leftPrimerL.append(
-                    ['leftPrimer'+str(primerNum), primerTM, currentSequence])
+                primerTM = rightPrimerInfo[key[:14]+'_TM']
+                rightPrimerL.append(
+                    ['rightPrimer'+str(primerNum), primerTM, currentSequence])
 
     # update resultant dict
     primerPairNum = 0
@@ -403,12 +399,12 @@ def cleanPrimerInfo(leftPrimerInfo, rightPrimerInfo):
 
 def primer3Only(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """A quick wrapper for non-fastCloning specific primer design"""
-    primerInfo = plasmidPrimerDesign(
+    leftPrimerInfo, rightPrimerInfo = plasmidPrimerDesign(
         plasmidSeq, goalSeq, primerOptTm, primerMinSize)
     print('  _________\n /         \\\n |  /\\ /\\  |\n |    -    |\n |  \\___/  |\n \\_________/')
     print('PROCESSING')
     print('author: Tom Fu, Richard Chang; HMC BioMakerspace')
-    return cleanPrimerInfo(primerInfo)
+    return cleanPrimerInfo(leftPrimerInfo, rightPrimerInfo)
 
 
 def tempDiffRestrict(primerInfo, maxTempDiff=MAX_TEMP_DIFF):
