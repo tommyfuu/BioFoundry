@@ -20,6 +20,10 @@ If you would like to install them manually:
 
 ### Usage
 
+#### Tutorial Video
+
+[Here](https://drive.google.com/file/d/1XiwsN5Bmk_Z4w-_1xH6apJqvr7TNc6kV/view?usp=sharing) is a super short tutorial video for this repo, especially on how to corroborate the primers designed by the workflow. Note that Benchling crashed this middle :-)......
+
 #### Installation
 
 Clone or download this repository, enter the local directory where the repo is located. If you haven't already, install the dependencies with
