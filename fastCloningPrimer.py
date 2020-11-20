@@ -31,7 +31,8 @@ vectorPlasmidSeq1 = 'TTCGAGCTCGGTACCGGATCCGTCGACCTGCAGCCAAGCTTAATTAGCTGAGCTTGGAC
 insertPlasmidSeq1 = 'GCTAAAGTTGGATACTTAAGAAATGCTTCATAATTCAGTAAGGCATTAGCATAATGGAAATAAAAGTGCAGAGACTATCTCTATGGATGATTAATACTGTCTTTTTATTGTCACCCATAAATAATCACCAGACTAATACTATCAACTTGATATTTGAAATGTGATCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCACACGTCCGTTTCAATACTTAACGCACATGTATTTTGGTTTAGTCATCATCCGGTTATATGTATTTTAGCCAGGAACAGGTTAAATCATTCCTATATAACTCAAAAATTGAAACCTTATTCTCATGTCATGCTTATATTCATTATTATCGTTATATAAAAAGGCAACCATAATGTTTAGCAAATTGGCACAAAGTAGCATAAAGGCTATGTTTTAATTACAGGATGTTCAGTCATTTGAATGTATAACATTATAGCTAAACAAATCTAAAACGAAGTCAATAATTTATTGCTTTCACAAAATCTCATTTTGTTTAACATCCATTGAGATTCCTTGCTTTAAATTTTATTTTATATAAGCCATCATTTTAATTAATTTATTTTTTTGAGGGGGGGGTAATATACTCATATGCAAAATCAAGAAATAAACATCCTAATGAACCATATTAAATACCGTGGGATAAGACATAACAAatgAAGTGGATAGTAATTGACACGGTAATTCAACCTACATGTGGTATATCTTTTTCAGCCATATGGGGTAATATGAAAATGATCATCTGGTATCAATCTACTATATTTCTCCCTCCTGGCAGTATATTTACACCGGTTAAGTCTGGTATTATCCTTAAGGATAAAGAATATCCTATTACTATTTATCACATCGCACCATTCAACAAGGATTTATGGAGTTTACTCAAAAGCAGTCAAGAGTGTCCTCCAGGAGAAAGCAAAATAACAAATAAATGTTTACATAATAGTTGCATTATAAAAATATGCCCATATGGGCTCAAGtaa'
 vectorSeq1 = 'CTAGATTTAAGAAGGAGATATACATATGAGTAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCAGTGGAGAGGGTGAAGGTGATGCTACATACGGAAAGCTTACCCTTAAATTTATTTGCACTACTGGAAAACTACCTGTTCCATGGCCAACACTTGTCACTACTTTGACCTATGGTGTTCAATGCTTTTCCCGTTATCCGGATCATATGAAACGGCATGACTTTTTCAAGAGTGCCATGCCCGAAGGTTATGTACAGGAACGCACTATATCTTTCAAAGATGACGGGAACTACAAGACGCGTGCTGAAGTCAAGTTTGAAGGTGATACCCTTGTTAATCGTATCGAGTTAAAAGGTATTGATTTTAAAGAAGATGGAAACATTCTCGGACACAAACTCGAGTACAACTATAACTCACACAATGTATACATCACGGCAGACAAACAAAAGAATGGAATCAAAGCTAACTTCAAAATTCGCCACAACATTGAAGATGGATCCGTTCAACTAGCAGACCATTATCAACAAAATACTCCAATTGGCGATGGCCCTGTCCTTTTACCAGACAACCATTACCTGTCGACACAATCTGCCCTTTCGAAAGATCCCAACGAAAAGCGTGACCACATGGTCCTTCTTGAGTTTGTAACTGCTGCTGGGATTACACATGGCATGGATGAGCTCTACAAATAATGAATTCCAGCTGAGCGCCGGTCGCTACCATTACCAGTTGGTCTGGTGTCAAAAATAATAATAACCGGGCAGGCCATGTCTGCCCGTATTTCGCGTAAGGAAATCCATTATGTACTATTTAATTCTTGAAGACGAAAGGGCCTCGTGATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCGATATCGGGCTAGCCGGCCCGACGCACTTTGCGCCGAATAAATACCTGTGACGGAAGATCACTTCGCAGAATAAATAAATCCTGGTGTCCCTGTTGATACCGGGAAGCCCTGGGCCAACTTTTGGCGAAAATGAGACGTTGATCGGCACGTAAGAGGTTCCAACTTTCACCATAATGAAATAAGATCACTACCGGGCGTATTTTTTGAGTTATCGAGATTTTCAGGAGCTAAGGAAGCTAAAATGGAGAAAAAAATCACTGGATATACCACCGTTGATATATCCCAATGGCATCGTAAAGAACATTTTGAGGCATTTCAGTCAGTTGCTCAATGTACCTATAACCAGACCGTTCAGCTGGATATTACGGCCTTTTTAAAGACCGTAAAGAAAAATAAGCACAAGTTTTATCCGGCCTTTATTCACATTCTTGCCCGCCTGATGAATGCTCATCCGGAATTCCGTATGGCAATGAAAGACGGTGAGCTGGTGATATGGGATAGTGTTCACCCTTGTTACACCGTTTTCCATGAGCAAACTGAAACGTTTTCATCGCTCTGGAGTGAATACCACGACGATTTCCGGCAGTTTCTACACATATATTCGCAAGATGTGGCGTGTTACGGTGAAAACCTGGCCTATTTCCCTAAAGGGTTTATTGAGAATATGTTTTTCGTCTCAGCCAATCCCTGGGTGAGTTTCACCAGTTTTGATTTAAACGTGGCCAATATGGACAACTTCTTCGCCCCCGTTTTCACCATGGGCAAATATTATACGCAAGGCGACAAGGTGCTGATGCCGCTGGCGATTCAGGTTCATCATGCCGTCTGTGATGGCTTCCATGTCGGCAGAATGCTTAATGAATTACAACAGTACTGCGATGAGTGGCAGGGCGGGGCGTAATTTTTTTAAGGCAGTTATTGGTGCCCTTAAACGCCTGGTGCTACGCCTGAATAAGTGATAATAAGCGGATGAATGGCAGAAATGACGGATATCGTCCATTCCGACAGCATCGCCAGTCACTATGGCGTGCTGCTAGCGCTTTTAGCCGCTTTAGCGGCCTTTCCCCCTACCCGAAGGGTGGGGGCGCGTGTGCAGCCCCGCAGGGCCTGTCTCGGTCGATCATTCAGCCCGGCTCATCCTTCTGGCGTGGCGGCAGACCGAACAAGGCGCGGTCGTGGTCGCGTTCAAGGTACGCATCCATTGCCGCCATGAGCCGATCCTCCGGCCACTCGCTGCTGTTCACCTTGGCCAAAATCATGGCCCCCACCAGCACCTTGCGCCTTGTTTCGTTCTTGCGCTCTTGCTGCTGTTCCCTTGCCCGCACCCGCTGAATTTCGGCATTGATTCGCGCTCGTTGTTCTTCGAGCTTGGCCAGCCGATCCGCCGCCTTGTTGCTCCCCTTAACCATCTTGACACCCCATTGTTAATGTGCTGTCTCGTAGGCTATCATGGAGGCACAGCGGCGGCAATCCCGACCCTACTTTGTAGGGGAGGGCGCACTTACCGGTTTCTCTTCGAGAAACTGGCCTAACGGCCACCCTTCGGGCGGTGCGCTCTCCGAGGGCCATTGCATGGAGCCGAAAAGCAAAAGCAACAGCGAGGCAGCATGGCGATTTATCACCTTACGGCGAAAACCGGCAGCAGGTCGGGCGGCCAATCGGCCAGGGCCAAGGCCGACTACATCCAGCGCGAAGGCAAGTATGCCCGCGACATGGATGAAGTCTTGCACGCCGAATCCGGGCACATGCCGGAGTTCGTCGAGCGGCCCGCCGACTACTGGGATGCTGCCGACCTGTATGAACGCGCCAATGGGCGGCTGTTCAAGGAGGTCGAATTTGCCCTGCCGGTCGAGCTGACCCTCGACCAGCAGAAGGCGCTGGCGTCCGAGTTCGCCCAGCACCTGACCGGTGCCGAGCGCCTGCCGTATACGCTGGCCATCCATGCCGGTGGCGGCGAGAACCCGCACTGCCACCTGATGATCTCCGAGCGGATCAATGACGGCATCGAGCGGCCCGCCGCTCAGTGGTTCAAGCGGTACAACGGCAAGACCCCGGAGAAGGGCGGGGCACAGAAGACCGAAGCGCTCAAGCCCAAGGCATGGCTTGAGCAGACCCGCGAGGCATGGGCCGACCATGCCAACCGGGCATTAGAGCGGGCTGGCCACGACGCCCGCATTGACCACAGAACACTTGAGGCGCAGGGCATCGAGCGCCTGCCCGGTGTTCACCTGGGGCCGAACGTGGTGGAGATGGAAGGCCGGGGCATCCGCACCGACCGGGCAGACGTGGCCCTGAACATCGACACCGCCAACGCCCAGATCATCGACTTACAGGAATACCGGGAGGCAATAGACCATGAACGCAATCGACAGAGTGAAGAAATCCAGAGGCATCAACGAGTTAGCGGAGCAGATCGAACCGCTGGCCCAGAGCATGGCGACACTGGCCGACGAAGCCCGGCAGGTCATGAGCCAGACCCAGCAGGCCAGCGAGGCGCAGGCGGCGGAGTGGCTGAAAGCCCAGCGCCAGACAGGGGCGGCATGGGTGGAGCTGGCCAAAGAGTTGCGGGAGGTAGCCGCCGAGGTGAGCAGCGCCGCGCAGAGCGCCCGGAGCGCGTCGCGGGGGTGGCACTGGAAGCTATGGCTAACCGTGATGCTGGCTTCCATGATGCCTACGGTGGTGCTGCTGATCGCATCGTTGCTCTTGCTCGACCTGACGCCACTGACAACCGAGGACGGCTCGATCTGGCTGCGCTTGGTGGCCCGATGAAGAACGACAGGACTTTGCAGGCCATAGGCCGACAGCTCAAGGCCATGGGCTGTGAGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGGACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTGCAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAACACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGACGTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTCTTCAAGAATTCGAGCTCGGTACCGGATCCGTCGACCTGCAGCCAAGCTTAATTAGCTGAGCTTGGACTCCTGTTGATAGATCCAGTAATGACCTCAGAACTCCATCTGGATTTGTTCAGAACGCTCGGTTGCCGCCGGGCGTTTTTTATTGGTGAGAATCCAAGCTAGCTTGGCGAGATTTTCAGGAGCTAAGGAAGCTAAAATGGAGAAAAAAATCACTGGATATACCACCGTTGATATATCCCAATGGCATCGTAAAGAACATTTTGAGGCATTTCAGTCAGTTGCTCAATGTACCTATAACCAGACCGTTCAGCTGGATATTACGGCCTTTTTAAAGACCGTAAAGAAAAATAAGCACAAGTTTTATCCGGCCTTTATTCACATTCTTGCCCGCCTGATGAATGCTCATCCGGAATTTCGTATGGCAATGAAAGACGGTGAGCTGGTGATATGGGATAGTGTTCACCCTTGTTACACCGTTTTCCATGAGCAAACTGAAACGTTTTCATCGCTCTGGAGTGAATACCACGACGATTTCCGGCAGTTTCTACACATATATTCGCAAGATGTGGCGTGTTACGGTGAAAACCTGGCCTATTTCCCTAAAGGGTTTATTGAGAATATGTTTTTCGTCTCAGCCAATCCCTGGGTGAGTTTCACCAGTTTTGATTTAAACGTGGCCAATATGGACAACTTCTTCGCCCCCGTTTTCACCATGGGCAAATATTATACGCAAGGCGACAAGGTGCTGATGCCGCTGGCGATTCAGGTTCATCATGCCGTTTGTGATGGCTTCCATGTCGGCAGAATGCTTAATGAATTACAACAGTACTGCGATGAGTGGCAGGGCGGGGCGTAATTTTTTTAAGGCAGTTATTGGTGCCCTTAAACGCCTGGGGTAATGACTCTCTAGCTTGAGGCATCAAATAAAACGAAAGGCTCAGTCGAAAGACTGGGCCTTTCGTTTTATCTGTTGTTTGTCGGTGAACGCTCTCCTGAGTAGGACAAATCCGCCCTCTAGCAGCCCGGGCTGC'
 insertSeq1 = 'TCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCACACGTCCGTTTCAATACTTAACGCACATGTATTTTGGTTTAGTCATCATCCGGTTATATGTATTTTAGCCAGGAACAGGTTAAATCATTCCTATATAACTCAAAAATTGAAACCTTATTCTCATGTCATGCTTATATTCATTATTATCGTTATATAAAAAGGCAACCATAATGTTTAGCAAATTGGCACAAAGTAGCATAAAGGCTATGTTTTAATTACAGGATGTTCAGTCATTTGAATGTATAACATTATAGCTAAACAAATCTAAAACGAAGTCAATAATTTATTGCTTTCACAAAATCTCATTTTGTTTAACATCCATTGAGATTCCTTGCTTTAAATTTTATTTTATATAAGCCATCATTTTAATTAATTTATTTTTTTGAGGGGGGGGTAATATACTCATATGCAAAATCAAGAAATAAACATCCTAATGAACCATATTAAATACCGTGGGATAAGACATAACAA'
-
+vectorSeq1X = 'CTAGATTTAAGAAGGAGATATACATATGAGTAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCAGTG'
+insertSeq1X = 'TCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCACACGTCCGTTTCAATACTTAACGCACATGTATTTTGGTTTAGTCATCATCCGGTTATATGTATTTTAGCCAGGAACAGGTTAAATCATTCCTATATAACTCAAAAATTGAAACCTTATTCTCATGTCATGCTTATATTCATTATTATCGTTATATAAAAAGGCAACCATAATGTTTAGCAAATTGGCACAAAGTAGCATAAAGG'
 testOutput1 = 'ggccgcTATTTCTCCTTTCGCGCAGTACGTGGTTCGCGGCTTAATCCTGCTGGCAGCGGTGATCTTCGACCGTTACAAGCAAAAAGCGAAACGCACTGTCTGATGCTTTTTTCTGCAACAATTTAGCGTTTTTTCCCACCATAGCCAACCGCCATAACGGTTGGCTGTTCTTCGTTGCAAATGGCGACCCCCGTCACACTGTCTATACTTACATGTCTGTAAAGCGCGTTCTGCGCAACACAATAAGAAAACTAGATTTAAGAAGGAGATATACATATGAGTAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCAGTGGAGAGGGTGAAGGTGATGCTACATACGGAAAGCTTACCCTTAAATTTATTTGCACTACTGGAAAACTACCTGTTCCATGGCCAACACTTGTCACTACTTTGACCTATGGTGTTCAATGCTTTTCCCGTTATCCGGATCATATGAAACGGCATGACTTTTTCAAGAGTGCCATGCCCGAAGGTTATGTACAGGAACGCACTATATCTTTCAAAGATGACGGGAACTACAAGACGCGTGCTGAAGTCAAGTTTGAAGGTGATACCCTTGTTAATCGTATCGAGTTAAAAGGTATTGATTTTAAAGAAGATGGAAACATTCTCGGACACAAACTCGAGTACAACTATAACTCACACAATGTATACATCACGGCAGACAAACAAAAGAATGGAATCAAAGCTAACTTCAAAATTCGCCACAACATTGAAGATGGATCCGTTCAACTAGCAGACCATTATCAACAAAATACTCCAATTGGCGATGGCCCTGTCCTTTTACCAGACAACCATTACCTGTCGACACAATCTGCCCTTTCGAAAGATCCCAACGAAAAGCGTGACCACATGGTCCTTCTTGAGTTTGTAACTGCTGCTGGGATTACACATGGCATGGATGAGCTCTACAAATAATGAATTCCAGCTGAGCGCCGGTCGCTACCATTACCAGTTGGTCTGGTGTCAAAAATAATAATAACCGGGCAGGCCATGTCTGCCCGTATTTCGCGTAAGGAAATCCATTATGTACTATTTAATTCTTGAAGACGAAAGGGCCTCGTGATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCGATATCGGGCTAGCCGGCCCGACGCACTTTGCGCCGAATAAATACCTGTGACGGAAGATCACTTCGCAGAATAAATAAATCCTGGTGTCCCTGTTGATACCGGGAAGCCCTGGGCCAACTTTTGGCGAAAATGAGACGTTGATCGGCACGTAAGAGGTTCCAACTTTCACCATAATGAAATAAGATCACTACCGGGCGTATTTTTTGAGTTATCGAGATTTTCAGGAGCTAAGGAAGCTAAAATGGAGAAAAAAATCACTGGATATACCACCGTTGATATATCCCAATGGCATCGTAAAGAACATTTTGAGGCATTTCAGTCAGTTGCTCAATGTACCTATAACCAGACCGTTCAGCTGGATATTACGGCCTTTTTAAAGACCGTAAAGAAAAATAAGCACAAGTTTTATCCGGCCTTTATTCACATTCTTGCCCGCCTGATGAATGCTCATCCGGAATTCCGTATGGCAATGAAAGACGGTGAGCTGGTGATATGGGATAGTGTTCACCCTTGTTACACCGTTTTCCATGAGCAAACTGAAACGTTTTCATCGCTCTGGAGTGAATACCACGACGATTTCCGGCAGTTTCTACACATATATTCGCAAGATGTGGCGTGTTACGGTGAAAACCTGGCCTATTTCCCTAAAGGGTTTATTGAGAATATGTTTTTCGTCTCAGCCAATCCCTGGGTGAGTTTCACCAGTTTTGATTTAAACGTGGCCAATATGGACAACTTCTTCGCCCCCGTTTTCACCATGGGCAAATATTATACGCAAGGCGACAAGGTGCTGATGCCGCTGGCGATTCAGGTTCATCATGCCGTCTGTGATGGCTTCCATGTCGGCAGAATGCTTAATGAATTACAACAGTACTGCGATGAGTGGCAGGGCGGGGCGTAATTTTTTTAAGGCAGTTATTGGTGCCCTTAAACGCCTGGTGCTACGCCTGAATAAGTGATAATAAGCGGATGAATGGCAGAAATGACGGATATCGTCCATTCCGACAGCATCGCCAGTCACTATGGCGTGCTGCTAGCGCTTTTAGCCGCTTTAGCGGCCTTTCCCCCTACCCGAAGGGTGGGGGCGCGTGTGCAGCCCCGCAGGGCCTGTCTCGGTCGATCATTCAGCCCGGCTCATCCTTCTGGCGTGGCGGCAGACCGAACAAGGCGCGGTCGTGGTCGCGTTCAAGGTACGCATCCATTGCCGCCATGAGCCGATCCTCCGGCCACTCGCTGCTGTTCACCTTGGCCAAAATCATGGCCCCCACCAGCACCTTGCGCCTTGTTTCGTTCTTGCGCTCTTGCTGCTGTTCCCTTGCCCGCACCCGCTGAATTTCGGCATTGATTCGCGCTCGTTGTTCTTCGAGCTTGGCCAGCCGATCCGCCGCCTTGTTGCTCCCCTTAACCATCTTGACACCCCATTGTTAATGTGCTGTCTCGTAGGCTATCATGGAGGCACAGCGGCGGCAATCCCGACCCTACTTTGTAGGGGAGGGCGCACTTACCGGTTTCTCTTCGAGAAACTGGCCTAACGGCCACCCTTCGGGCGGTGCGCTCTCCGAGGGCCATTGCATGGAGCCGAAAAGCAAAAGCAACAGCGAGGCAGCATGGCGATTTATCACCTTACGGCGAAAACCGGCAGCAGGTCGGGCGGCCAATCGGCCAGGGCCAAGGCCGACTACATCCAGCGCGAAGGCAAGTATGCCCGCGACATGGATGAAGTCTTGCACGCCGAATCCGGGCACATGCCGGAGTTCGTCGAGCGGCCCGCCGACTACTGGGATGCTGCCGACCTGTATGAACGCGCCAATGGGCGGCTGTTCAAGGAGGTCGAATTTGCCCTGCCGGTCGAGCTGACCCTCGACCAGCAGAAGGCGCTGGCGTCCGAGTTCGCCCAGCACCTGACCGGTGCCGAGCGCCTGCCGTATACGCTGGCCATCCATGCCGGTGGCGGCGAGAACCCGCACTGCCACCTGATGATCTCCGAGCGGATCAATGACGGCATCGAGCGGCCCGCCGCTCAGTGGTTCAAGCGGTACAACGGCAAGACCCCGGAGAAGGGCGGGGCACAGAAGACCGAAGCGCTCAAGCCCAAGGCATGGCTTGAGCAGACCCGCGAGGCATGGGCCGACCATGCCAACCGGGCATTAGAGCGGGCTGGCCACGACGCCCGCATTGACCACAGAACACTTGAGGCGCAGGGCATCGAGCGCCTGCCCGGTGTTCACCTGGGGCCGAACGTGGTGGAGATGGAAGGCCGGGGCATCCGCACCGACCGGGCAGACGTGGCCCTGAACATCGACACCGCCAACGCCCAGATCATCGACTTACAGGAATACCGGGAGGCAATAGACCATGAACGCAATCGACAGAGTGAAGAAATCCAGAGGCATCAACGAGTTAGCGGAGCAGATCGAACCGCTGGCCCAGAGCATGGCGACACTGGCCGACGAAGCCCGGCAGGTCATGAGCCAGACCCAGCAGGCCAGCGAGGCGCAGGCGGCGGAGTGGCTGAAAGCCCAGCGCCAGACAGGGGCGGCATGGGTGGAGCTGGCCAAAGAGTTGCGGGAGGTAGCCGCCGAGGTGAGCAGCGCCGCGCAGAGCGCCCGGAGCGCGTCGCGGGGGTGGCACTGGAAGCTATGGCTAACCGTGATGCTGGCTTCCATGATGCCTACGGTGGTGCTGCTGATCGCATCGTTGCTCTTGCTCGACCTGACGCCACTGACAACCGAGGACGGCTCGATCTGGCTGCGCTTGGTGGCCCGATGAAGAACGACAGGACTTTGCAGGCCATAGGCCGACAGCTCAAGGCCATGGGCTGTGAGCGCTCTTCCGCTTCCTCGCTCACTGACTCGCTGCGCTCGGTCGTTCGGCTGCGGCGAGCGGTATCAGCTCACTCAAAGGCGGTAATACGGTTATCCACAGAATCAGGGGATAACGCAGGAAAGAACATGTGAGCAAAAGGCCAGCAAAAGGCCAGGAACCGTAAAAAGGCCGCGTTGCTGGCGTTTTTCCATAGGCTCCGCCCCCCTGACGAGCATCACAAAAATCGACGCTCAAGTCAGAGGTGGCGAAACCCGACAGGACTATAAAGATACCAGGCGTTTCCCCCTGGAAGCTCCCTCGTGCGCTCTCCTGTTCCGACCCTGCCGCTTACCGGATACCTGTCCGCCTTTCTCCCTTCGGGAAGCGTGGCGCTTTCTCATAGCTCACGCTGTAGGTATCTCAGTTCGGTGTAGGTCGTTCGCTCCAAGCTGGGCTGTGTGCACGAACCCCCCGTTCAGCCCGACCGCTGCGCCTTATCCGGTAACTATCGTCTTGAGTCCAACCCGGTAAGACACGACTTATCGCCACTGGCAGCAGCCACTGGTAACAGGATTAGCAGAGCGAGGTATGTAGGCGGTGCTACAGAGTTCTTGAAGTGGTGGCCTAACTACGGCTACACTAGAAGGACAGTATTTGGTATCTGCGCTCTGCTGAAGCCAGTTACCTTCGGAAAAAGAGTTGGTAGCTCTTGATCCGGCAAACAAACCACCGCTGGTAGCGGTGGTTTTTTTGTTTGCAAGCAGCAGATTACGCGCAGAAAAAAAGGATCTCAAGAAGATCCTTTGATCTTTTCTACGGGGTCTGACGCTCAGTGGAACGAAAACTCACGTTAAGGGATTTTGGTCATGAGATTATCAAAAAGGATCTTCACCTAGATCCTTTTAAATTAAAAATGAAGTTTTAAATCAATCTAAAGTATATATGAGTAAACTTGGTCTGACAGTTACCAATGCTTAATCAGTGAGGCACCTATCTCAGCGATCTGTCTATTTCGTTCATCCATAGTTGCCTGACTCCCCGTCGTGTAGATAACTACGATACGGGAGGGCTTACCATCTGGCCCCAGTGCTGCAATGATACCGCGAGACCCACGCTCACCGGCTCCAGATTTATCAGCAATAAACCAGCCAGCCGGAAGGGCCGAGCGCAGAAGTGGTCCTGCAACTTTATCCGCCTCCATCCAGTCTATTAATTGTTGCCGGGAAGCTAGAGTAAGTAGTTCGCCAGTTAATAGTTTGCGCAACGTTGTTGCCATTGCTGCAGGCATCGTGGTGTCACGCTCGTCGTTTGGTATGGCTTCATTCAGCTCCGGTTCCCAACGATCAAGGCGAGTTACATGATCCCCCATGTTGTGCAAAAAAGCGGTTAGCTCCTTCGGTCCTCCGATCGTTGTCAGAAGTAAGTTGGCCGCAGTGTTATCACTCATGGTTATGGCAGCACTGCATAATTCTCTTACTGTCATGCCATCCGTAAGATGCTTTTCTGTGACTGGTGAGTACTCAACCAAGTCATTCTGAGAATAGTGTATGCGGCGACCGAGTTGCTCTTGCCCGGCGTCAACACGGGATAATACCGCGCCACATAGCAGAACTTTAAAAGTGCTCATCATTGGAAAACGTTCTTCGGGGCGAAAACTCTCAAGGATCTTACCGCTGTTGAGATCCAGTTCGATGTAACCCACTCGTGCACCCAACTGATCTTCAGCATCTTTTACTTTCACCAGCGTTTCTGGGTGAGCAAAAACAGGAAGGCAAAATGCCGCAAAAAAGGGAATAAGGGCGACACGGAAATGTTGAATACTCATACTCTTCCTTTTTCAATATTATTGAAGCATTTATCAGGGTTATTGTCTCATGAGCGGATACATATTTGAATGTATTTAGAAAAATAAACAAATAGGGGTTCCGCGCACATTTCCCCGAAAAGTGCCACCTGACGTCTAAGAAACCATTATTATCATGACATTAACCTATAAAAATAGGCGTATCACGAGGCCCTTTCGTCTTCAAGAATTCGAGCTCGGTACCGGATCCGTCGACCTGCAGCCAAGCTTAATTAGCTGAGCTTGGACTCCTGTTGATAGATCCAGTAATGACCTCAGAACTCCATCTGGATTTGTTCAGAACGCTCGGTTGCCGCCGGGCGTTTTTTATTGGTGAGAATCCAAGCTAGCTTGGCGAGATTTTCAGGAGCTAAGGAAGCTAAAATGGAGAAAAAAATCACTGGATATACCACCGTTGATATATCCCAATGGCATCGTAAAGAACATTTTGAGGCATTTCAGTCAGTTGCTCAATGTACCTATAACCAGACCGTTCAGCTGGATATTACGGCCTTTTTAAAGACCGTAAAGAAAAATAAGCACAAGTTTTATCCGGCCTTTATTCACATTCTTGCCCGCCTGATGAATGCTCATCCGGAATTTCGTATGGCAATGAAAGACGGTGAGCTGGTGATATGGGATAGTGTTCACCCTTGTTACACCGTTTTCCATGAGCAAACTGAAACGTTTTCATCGCTCTGGAGTGAATACCACGACGATTTCCGGCAGTTTCTACACATATATTCGCAAGATGTGGCGTGTTACGGTGAAAACCTGGCCTATTTCCCTAAAGGGTTTATTGAGAATATGTTTTTCGTCTCAGCCAATCCCTGGGTGAGTTTCACCAGTTTTGATTTAAACGTGGCCAATATGGACAACTTCTTCGCCCCCGTTTTCACCATGGGCAAATATTATACGCAAGGCGACAAGGTGCTGATGCCGCTGGCGATTCAGGTTCATCATGCCGTTTGTGATGGCTTCCATGTCGGCAGAATGCTTAATGAATTACAACAGTACTGCGATGAGTGGCAGGGCGGGGCGTAATTTTTTTAAGGCAGTTATTGGTGCCCTTAAACGCCTGGGGTAATGACTCTCTAGCTTGAGGCATCAAATAAAACGAAAGGCTCAGTCGAAAGACTGGGCCTTTCGTTTTATCTGTTGTTTGTCGGTGAACGCTCTCCTGAGTAGGACAAATCCGCCCTCTAGCAGCCCGGGCTGCGAGAAGGAGGAGAACCGGgtgACAGAACCGTTAACCGAAACCCCTGAACTATCCGCGAAATATGCCTGGTTTTTTGATCTTGATGGAACGCTGGCGGAAATCAAACCGCATCCCGATCAGGTCGTCGTGCCTGACAATATTCTGCAAGGACTACAGCTACTGGCAACCGCAAGTGATGGTGCATTGGCATTGATATCAGGGCGCTCAATGGTGGAGCTTGACGCACTGGCAAAACCTTATCGCTTCCCGTt'
 
 ###################
@@ -39,12 +40,12 @@ testOutput1 = 'ggccgcTATTTCTCCTTTCGCGCAGTACGTGGTTCGCGGCTTAATCCTGCTGGCAGCGGTGATCT
 ###################
 # (copied from primer3 with subtle changes according to our first primer designed)
 SEQUENCE_ID = 'MH1000'
-PRIMER_OPT_TM = 60.0
-PRIMER_MIN_TM = 49.0
-PRIMER_MAX_TM = 71.0
+PRIMER_OPT_TM = 59.0
+PRIMER_MIN_TM = 50.0
+PRIMER_MAX_TM = 70.0
 PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
     401, 500], [501, 600], [601, 700], [701, 850], [851, 1000]]
-MAX_TEMP_DIFF = 5.0
+MAX_TEMP_DIFF = 7.0
 PRIMER_MIN_SIZE = 18
 
 ###################
@@ -152,6 +153,116 @@ def fileParsing(vectorPlasmidAddress, insertPlasmidAddress):
         return
 
 
+# def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
+#     """Reorder (pseudo-circularize) a plasmid sequence so that it is essentially
+#     still the same plasmid but contains the complete goalSeq. Note that there are two
+#     scenarios:
+#     (1) plasmidSeq = vectorPlasmidSeq; goalSeq = insertPlasmidSeq
+#     (2) plasmidSeq = vectorSeq; goalSeq = insertSeq
+#     We assume that the non-vector section will be longer than 2*17=34 bases.
+
+#     The first output will be a pseudo-circularized DNA sequence which is essentially the same as
+#     the input plasmidSeq, but will be prepared to be put into primer3. We also output the
+#     starting and ending indexes of the goalSeq in the pseudo-circularized DNA sequence.
+#     """
+#     # 1. get two segments of goalSeq separated by lineared plasmid seq
+#     finalPart1 = ''
+#     finalPart2 = ''
+#     for index in range(len(goalSeq)):
+#         currentPart1 = goalSeq[0:index]
+#         currentPart2 = goalSeq[index:]
+#         if (currentPart1 in plasmidSeq) and (currentPart2 in plasmidSeq):
+#             finalPart1 = currentPart1
+#             finalPart2 = currentPart2
+#             break
+#     # 2. get the indexes of the two parts in the plasmid seq
+#     part1StartInPlasmid = plasmidSeq.find(finalPart1)
+#     part1EndInPlasmid = part1StartInPlasmid + len(finalPart1)
+#     part2StartInPlasmid = plasmidSeq.find(finalPart2)
+#     part2EndInPlasmid = part2StartInPlasmid + len(finalPart2)
+#     # 3. generate pseudo-circularized plasmid
+#     # 3.1 part 1 is at the end of the plasmid sequence
+#     if part1EndInPlasmid == len(plasmidSeq):
+#         nonVectorSegment = plasmidSeq[part2EndInPlasmid:part1StartInPlasmid]
+#         arbitraryMiddleIndex = len(nonVectorSegment)//2
+#         outputStart = arbitraryMiddleIndex
+#         output = nonVectorSegment[:arbitraryMiddleIndex] + finalPart1 + \
+#             finalPart2 + nonVectorSegment[arbitraryMiddleIndex:]
+#     # 3.2 part 2 is at the end of the plasmid sequence
+#     elif part2EndInPlasmid == len(plasmidSeq):
+#         nonVectorSegment = plasmidSeq[part1EndInPlasmid:part2StartInPlasmid]
+#         arbitraryMiddleIndex = len(nonVectorSegment)//2
+#         outputStart = arbitraryMiddleIndex
+#         # output = nonVectorSegment[:arbitraryMiddleIndex] + finalPart2 + \
+#         #     finalPart1 + nonVectorSegment[arbitraryMiddleIndex:]
+#     # 3.3 the plasmid sequence already contains the complete goalSeq
+#     else:
+#         output = plasmidSeq
+#         outputStart = output.find(goalSeq)
+#         outputEnd = outputStart + len(goalSeq)
+#         nonVectorSegment = output[:outputStart] + output[outputEnd:]
+#     # figure out the starting and ending indexes of goalSeq in the output sequence
+#     # outputStart = output.find(goalSeq)
+#     # outputEnd = outputStart + len(goalSeq)
+#     # if part1EndInPlasmid != len(plasmidSeq) and part2EndInPlasmid != len(plasmidSeq):
+#     #     nonVectorSegment = output[:outputStart] + output[outputEnd:]
+#     return nonVectorSegment, outputStart
+
+# #####################
+# ### PRIMER DESIGN ###
+# #####################
+
+
+# def primer3ShortCut(seq, goalStart, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+#     """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
+#     with parameters if needed"""
+#     goalLen = len(seq)
+#     # LEFT PRIMERS DESIGN: keep the right primers here
+#     if primerOptTm != PRIMER_OPT_TM:
+#         primerMinTm = primerOptTm-5
+#         primerMaxTm = primerOptTm+5
+#     else:
+#         primerMinTm = PRIMER_MIN_TM
+#         primerMaxTm = PRIMER_MAX_TM
+#     sequenceMapL = {
+#         'SEQUENCE_ID': SEQUENCE_ID,
+#         'SEQUENCE_TEMPLATE': seq,
+#         'SEQUENCE_INCLUDED_REGION': [goalStart-15, goalStart+25],
+#     }
+#     paramMapL = {
+#         'PRIMER_OPT_TM': primerOptTm,
+#         'PRIMER_MIN_TM': primerMinTm,
+#         'PRIMER_MAX_TM': primerMaxTm,
+#         'PRIMER_MIN_SIZE': primerMinSize,
+#         # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100],
+#     }
+#     leftPrimerInfo = primer3.bindings.designPrimers(sequenceMapL, paramMapL)
+#     # RIGHT PRIMERS DESIGN: keep the left primers here
+#     sequenceMapR = {
+#         'SEQUENCE_ID': SEQUENCE_ID,
+#         'SEQUENCE_TEMPLATE': seq,
+#         'SEQUENCE_INCLUDED_REGION': [goalStart-25, goalStart+15],
+#     }
+#     paramMapR = {
+#         'PRIMER_OPT_TM': primerOptTm,
+#         'PRIMER_MIN_TM': primerMinTm,
+#         'PRIMER_MAX_TM': primerMaxTm,
+#         'PRIMER_MIN_SIZE': primerMinSize,
+#         # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100],
+#     }
+#     rightPrimerInfo = primer3.bindings.designPrimers(sequenceMapR, paramMapR)
+#     return leftPrimerInfo, rightPrimerInfo
+
+
+# def plasmidPrimerDesign(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+#     """Uses the primer3-py api to find the primer info for isolating the current
+#     goalSeq from the plasmidSeq"""
+#     nonVectorSegment, goalSeqStart = pseudoCircularizePlasmid(
+#         plasmidSeq, goalSeq)
+#     leftPrimerInfo, rightPrimerInfo = primer3ShortCut(
+#         nonVectorSegment, goalSeqStart, primerOptTm, primerMinSize)
+#     return leftPrimerInfo, rightPrimerInfo
+
 def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     """Reorder (pseudo-circularize) a plasmid sequence so that it is essentially
     still the same plasmid but contains the complete goalSeq. Note that there are two
@@ -159,7 +270,6 @@ def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     (1) plasmidSeq = vectorPlasmidSeq; goalSeq = insertPlasmidSeq
     (2) plasmidSeq = vectorSeq; goalSeq = insertSeq
     We assume that the non-vector section will be longer than 2*17=34 bases.
-
     The first output will be a pseudo-circularized DNA sequence which is essentially the same as
     the input plasmidSeq, but will be prepared to be put into primer3. We also output the
     starting and ending indexes of the goalSeq in the pseudo-circularized DNA sequence.
@@ -200,69 +310,94 @@ def pseudoCircularizePlasmid(plasmidSeq, goalSeq):
     outputEnd = outputStart + len(goalSeq)
     return output, outputStart, outputEnd
 
-#####################
-### PRIMER DESIGN ###
-#####################
 
-
-def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+def primer3ShortCut(seq, goalStart, goalEnd, primerOptTm=PRIMER_OPT_TM, primerMinTm=PRIMER_MIN_TM, primerMaxTm=PRIMER_MAX_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Take in three outputs of pseudoCircularizePlasmid, call primer3 to create primers,
     with parameters if needed"""
     goalLen = goalEnd - goalStart
-    if primerOptTm != PRIMER_OPT_TM:
-        primerMinTm = primerOptTm-11
-        primerMaxTm = primerOptTm+11
-    else:
-        primerMinTm = PRIMER_MIN_TM
-        primerMaxTm = PRIMER_MAX_TM
-    sequenceMap = {
+    print(goalStart)
+    print(goalEnd)
+    print(seq)
+    LsequenceMap = {
         'SEQUENCE_ID': SEQUENCE_ID,
         'SEQUENCE_TEMPLATE': seq,
-        'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
+        # 'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
+        'SEQUENCE_TARGET': [goalStart, goalStart+60]
+        # 'SEQUENCE_PRIMER_PAIR_OK_REGION_LIST': [0, goalStart+15, goalEnd+16, 40]
     }
-    paramMap = {
+    LparamMap = {
         'PRIMER_OPT_TM': primerOptTm,
         'PRIMER_MIN_TM': primerMinTm,
         'PRIMER_MAX_TM': primerMaxTm,
         'PRIMER_MIN_SIZE': primerMinSize,
-        'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
+        'SEQUENCE_TARGET': [goalEnd-60, goalEnd]
+        # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
     }
-    return primer3.bindings.designPrimers(sequenceMap, paramMap)
+
+    RsequenceMap = {
+        'SEQUENCE_ID': SEQUENCE_ID,
+        'SEQUENCE_TEMPLATE': seq,
+        # 'SEQUENCE_INCLUDED_REGION': [goalStart, goalEnd]
+        # 'SEQUENCE_TARGET': [goalStart, goalEnd]
+        'SEQUENCE_PRIMER_PAIR_OK_REGION_LIST': [goalEnd-15, 100, goalEnd+101, 100]
+    }
+    RparamMap = {
+        'PRIMER_OPT_TM': primerOptTm,
+        'PRIMER_MIN_TM': primerMinTm,
+        'PRIMER_MAX_TM': primerMaxTm,
+        'PRIMER_MIN_SIZE': primerMinSize,
+        # 'SEQUENCE_TARGET': [goalStart, goalEnd]
+        # 'PRIMER_PRODUCT_SIZE_RANGE': [goalLen, goalLen+100]
+    }
+    return primer3.bindings.designPrimers(LsequenceMap, LparamMap), primer3.bindings.designPrimers(RsequenceMap, RparamMap)
 
 
-def plasmidPrimerDesign(plasmidSeq, goalSeq, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+def plasmidPrimerDesign(plasmidSeq, goalSeq):
     """Uses the primer3-py api to find the primer info for isolating the current
     goalSeq from the plasmidSeq"""
     preppedPlasmidSeq, goalSeqStart, goalSeqEnd = pseudoCircularizePlasmid(
         plasmidSeq, goalSeq)
-    primerInfo = primer3ShortCut(
-        preppedPlasmidSeq, goalSeqStart, goalSeqEnd, primerOptTm, primerMinSize)
-    return primerInfo
+    leftPrimerInfo, rightPrimerInfo = primer3ShortCut(
+        preppedPlasmidSeq, goalSeqStart, goalSeqEnd)
+    return leftPrimerInfo, rightPrimerInfo
 
 
-def cleanPrimerInfo(primerInfo):
+def cleanPrimerInfo(leftPrimerInfo, rightPrimerInfo):
     """read primerInfo, the output of the previous function, and turn it into a more
     readable and analyzable data structure"""
     primerPairDict = {}
-    for key in primerInfo:
-        if key[-8:] == 'SEQUENCE':
-            currentSequence = primerInfo[key]
-            if key[:11] == 'PRIMER_LEFT':
-                primerNum = key[12]
-                leftOrRight = 'left'
-                primerTM = primerInfo[key[:13]+'_TM']
-                primerPairKey = 'primerPair' + primerNum
-            else:
-                primerNum = key[13]
-                leftOrRight = 'right'
-                primerTM = primerInfo[key[:14]+'_TM']
-                primerPairKey = 'primerPair' + primerNum
-            if primerPairKey not in primerPairDict:
-                primerPairDict.update(
-                    {primerPairKey: [[leftOrRight, primerTM, currentSequence]]})
-            else:
-                primerPairDict[primerPairKey].append(
-                    [leftOrRight, primerTM, currentSequence])
+    leftPrimerL = []
+    rightPrimerL = []
+    for key in leftPrimerInfo:
+        if key[-8:] == 'SEQUENCE' and key[:11] == 'PRIMER_LEFT':
+            currentSequence = leftPrimerInfo[key]
+            primerNum = key[12]
+            if int(primerNum) <= 2:
+                primerTM = rightPrimerInfo[key[:13]+'_TM']
+                rightPrimerL.append(
+                    ['rightPrimer'+str(primerNum), primerTM, currentSequence])
+
+    for key in rightPrimerInfo:
+        if key[-8:] == 'SEQUENCE' and key[:12] == 'PRIMER_RIGHT':
+            currentSequence = leftPrimerInfo[key]
+            primerNum = key[13]
+            if int(primerNum) <= 2:
+                primerTM = leftPrimerInfo[key[:14]+'_TM']
+                leftPrimerL.append(
+                    ['leftPrimer'+str(primerNum), primerTM, currentSequence])
+
+    # update resultant dict
+    primerPairNum = 0
+    for leftPrimer in leftPrimerL:
+        for rightPrimer in rightPrimerL:
+            primerPairNum += 1
+            primerPairKey = "primerPair" + str(primerPairNum)
+            leftPrimerCopy = copy.deepcopy(leftPrimer)
+            leftPrimerCopy[0] = 'leftPrimer' + str(primerPairNum)
+            rightPrimerCopy = copy.deepcopy(rightPrimer)
+            rightPrimerCopy[0] = 'rightPrimer' + str(primerPairNum)
+            primerPairDict.update(
+                {primerPairKey: [leftPrimerCopy, rightPrimerCopy]})
     return primerPairDict
 
 
@@ -285,6 +420,75 @@ def tempDiffRestrict(primerInfo, maxTempDiff=MAX_TEMP_DIFF):
     return primerInfo
 
 
+def TaqvectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+    """Find the primers isolating vectorSeq from vectorPlasmidSeq; meanwhile
+    getting two overhang sequences that need to be attached to the insert primer
+    pairs"""
+    cleanedPrimerInfo = primer3Only(
+        vectorPlasmidSeq, vectorSeq, primerOptTm, primerMinSize)
+    rightTempPrimerInfo = tempDiffRestrict(cleanedPrimerInfo, maxTempDiff)
+    for key, val in rightTempPrimerInfo.copy().items():
+        currentLeftPrimer = val[0][2]
+        currentRightPrimer = val[1][2]
+        if (len(currentLeftPrimer) >= 18) and (len(currentRightPrimer) >= 18):
+            leftOverHang = currentLeftPrimer[:16]
+            rightOverHang = currentRightPrimer[:16]
+            val[0].append(leftOverHang)
+            val[1].append(rightOverHang)
+        else:
+            sys.exit(
+                "The following primer pair is not long enough for FastCloning, thus removed", str(val))
+    return rightTempPrimerInfo
+
+
+def TaqinsertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+    """Find the primers isolating insertSeq from insertPlasmidSeq; meanwhile attaching
+    the two overhang sequences to the insert primer pairs"""
+    cleanedInsertPrimerInfo = primer3Only(
+        insertPlasmidSeq, insertSeq, primerOptTm, primerMinSize)
+    rightTempInsertPrimerInfo = tempDiffRestrict(
+        cleanedInsertPrimerInfo, maxTempDiff)
+    outputDict = {}
+    outputL = []
+    primer4Num = 1
+    for vkey, currentVPrimerPair in rightTempVectorPrimerInfoWOverhang.items():
+        for ikey, currentIPrimerPair in rightTempInsertPrimerInfo.items():
+            # vector primers
+            vcurrentLSeq = currentVPrimerPair[0][2]
+            vcurrentLTemp = currentVPrimerPair[0][1]
+            vcurrentLOverhang = currentVPrimerPair[0][3]
+            vcurrentRSeq = currentVPrimerPair[1][2]
+            vcurrentRTemp = currentVPrimerPair[1][1]
+            vcurrentROverhang = currentVPrimerPair[1][3]
+            # insert primers
+            icurrentLSeq = currentIPrimerPair[0][2]
+            icurrentLTemp = currentIPrimerPair[0][1]
+            icurrentRSeq = currentIPrimerPair[1][2]
+            icurrentRTemp = currentIPrimerPair[1][1]
+            # attach the left overhang to right iprimers and vice versa
+            newiCurrentLSeq = vcurrentROverhang.lower() + icurrentLSeq
+            newiCurrentRSeq = vcurrentLOverhang.lower() + icurrentRSeq
+            # save current info
+            outputDict.update(
+                {('vectorLeftPrimer' + str(primer4Num)): [vcurrentLTemp, vcurrentLSeq]})
+            outputDict.update(
+                {('vectorRightPrimer' + str(primer4Num)): [vcurrentRTemp, vcurrentRSeq]})
+            outputDict.update(
+                {('insertLeftPrimer' + str(primer4Num)): [icurrentLTemp, newiCurrentLSeq]})
+            outputDict.update(
+                {('insertRightPrimer' + str(primer4Num)): [icurrentRTemp, newiCurrentRSeq]})
+            outputL.append(
+                [('vectorLeftPrimer' + str(primer4Num)), vcurrentLTemp, vcurrentLSeq])
+            outputL.append(
+                [('vectorRightPrimer' + str(primer4Num)), vcurrentRTemp, vcurrentRSeq])
+            outputL.append(
+                [('insertLeftPrimer' + str(primer4Num)), icurrentLTemp, newiCurrentLSeq])
+            outputL.append(
+                [('insertRightPrimer' + str(primer4Num)), icurrentRTemp, newiCurrentRSeq])
+            primer4Num += 1
+    return outputDict, outputL
+
+
 def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Find the primers isolating vectorSeq from vectorPlasmidSeq; meanwhile
     getting two overhang sequences that need to be attached to the insert primer
@@ -293,7 +497,7 @@ def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, p
     rightTempPrimerInfo = {}
     bestFarthestTempDist = float("inf")
     # for value in range(-5, -3):
-    for value in range(-5, 3):
+    for value in range(-3, 3):
         print("VECTOR")
         print(value)
         cleanedPrimerInfo = primer3Only(
@@ -340,7 +544,7 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
     currentLen = 0
     rightTempInsertPrimerInfo = {}
     bestFarthestTempDist = float("inf")
-    for value in range(-5, 3):
+    for value in range(-3, 3):
         # for value in range(-5, 6):
         print("INSERT")
         print(value)
@@ -417,7 +621,7 @@ def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plas
         currentLen = 0
         primersDict = {}
         bestFarthestTempDist = float("inf")
-        for value in range(-5, 3):
+        for value in range(-3, 3):
             cleanedPrimerInfo = primer3Only(
                 plasmidSeq, goalSeq, primerOptTm+value, primerMinSize)
             temprightTempPrimerInfo = tempDiffRestrict(
@@ -477,7 +681,7 @@ def plasmidPrimersFile(plasmidSeqFile, goalSeq, benchling=True, destinationAddre
     return plasmidPrimers(plasmidSeq, goalSeq, benchling, destinationAddress, benchlingAddress, primerOptTm, primerMinSize, enzyme)
 
 
-def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE, enzyme="phusion"):
     """Wrapper function that generates 2 primer pairs for the given circular
     raw vector and insert sequences
 
@@ -487,27 +691,46 @@ def fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq,
         vectorSeq ([str]): vector sequence
         insertSeq ([str]): insert sequence
     """
-    rightTempVectorPrimerInfoWOverhang = vectorPrimerDesign(
-        vectorPlasmidSeq, vectorSeq, maxTempDiff, primerOptTm,   primerMinSize)
-    outputDict, outputL = insertPrimerDesign(
-        rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff, primerOptTm,  primerMinSize)
-    currentDF = pd.DataFrame(
-        outputL, columns=['primerInfo', 'annealingTemp (in degree C)', 'sequence'])
-    currentDF.to_csv(destinationAddress)
-    print("Check out the following file for your primers:")
-    print(destinationAddress)
-    if benchling == True:
-        benchlingL = [[currentPrimer[0], currentPrimer[2]]
-                      for currentPrimer in outputL]
-        benchlingDF = pd.DataFrame(
-            benchlingL)
-        benchlingDF.to_csv(benchlingAddress, index=False)
-        print("Your benchling-ready csv file is:")
-        print(benchlingAddress)
+    if enzyme == "phusion":
+        rightTempVectorPrimerInfoWOverhang = vectorPrimerDesign(
+            vectorPlasmidSeq, vectorSeq, maxTempDiff, primerOptTm, primerMinSize)
+        outputDict, outputL = insertPrimerDesign(
+            rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff, primerOptTm,  primerMinSize)
+        currentDF = pd.DataFrame(
+            outputL, columns=['primerInfo', 'annealingTemp (in degree C)', 'sequence'])
+        currentDF.to_csv(destinationAddress)
+        print("Check out the following file for your primers:")
+        print(destinationAddress)
+        if benchling == True:
+            benchlingL = [[currentPrimer[0], currentPrimer[2]]
+                          for currentPrimer in outputL]
+            benchlingDF = pd.DataFrame(
+                benchlingL)
+            benchlingDF.to_csv(benchlingAddress, index=False)
+            print("Your benchling-ready csv file is:")
+            print(benchlingAddress)
+    elif enzyme == "Taq":
+        rightTempVectorPrimerInfoWOverhang = TaqvectorPrimerDesign(
+            vectorPlasmidSeq, vectorSeq, maxTempDiff, primerOptTm, primerMinSize)
+        outputDict, outputL = TaqinsertPrimerDesign(
+            rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, insertSeq, maxTempDiff, primerOptTm,  primerMinSize)
+        currentDF = pd.DataFrame(
+            outputL, columns=['primerInfo', 'annealingTemp (in degree C)', 'sequence'])
+        currentDF.to_csv(destinationAddress)
+        print("Check out the following file for your primers:")
+        print(destinationAddress)
+        if benchling == True:
+            benchlingL = [[currentPrimer[0], currentPrimer[2]]
+                          for currentPrimer in outputL]
+            benchlingDF = pd.DataFrame(
+                benchlingL)
+            benchlingDF.to_csv(benchlingAddress, index=False)
+            print("Your benchling-ready csv file is:")
+            print(benchlingAddress)
     return
 
 
-def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
+def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq, insertSeq, maxTempDiff=MAX_TEMP_DIFF, destinationAddress='fastCloningPrimerInfo.csv', benchlingAddress='benchlingfastCloningPrimerInfo.csv', benchling=True, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE, enzyme="phusion"):
     """Wrapper function that generates 2 primer pairs for the given circular
     raw vector and insert sequences given fasta/gb files
 
@@ -521,4 +744,4 @@ def fastCloningPrimersFile(vectorPlasmidAddress, insertPlasmidAddress, vectorSeq
         vectorPlasmidAddress, insertPlasmidAddress)
     vectorPlasmidSeq = str(vectorPlasmidSeq)
     insertPlasmidSeq = str(insertPlasmidSeq)
-    return fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff, destinationAddress, benchlingAddress, benchling, primerOptTm,   primerMinSize)
+    return fastCloningPrimers(vectorPlasmidSeq, insertPlasmidSeq, vectorSeq, insertSeq, maxTempDiff, destinationAddress, benchlingAddress, benchling, primerOptTm,   primerMinSize, enzyme)
