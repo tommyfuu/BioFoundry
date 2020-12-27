@@ -1,6 +1,6 @@
 # BioFoundry
 
-BioFoundry Project at the HMC BioMakerspace. An automated workflow to design primers for circularised DNA and for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments. This workflow supports fasta and genbank DNA file format as well as string format for plasmid sequence inputting to allow better user experience. For designing FasctClong Primers, we thank [NEB Tm Calculator](https://tmcalculator.neb.com/#!/batch) for making their primer melting/annealing temperature tools publicly available.
+BioFoundry Project at the HMC BioMakerspace. An automated workflow to design primers for circularised DNA and for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments. This workflow supports fasta and genbank DNA file format as well as string format for plasmid sequence inputting to allow better user experience. For designing FasctCloning Primers, we thank [NEB Tm Calculator](https://tmcalculator.neb.com/#!/batch) for making their primer melting/annealing temperature tools publicly available.
 
 ### Dependencies
 
@@ -42,13 +42,19 @@ Enter ipython in your terminal before you design your primer. Then do the follow
 run fastCloningPrimer.py
 ```
 
+Alternatively, you can enter the following in the terminal:
+
+'''
+python3 -i fastCloningPrimer.py
+'''
+
 If you do not prefer to use ipython, you can instead directly do the following in the terminal:
 (1) enter the Biofoundry directory, type `python` to enter python mode
 (2) type `from fastCloningPrimer import *` to import all functions.
 
-This repository enables two types of primer designs. You can either design primer pairs for simply isolating an area from a plasmid; or you can design primer pairs for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments.
+This repository enables two types of primer designs. You can either design primer pairs for PCR on a plasmid; or you can design primer pairs for [FastCloning](https://bmcbiotechnol.biomedcentral.com/articles/10.1186/1472-6750-11-92) experiments.
 
-1. You can simply design primer3 primer pairs for simply isolating an area from a plasmid. The output will be a csv file. You can choose to have your primers to be outputted in a benchling acceptable format or not. Check out the sample outputs for this part in files `sampleOutputs/plasmidPrimerInfo.csv` and `sampleOutputs/benchlingPlasmidPrimerInfo.csv`.
+1. You can simply design primer3 primer pairs for PCR on a plasmid. The output will be a csv file. You can choose to output your primers in a benchling acceptable format or not. Check out the sample outputs for this part in files `sampleOutputs/plasmidPrimerInfo.csv` and `sampleOutputs/benchlingPlasmidPrimerInfo.csv`.
 
 You have two options. You can either input the plasmid sequence as a string or as a fasta/genbank file. Note that only fasta/genbank formats are supported for now.\
 Note that the goal sequence (goalSeq), or the sequence you would like to isolate from the plasmid, always needs to be inputted as a string.
