@@ -81,6 +81,8 @@ PRIMER_MIN_SIZE = 18
 ### WEBSCRAPING ###
 ###################
 
+# CHANGE
+
 
 def primerDictToNEBPrimerSeq(primerDict):
     """turn a primer dict from primer3 in fastCloningPrimer to the NEB readdable format"""
@@ -113,6 +115,9 @@ def NEBWebscraper(primersSeq, phusionprimerOptTm):
     # set the primer input
     driver.find_element_by_id("batchinput").send_keys(
         primersSeq)
+    # set the primer concentration
+    driver.find_element_by_id("ct").clear()
+    driver.find_element_by_id("ct").send_keys(100)
 
     # blur the focus to produce outputs
     driver.execute_script("document.getElementById('batchinput').blur()")
@@ -521,7 +526,6 @@ def insertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, ins
 
 
 def plasmidPrimers(plasmidSeq, goalSeq, benchling=True, destinationAddress='plasmidPrimerInfo.csv', benchlingAddress='benchlingPlasmidPrimerInfo.csv', primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE, enzyme="Taq", maxTempDiff=MAX_TEMP_DIFF):
-
     # Use NEB to check temp
     if enzyme == "Taq":
         primersDict = primer3Only(
