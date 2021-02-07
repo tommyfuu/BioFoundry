@@ -132,10 +132,20 @@ Check out your destinationAddress for your primers.
 
 #### Next steps
 
-Next release and updates will be announced here.
+Currently, this workflow supports primer-3 supported primer design for Taq polymerase. For Phusion polymerases, this workflow designs primers by finding Taq primers in a range of temperatures around the optimal melting temperature of phusion, and then cross-checking whether these primers work through webscraping at the NEB Tm Calculator.
 
-1. Enable the support for more operating systems.
-2. Enable the support for more browsers.
+This method, while mostly reliable, depends on the fact that Taq and Phusion have similar temperature. While this is mostly true, there are cases where this is not true. A more straightforward approach would be find the melting temperature calculation formula for Phusion and put that into primer3 to find primers directly for Phusion, instead of what we are currently doing.
+
+In order to achieve this, functions you should focus on in our existing codebase include:
+
+```
+vectorPrimerDesign
+insertPrimerDesign
+```
+
+And the wrapper functions.
+
+You should find formulae and parameter values in resources and papers provided by roya; look for places to insert these formulae and values in the primer3 manual, and then revise our current methods to enable our desired functionalities.
 
 ### Acknowledgement
 
