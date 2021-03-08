@@ -11,6 +11,7 @@ from Bio import SeqIO
 import pandas as pd
 import sys
 import copy
+import math
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -403,6 +404,83 @@ def TaqinsertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, 
                 [('insertRightPrimer' + str(primer4Num)), icurrentRTemp, newiCurrentRSeq])
             primer4Num += 1
     return outputDict, outputL
+
+def deltaHdeltaS(primer):
+    """find the delta H and delta S value for the NEB primer temperature formula.
+       Try to figure out a way to use dictionary if the other way is too inefficient. 
+    """
+    H = 0
+    S = 0
+    d = {}
+    d['AA'] = -7.9,-22.2
+    d['AT'] = -7.2, -20.4
+    d['TA'] = -7.2, -21.3
+    d['CA'] = -8.5, -22.7
+    d['GT'] = -8.4, -22.4
+    d['CT'] = -7.8, -21.0
+    d['GA'] = -8.2, -22.2
+    d['CG'] = -10.6, -27.2
+    d['GC'] = -9.8, -24.4
+    d['GG'] = -8.0, -19.9
+    d['TT'] = -7.9, -22.2
+    d['CC'] = -8.0, -19.9
+    if primer[0:2] == "CG" or "GC":
+        H += 0.1
+        S += -2.8
+    if primer[0:2] == "AT" or "TA":
+        H += 2.3
+        S += 4.1
+    for i in range(len(primer)-2):
+        if primer[i:i+2] == 'AA':
+            H += -7.9
+            S += -22.2
+        if primer[i:i+2] == 'AT':
+            H += -7.2
+            S += -20.4
+        if primer[i:i+2] == 'TA':
+            H += -7.2
+            S += -21.3
+        if primer[i:i+2] == 'CA':
+            H += -8.5
+            S += -22.7
+        if primer[i:i+2] == 'GT':
+            H += -8.4
+            S += -22.4
+        if primer[i:i+2] == 'CT':
+            H += -7.8
+            S += -21.0
+        if primer[i:i+2] == 'GA':
+            H += -8.2
+            S += -22.2
+        if primer[i:i+2] == 'CG':
+            H += -10.6
+            S += -27.2
+        if primer[i:i+2] == 'GC':
+            H += -9.8
+            S += -24.4
+        if primer[i:i+2] == 'GG':
+            H += -8.0
+            S += -19.9
+        if primer[i:i+2] == 'CC':
+            H += -8.0
+            S += -19.9
+        if primer[i:i+2] == 'TT':
+            H += -7.9
+            S += -22.2
+    return H,S
+
+def nebPrimerFormula(leftprimer,rightprimer):
+    """uses the NEB primer annealing temperature calculator for phusion polymerase at 100 nM concentration primer
+    """
+    temp = 0
+    temp2 = 0
+    Si = -24.85
+    # find Hi value somehow from paper
+    HL,SL = deltaHdeltaS(leftprimer)
+    HR, SR = deltaHdeltaS(rightprimer)
+    temp = ((HL+Hi)*1000/((SL+Si)+1.9877*math.log(10**-7))) - 273.15
+    temp2 = ((HR+Hi)*1000/((SR+Si)+1.9877*math.log(10**-7))) - 273.15
+    return temp, temp2
 
 
 def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
