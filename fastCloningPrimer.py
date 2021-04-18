@@ -12,6 +12,7 @@ import pandas as pd
 import sys
 import copy
 import math
+from Bio.Seq import Seq
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -50,6 +51,8 @@ royaTestVectorSeq = "CTAGATTTAAGAAGGAGATATACATATGAGTAAAGGAGAAGAACTTTTCACTGGAGTTG
 royaTestInsertSeq = "GCTAAAGTTGGATACTTAAGAAATGCTTCATAATTCAGTAAGGCATTAGCATAATGGAAATAAAAGTGCAGAGACTATCTCTATGGATGATTAATACTGTCTTTTTATTGTCACCCATAAATAATCACCAGACTAATACTATCAACTTGATATTTGAAATGTGATCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCACACGTCCGTTTCAATACTTAACGCACATGTATTTTGGTTTAGTCATCATCCGGTTATATGTATTTTAGCCAGGAACAGGTTAAATCATTCCTATATAACTCAAAAATTGAAACCTTATTCTCATGTCATGCTTATATTCATTATTATCGTTATATAAAAAGGCAACCATAATGTTTAGCAAATTGGCACAAAGTAGCATAAAGGCTATGTTTTAATTACAGGATGTTCAGTCATTTGAATGTATAACATTATAGCTAAACAAATCTAAAACGAAGTCAATAATTTATTGCTTTCACAAAATCTCATTTTGTTTAACATCCATTGAGATTCCTTGCTTTAAATTTTATTTTATATAAGCCATCATTTTAATTAATTTATTTTTTTGAGGGGGGGGTAATATACTCATATGCAAAATCAAGAAATAAACATCCTAATGAACCATATTAAATACCGTGGGATAAGACATAACAA"
 royaTestInsertSeq1 = 'TCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCACACGTCCGTTTCAATACTTAACGCACATGTATTTTGGTTTAGTCATCATCCGGTTATATGTATTTTAGCCAGGAACAGGTTAAATCATTCCTATATAACTCAAAAATTGAAACCTTATTCTCATGTCATGCTTATATTCATTATTATCGTTATATAAAAAGGCAACCATAATGTTTAGCAAATTGGCACAAAGTAGCATAAAGGCTATGTTTTAATTACAGGATGTTCAGTCATTTGAATGTATAACATTATAGCTAAACAAATCTAAAACGAAGTCAATAATTTATTGCTTTCACAAAATCTCATTTTGTTTAACATCCATTGAGATTCCTTGCTTTAAATTTTATTTTATATAAGCCATCATTTTAATTAATTTATTTTTTTGAGGGGGGGGTAATATACTCATATGCAAAATCAAGAAATAAACATCCTAATGAACCATATTAAATACCGTGGGATAAGACATAACAA'
 
+richardTestPrimerForward = "CCCGTTCTAGATTTAAGAAGGAGA"
+richardTestPrimerReverse = "GTCATTACCCCAGGCGTTTA"
 
 primer3pySeq = 'GCTTGCATGCCTGCAGGTCGACTCTAGAGGATCCCCCTACATTTTAGCATCAGTGAGTACAGCATGCTTACTGGAAGAGAGGGTCATGCAACAGATTAGGAGGTAAGTTTGCAAAGGCAGGCTAAGGAGGAGACGCACTGAATGCCATGGTAAGAACTCTGGACATAAAAATATTGGAAGTTGTTGAGCAAGTNAAAAAAATGTTTGGAAGTGTTACTTTAGCAATGGCAAGAATGATAGTATGGAATAGATTGGCAGAATGAAGGCAAAATGATTAGACATATTGCATTAAGGTAAAAAATGATAACTGAAGAATTATGTGCCACACTTATTAATAAGAAAGAATATGTGAACCTTGCAGATGTTTCCCTCTAGTAG'
 
@@ -405,12 +408,14 @@ def TaqinsertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, 
             primer4Num += 1
     return outputDict, outputL
 
-def deltaHdeltaS(primer):
-    """find the delta H and delta S value for the NEB primer temperature formula.
-       Try to figure out a way to use dictionary if the other way is too inefficient. 
+def primerTemp(primerSeq, primerConcentration = 500e-9, saltConcentration = 50e-3, magnesiumConcentration = 0):
+    """Calculates the annealing temperature of a primer using the NEB calculator formula
     """
-    H = 0
-    S = 0
+    temp = 0
+    seq = Seq(primerSeq)
+    dH = 0
+    dS = 0
+    symmetryFactor = 0
     d = {}
     d['AA'] = -7.9,-22.2
     d['AT'] = -7.2, -20.4
@@ -424,50 +429,86 @@ def deltaHdeltaS(primer):
     d['GG'] = -8.0, -19.9
     d['TT'] = -7.9, -22.2
     d['CC'] = -8.0, -19.9
-    if primer[0:2] == "CG" or "GC":
-        H += 0.1
-        S += -2.8
-    if primer[0:2] == "AT" or "TA":
-        H += 2.3
-        S += 4.1
-    for i in range(len(primer)-2):
-        if primer[i:i+2] == 'AA':
-            H += -7.9
-            S += -22.2
-        if primer[i:i+2] == 'AT':
-            H += -7.2
-            S += -20.4
-        if primer[i:i+2] == 'TA':
-            H += -7.2
-            S += -21.3
-        if primer[i:i+2] == 'CA':
-            H += -8.5
-            S += -22.7
-        if primer[i:i+2] == 'GT':
-            H += -8.4
-            S += -22.4
-        if primer[i:i+2] == 'CT':
-            H += -7.8
-            S += -21.0
-        if primer[i:i+2] == 'GA':
-            H += -8.2
-            S += -22.2
-        if primer[i:i+2] == 'CG':
-            H += -10.6
-            S += -27.2
-        if primer[i:i+2] == 'GC':
-            H += -9.8
-            S += -24.4
-        if primer[i:i+2] == 'GG':
-            H += -8.0
-            S += -19.9
-        if primer[i:i+2] == 'CC':
-            H += -8.0
-            S += -19.9
-        if primer[i:i+2] == 'TT':
-            H += -7.9
-            S += -22.2
-    return H,S
+    d['CA'] = -8.5, -22.7
+    d['TG'] = -8.5, -22.7
+    d['AC'] = -8.4, -22.4
+    d['AG'] = -7.8, -21.0
+    d['TC'] = -8.2, -22.2
+
+    initial_Thermodynamic_Penalty = [0.2, -5.7]
+    symmetry_Thermodynamic_Penalty = [0, -1.4]
+    termial_AT_Thermodynamic_Penalty = [2.2, 6.9]
+    gasConstant = 1.9872
+
+    dH += initial_Thermodynamic_Penalty[0]
+    dS += initial_Thermodynamic_Penalty[1]
+    if primerSeq == seq.reverse_complement():
+        dH += symmetry_Thermodynamic_Penalty[0]
+        dS += symmetry_Thermodynamic_Penalty[1]
+        symmetryFactor = 1
+    else:
+        symmetryFactor = 4
+    
+    if primerSeq[len(primerSeq)-1] == 'A' or primerSeq[len(primerSeq)-1] == 'T':
+        dH += termial_AT_Thermodynamic_Penalty[0]
+        dS += termial_AT_Thermodynamic_Penalty[1]
+
+    saltEffect = saltConcentration + (magnesiumConcentration * 140)
+    dS += (0.368 * (len(primerSeq)-1) * math.log10(saltEffect))
+    
+    for i in range(len(primerSeq)-1):
+        dH += d[primerSeq[i:i+2]][0]
+        dS += d[primerSeq[i:i+2]][1]
+    
+    temp = dH*1000/(dS + gasConstant*math.log(primerConcentration/symmetryFactor)) - 273.15
+    return temp
+
+    
+    
+    # if primer[0:2] == "CG" or "GC":
+    #     H += 0.1
+    #     S += -2.8
+    # if primer[0:2] == "AT" or "TA":
+    #     H += 2.3
+    #     S += 4.1
+    # for i in range(len(primer)-2):
+    #     if primer[i:i+2] == 'AA':
+    #         H += -7.9
+    #         S += -22.2
+    #     if primer[i:i+2] == 'AT':
+    #         H += -7.2
+    #         S += -20.4
+    #     if primer[i:i+2] == 'TA':
+    #         H += -7.2
+    #         S += -21.3
+    #     if primer[i:i+2] == 'CA':
+    #         H += -8.5
+    #         S += -22.7
+    #     if primer[i:i+2] == 'GT':
+    #         H += -8.4
+    #         S += -22.4
+    #     if primer[i:i+2] == 'CT':
+    #         H += -7.8
+    #         S += -21.0
+    #     if primer[i:i+2] == 'GA':
+    #         H += -8.2
+    #         S += -22.2
+    #     if primer[i:i+2] == 'CG':
+    #         H += -10.6
+    #         S += -27.2
+    #     if primer[i:i+2] == 'GC':
+    #         H += -9.8
+    #         S += -24.4
+    #     if primer[i:i+2] == 'GG':
+    #         H += -8.0
+    #         S += -19.9
+    #     if primer[i:i+2] == 'CC':
+    #         H += -8.0
+    #         S += -19.9
+    #     if primer[i:i+2] == 'TT':
+    #         H += -7.9
+    #         S += -22.2
+    # return H,S
 
 def nebPrimerFormula(leftprimer,rightprimer):
     """uses the NEB primer annealing temperature calculator for phusion polymerase at 100 nM concentration primer
