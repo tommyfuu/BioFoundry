@@ -82,24 +82,26 @@ MAX_TEMP_DIFF = 7.0
 PRIMER_MIN_SIZE = 18
 
 # dictionary of delta H and delta S values for pairs of sequences,
-d = {}
-d['AA'] = -7.9,-22.2
-d['AT'] = -7.2, -20.4
-d['TA'] = -7.2, -21.3
-d['CA'] = -8.5, -22.7
-d['GT'] = -8.4, -22.4
-d['CT'] = -7.8, -21.0
-d['GA'] = -8.2, -22.2
-d['CG'] = -10.6, -27.2
-d['GC'] = -9.8, -24.4
-d['GG'] = -8.0, -19.9
-d['TT'] = -7.9, -22.2
-d['CC'] = -8.0, -19.9
-d['CA'] = -8.5, -22.7
-d['TG'] = -8.5, -22.7
-d['AC'] = -8.4, -22.4
-d['AG'] = -7.8, -21.0
-d['TC'] = -8.2, -22.2
+enthalpyEntropyValuesSequencePairs = {
+'AA':(-7.9, -22.2),
+'AA':(-7.9,-22.2),
+'AT':( -7.2, -20.4),
+'TA':(-7.2, -21.3),
+'CA':(-8.5, -22.7),
+'GT':(-8.4, -22.4),
+'CT':(-7.8, -21.0),
+'GA':(-8.2, -22.2),
+'CG':(-10.6, -27.2),
+'GC':(-9.8, -24.4),
+'GG':(-8.0, -19.9),
+'TT':(-7.9, -22.2),
+'CC':(-8.0, -19.9),
+'CA':(-8.5, -22.7),
+'TG':(-8.5, -22.7),
+'AC':(-8.4, -22.4),
+'AG':(-7.8, -21.0),
+'TC':(-8.2, -22.2),
+}
 
 ###################
 ### WEBSCRAPING ###
@@ -458,8 +460,8 @@ def primerTemp(primerSeq, primerConcentration = 500e-9, saltConcentration = 50e-
     dS += (0.368 * (len(primerSeq)-1) * math.log10(saltEffect))
     
     for i in range(len(primerSeq)-1):
-        dH += d[primerSeq[i:i+2]][0]
-        dS += d[primerSeq[i:i+2]][1]
+        dH += enthalpyEntropyValuesSequencePairs[primerSeq[i:i+2]][0]
+        dS += enthalpyEntropyValuesSequencePairs[primerSeq[i:i+2]][1]
     
     temp = dH*1000/(dS + gasConstant*math.log(primerConcentration/symmetryFactor)) - 273.15
     return temp
