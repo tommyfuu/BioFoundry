@@ -81,6 +81,26 @@ PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
 MAX_TEMP_DIFF = 7.0
 PRIMER_MIN_SIZE = 18
 
+# dictionary of delta H and delta S values for pairs of sequences,
+d = {}
+d['AA'] = -7.9,-22.2
+d['AT'] = -7.2, -20.4
+d['TA'] = -7.2, -21.3
+d['CA'] = -8.5, -22.7
+d['GT'] = -8.4, -22.4
+d['CT'] = -7.8, -21.0
+d['GA'] = -8.2, -22.2
+d['CG'] = -10.6, -27.2
+d['GC'] = -9.8, -24.4
+d['GG'] = -8.0, -19.9
+d['TT'] = -7.9, -22.2
+d['CC'] = -8.0, -19.9
+d['CA'] = -8.5, -22.7
+d['TG'] = -8.5, -22.7
+d['AC'] = -8.4, -22.4
+d['AG'] = -7.8, -21.0
+d['TC'] = -8.2, -22.2
+
 ###################
 ### WEBSCRAPING ###
 ###################
@@ -416,25 +436,6 @@ def primerTemp(primerSeq, primerConcentration = 500e-9, saltConcentration = 50e-
     dH = 0
     dS = 0
     symmetryFactor = 0
-    d = {}
-    d['AA'] = -7.9,-22.2
-    d['AT'] = -7.2, -20.4
-    d['TA'] = -7.2, -21.3
-    d['CA'] = -8.5, -22.7
-    d['GT'] = -8.4, -22.4
-    d['CT'] = -7.8, -21.0
-    d['GA'] = -8.2, -22.2
-    d['CG'] = -10.6, -27.2
-    d['GC'] = -9.8, -24.4
-    d['GG'] = -8.0, -19.9
-    d['TT'] = -7.9, -22.2
-    d['CC'] = -8.0, -19.9
-    d['CA'] = -8.5, -22.7
-    d['TG'] = -8.5, -22.7
-    d['AC'] = -8.4, -22.4
-    d['AG'] = -7.8, -21.0
-    d['TC'] = -8.2, -22.2
-
     initial_Thermodynamic_Penalty = [0.2, -5.7]
     symmetry_Thermodynamic_Penalty = [0, -1.4]
     termial_AT_Thermodynamic_Penalty = [2.2, 6.9]
