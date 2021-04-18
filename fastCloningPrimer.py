@@ -11,6 +11,8 @@ from Bio import SeqIO
 import pandas as pd
 import sys
 import copy
+import math
+from Bio.Seq import Seq
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -49,6 +51,8 @@ royaTestVectorSeq = "CTAGATTTAAGAAGGAGATATACATATGAGTAAAGGAGAAGAACTTTTCACTGGAGTTG
 royaTestInsertSeq = "GCTAAAGTTGGATACTTAAGAAATGCTTCATAATTCAGTAAGGCATTAGCATAATGGAAATAAAAGTGCAGAGACTATCTCTATGGATGATTAATACTGTCTTTTTATTGTCACCCATAAATAATCACCAGACTAATACTATCAACTTGATATTTGAAATGTGATCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCACACGTCCGTTTCAATACTTAACGCACATGTATTTTGGTTTAGTCATCATCCGGTTATATGTATTTTAGCCAGGAACAGGTTAAATCATTCCTATATAACTCAAAAATTGAAACCTTATTCTCATGTCATGCTTATATTCATTATTATCGTTATATAAAAAGGCAACCATAATGTTTAGCAAATTGGCACAAAGTAGCATAAAGGCTATGTTTTAATTACAGGATGTTCAGTCATTTGAATGTATAACATTATAGCTAAACAAATCTAAAACGAAGTCAATAATTTATTGCTTTCACAAAATCTCATTTTGTTTAACATCCATTGAGATTCCTTGCTTTAAATTTTATTTTATATAAGCCATCATTTTAATTAATTTATTTTTTTGAGGGGGGGGTAATATACTCATATGCAAAATCAAGAAATAAACATCCTAATGAACCATATTAAATACCGTGGGATAAGACATAACAA"
 royaTestInsertSeq1 = 'TCACTTGACTTTTGATACGTTATTTTATAACGGTTAACATATTTATAAAAACAACGGCCGTGCCACACGTCCGTTTCAATACTTAACGCACATGTATTTTGGTTTAGTCATCATCCGGTTATATGTATTTTAGCCAGGAACAGGTTAAATCATTCCTATATAACTCAAAAATTGAAACCTTATTCTCATGTCATGCTTATATTCATTATTATCGTTATATAAAAAGGCAACCATAATGTTTAGCAAATTGGCACAAAGTAGCATAAAGGCTATGTTTTAATTACAGGATGTTCAGTCATTTGAATGTATAACATTATAGCTAAACAAATCTAAAACGAAGTCAATAATTTATTGCTTTCACAAAATCTCATTTTGTTTAACATCCATTGAGATTCCTTGCTTTAAATTTTATTTTATATAAGCCATCATTTTAATTAATTTATTTTTTTGAGGGGGGGGTAATATACTCATATGCAAAATCAAGAAATAAACATCCTAATGAACCATATTAAATACCGTGGGATAAGACATAACAA'
 
+richardTestPrimerForward = "CCCGTTCTAGATTTAAGAAGGAGA"
+richardTestPrimerReverse = "GTCATTACCCCAGGCGTTTA"
 
 primer3pySeq = 'GCTTGCATGCCTGCAGGTCGACTCTAGAGGATCCCCCTACATTTTAGCATCAGTGAGTACAGCATGCTTACTGGAAGAGAGGGTCATGCAACAGATTAGGAGGTAAGTTTGCAAAGGCAGGCTAAGGAGGAGACGCACTGAATGCCATGGTAAGAACTCTGGACATAAAAATATTGGAAGTTGTTGAGCAAGTNAAAAAAATGTTTGGAAGTGTTACTTTAGCAATGGCAAGAATGATAGTATGGAATAGATTGGCAGAATGAAGGCAAAATGATTAGACATATTGCATTAAGGTAAAAAATGATAACTGAAGAATTATGTGCCACACTTATTAATAAGAAAGAATATGTGAACCTTGCAGATGTTTCCCTCTAGTAG'
 
@@ -76,6 +80,28 @@ PRIMER_PRODUCT_SIZE_RANGE = [[100, 300], [150, 250], [301, 400], [
     401, 500], [501, 600], [601, 700], [701, 850], [851, 1000]]
 MAX_TEMP_DIFF = 7.0
 PRIMER_MIN_SIZE = 18
+
+# dictionary of delta H and delta S values for pairs of sequences,
+enthalpyEntropyValuesSequencePairs = {
+'AA':(-7.9, -22.2),
+'AA':(-7.9,-22.2),
+'AT':( -7.2, -20.4),
+'TA':(-7.2, -21.3),
+'CA':(-8.5, -22.7),
+'GT':(-8.4, -22.4),
+'CT':(-7.8, -21.0),
+'GA':(-8.2, -22.2),
+'CG':(-10.6, -27.2),
+'GC':(-9.8, -24.4),
+'GG':(-8.0, -19.9),
+'TT':(-7.9, -22.2),
+'CC':(-8.0, -19.9),
+'CA':(-8.5, -22.7),
+'TG':(-8.5, -22.7),
+'AC':(-8.4, -22.4),
+'AG':(-7.8, -21.0),
+'TC':(-8.2, -22.2),
+}
 
 ###################
 ### WEBSCRAPING ###
@@ -404,6 +430,41 @@ def TaqinsertPrimerDesign(rightTempVectorPrimerInfoWOverhang, insertPlasmidSeq, 
             primer4Num += 1
     return outputDict, outputL
 
+def primerTemp(primerSeq, primerConcentration = 500e-9, saltConcentration = 50e-3, magnesiumConcentration = 0):
+    """Calculates the annealing temperature of a primer using the NEB calculator formula
+    """
+    temp = 0
+    seq = Seq(primerSeq)
+    dH = 0
+    dS = 0
+    symmetryFactor = 0
+    initial_Thermodynamic_Penalty = [0.2, -5.7]
+    symmetry_Thermodynamic_Penalty = [0, -1.4]
+    termial_AT_Thermodynamic_Penalty = [2.2, 6.9]
+    gasConstant = 1.9872
+
+    dH += initial_Thermodynamic_Penalty[0]
+    dS += initial_Thermodynamic_Penalty[1]
+    if primerSeq == seq.reverse_complement():
+        dH += symmetry_Thermodynamic_Penalty[0]
+        dS += symmetry_Thermodynamic_Penalty[1]
+        symmetryFactor = 1
+    else:
+        symmetryFactor = 4
+    
+    if primerSeq[len(primerSeq)-1] == 'A' or primerSeq[len(primerSeq)-1] == 'T':
+        dH += termial_AT_Thermodynamic_Penalty[0]
+        dS += termial_AT_Thermodynamic_Penalty[1]
+
+    saltEffect = saltConcentration + (magnesiumConcentration * 140)
+    dS += (0.368 * (len(primerSeq)-1) * math.log10(saltEffect))
+    
+    for i in range(len(primerSeq)-1):
+        dH += enthalpyEntropyValuesSequencePairs[primerSeq[i:i+2]][0]
+        dS += enthalpyEntropyValuesSequencePairs[primerSeq[i:i+2]][1]
+    
+    temp = dH*1000/(dS + gasConstant*math.log(primerConcentration/symmetryFactor)) - 273.15
+    return temp
 
 def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Find the primers isolating vectorSeq from vectorPlasmidSeq; meanwhile
