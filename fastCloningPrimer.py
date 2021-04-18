@@ -463,53 +463,6 @@ def primerTemp(primerSeq, primerConcentration = 500e-9, saltConcentration = 50e-
     temp = dH*1000/(dS + gasConstant*math.log(primerConcentration/symmetryFactor)) - 273.15
     return temp
 
-    
-    
-    # if primer[0:2] == "CG" or "GC":
-    #     H += 0.1
-    #     S += -2.8
-    # if primer[0:2] == "AT" or "TA":
-    #     H += 2.3
-    #     S += 4.1
-    # for i in range(len(primer)-2):
-    #     if primer[i:i+2] == 'AA':
-    #         H += -7.9
-    #         S += -22.2
-    #     if primer[i:i+2] == 'AT':
-    #         H += -7.2
-    #         S += -20.4
-    #     if primer[i:i+2] == 'TA':
-    #         H += -7.2
-    #         S += -21.3
-    #     if primer[i:i+2] == 'CA':
-    #         H += -8.5
-    #         S += -22.7
-    #     if primer[i:i+2] == 'GT':
-    #         H += -8.4
-    #         S += -22.4
-    #     if primer[i:i+2] == 'CT':
-    #         H += -7.8
-    #         S += -21.0
-    #     if primer[i:i+2] == 'GA':
-    #         H += -8.2
-    #         S += -22.2
-    #     if primer[i:i+2] == 'CG':
-    #         H += -10.6
-    #         S += -27.2
-    #     if primer[i:i+2] == 'GC':
-    #         H += -9.8
-    #         S += -24.4
-    #     if primer[i:i+2] == 'GG':
-    #         H += -8.0
-    #         S += -19.9
-    #     if primer[i:i+2] == 'CC':
-    #         H += -8.0
-    #         S += -19.9
-    #     if primer[i:i+2] == 'TT':
-    #         H += -7.9
-    #         S += -22.2
-    # return H,S
-
 def nebPrimerFormula(leftprimer,rightprimer):
     """uses the NEB primer annealing temperature calculator for phusion polymerase at 100 nM concentration primer
     """
