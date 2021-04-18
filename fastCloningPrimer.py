@@ -463,20 +463,6 @@ def primerTemp(primerSeq, primerConcentration = 500e-9, saltConcentration = 50e-
     temp = dH*1000/(dS + gasConstant*math.log(primerConcentration/symmetryFactor)) - 273.15
     return temp
 
-def nebPrimerFormula(leftprimer,rightprimer):
-    """uses the NEB primer annealing temperature calculator for phusion polymerase at 100 nM concentration primer
-    """
-    temp = 0
-    temp2 = 0
-    Si = -24.85
-    # find Hi value somehow from paper
-    HL,SL = deltaHdeltaS(leftprimer)
-    HR, SR = deltaHdeltaS(rightprimer)
-    temp = ((HL+Hi)*1000/((SL+Si)+1.9877*math.log(10**-7))) - 273.15
-    temp2 = ((HR+Hi)*1000/((SR+Si)+1.9877*math.log(10**-7))) - 273.15
-    return temp, temp2
-
-
 def vectorPrimerDesign(vectorPlasmidSeq, vectorSeq, maxTempDiff=MAX_TEMP_DIFF, primerOptTm=PRIMER_OPT_TM, primerMinSize=PRIMER_MIN_SIZE):
     """Find the primers isolating vectorSeq from vectorPlasmidSeq; meanwhile
     getting two overhang sequences that need to be attached to the insert primer
